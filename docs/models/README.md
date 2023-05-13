@@ -20,7 +20,7 @@ sdk.models.list({
   author: "aliquam",
   nodeType: "odio",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: ListModelApiV1ModelGetResponse) => {
   if (res.statusCode == 200) {
     // handle response

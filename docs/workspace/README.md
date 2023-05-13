@@ -25,7 +25,7 @@ const sdk = new Deepset();
 sdk.workspace.create({
   name: "Margarita Jacobson",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: CreateWorkspaceApiV1WorkspacesPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -48,7 +48,7 @@ const sdk = new Deepset();
 sdk.workspace.delete({
   workspaceName: "libero",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: DeleteWorkspaceApiV1WorkspacesWorkspaceNameDeleteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -71,7 +71,7 @@ const sdk = new Deepset();
 sdk.workspace.get({
   workspaceName: "rem",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetWorkspaceApiV1WorkspacesWorkspaceNameGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -94,7 +94,7 @@ const sdk = new Deepset();
 sdk.workspace.getStats({
   workspaceName: "dolorum",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetWorkspaceStatsApiV1WorkspacesWorkspaceNameStatsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -115,7 +115,7 @@ import { ListWorkspacesApiV1WorkspacesGetResponse } from "ds-test/dist/sdk/model
 const sdk = new Deepset();
 
 sdk.workspace.list({
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: ListWorkspacesApiV1WorkspacesGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -142,7 +142,7 @@ sdk.workspace.searchCount({
   pageNumber: 872303,
   workspaceName: "alias",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: SearchCountApiV1WorkspacesWorkspaceNameSearchCountGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -169,7 +169,7 @@ sdk.workspace.searchHistory({
   pageNumber: 795591,
   workspaceName: "fuga",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: SearchHistoryApiV1WorkspacesWorkspaceNameSearchHistoryGetResponse) => {
   if (res.statusCode == 200) {
     // handle response

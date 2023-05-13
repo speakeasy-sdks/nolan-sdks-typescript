@@ -32,7 +32,7 @@ sdk.file.deleteMulti({
   },
   workspaceName: "neque",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: DeleteFilesApiV1WorkspacesWorkspaceNameFilesDeleteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -56,7 +56,7 @@ sdk.file.deleteSingle({
   fileId: "26b5a734-29cd-4b1a-8422-bb679d232271",
   workspaceName: "ullam",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: DeleteFileApiV1WorkspacesWorkspaceNameFilesFileIdDeleteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -80,7 +80,7 @@ sdk.file.get({
   fileId: "bf0cbb1e-31b8-4b90-b344-3a1108e0adcf",
   workspaceName: "ut",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetFileApiV1WorkspacesWorkspaceNameFilesFileIdGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -104,7 +104,7 @@ sdk.file.getDocument({
   fileId: "b921879f-ce95-43f7-bef7-fbc7abd74dd3",
   workspaceName: "natus",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetDocumentApiV1WorkspacesWorkspaceNameFilesFileIdDocumentsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -128,7 +128,7 @@ sdk.file.getMetaData({
   fileId: "c0f5d2cf-f7c7-40a4-9626-d436813f16d9",
   workspaceName: "voluptatibus",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -166,7 +166,7 @@ sdk.file.list({
   pageNumber: 131482,
   workspaceName: "provident",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: ListFilesApiV1WorkspacesWorkspaceNameFilesGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -194,7 +194,7 @@ sdk.file.updateMetaData({
   fileId: "74778a7b-d466-4d28-810a-b3cdca425190",
   workspaceName: "tempora",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: UpdateFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaPutResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -230,7 +230,7 @@ sdk.file.upload({
   workspaceName: "esse",
   writeMode: UploadFileApiV1WorkspacesWorkspaceNameFilesPostWriteModeFileWriteModeEnumEnum.Fail,
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: UploadFileApiV1WorkspacesWorkspaceNameFilesPostResponse) => {
   if (res.statusCode == 200) {
     // handle response

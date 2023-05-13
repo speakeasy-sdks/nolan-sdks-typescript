@@ -27,7 +27,7 @@ sdk.evaluationSet.delete({
   evaluationSetName: "qui",
   workspaceName: "ipsum",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: DeleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDeleteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -54,7 +54,7 @@ sdk.evaluationSet.get({
   evaluationSetName: "hic",
   workspaceName: "excepturi",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -80,7 +80,7 @@ sdk.evaluationSet.getCsv({
   evaluationSetName: "cum",
   workspaceName: "voluptate",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -109,7 +109,7 @@ sdk.evaluationSet.importEvaluationSet({
   },
   workspaceName: "amet",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -138,7 +138,7 @@ sdk.evaluationSet.list({
   pageNumber: 313692,
   workspaceName: "dolorem",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -164,7 +164,7 @@ sdk.evaluationSet.retrigger({
   evaluationSetName: "sapiente",
   workspaceName: "totam",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: RetriggerLabelMatchingApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameLabelMatchingPostResponse) => {
   if (res.statusCode == 200) {
     // handle response

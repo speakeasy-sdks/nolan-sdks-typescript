@@ -19,7 +19,7 @@ const sdk = new Deepset();
 sdk.searchSession.create({
   workspaceName: "fugiat",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: CreateSearchSessionApiV1WorkspacesWorkspaceNameSearchSessionsPostResponse) => {
   if (res.statusCode == 200) {
     // handle response

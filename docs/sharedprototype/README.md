@@ -34,7 +34,7 @@ sdk.sharedPrototype.create({
   },
   workspaceName: "ipsam",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: CreatePrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -58,7 +58,7 @@ sdk.sharedPrototype.createExternalUser({
   existingUserId: "088e5186-2065-4e90-8f3b-1194b8abf603",
   workspaceName: "deserunt",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: CreateExternalUserApiV1WorkspacesWorkspaceNameSharedPrototypeUsersPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -84,7 +84,7 @@ sdk.sharedPrototype.get({
   sharedPrototypeId: "79f9dfe0-ab7d-4a8a-90ce-187f86bc173d",
   workspaceName: "ea",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetSharedPrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesSharedPrototypeIdGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -112,7 +112,7 @@ sdk.sharedPrototype.list({
   pageNumber: 184362,
   workspaceName: "cum",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: ListPrototypesApiV1WorkspacesWorkspaceNameSharedPrototypesGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -138,7 +138,7 @@ sdk.sharedPrototype.revoke({
   sharedPrototypeId: "6e3ab884-5f05-497a-a0ff-2a54a31e9476",
   workspaceName: "ut",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: RevokeSharedPrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesSharedPrototypeIdDeleteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -169,7 +169,7 @@ sdk.sharedPrototype.update({
   sharedPrototypeId: "3e865e79-56f9-4251-a5a9-da660ff57bfa",
   workspaceName: "laborum",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: EditSharedPrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesSharedPrototypeIdPatchResponse) => {
   if (res.statusCode == 200) {
     // handle response

@@ -29,7 +29,7 @@ sdk.uploadSession.close({
   sessionId: "d4f9efc1-b451-42c1-8326-48dc2f615199",
   workspaceName: "earum",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: CloseSessionApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdPutResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -56,7 +56,7 @@ sdk.uploadSession.create({
   },
   workspaceName: "hic",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: CreateUploadSessionApiV1WorkspacesWorkspaceNameUploadSessionsPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -92,7 +92,7 @@ sdk.uploadSession.getFiles({
   sessionId: "a1adeaab-5851-4d6c-a45b-08b61891baa0",
   workspaceName: "sapiente",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -116,7 +116,7 @@ sdk.uploadSession.getStatus({
   sessionId: "e1ade008-e6f8-4c5f-b50d-8cdb5a341814",
   workspaceName: "dolor",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetSessionStatusApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -145,7 +145,7 @@ sdk.uploadSession.list({
   pageNumber: 277340,
   workspaceName: "quasi",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: ListUploadSessionsApiV1WorkspacesWorkspaceNameUploadSessionsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response

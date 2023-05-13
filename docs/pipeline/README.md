@@ -49,7 +49,7 @@ sdk.pipeline.addFeedback({
   pipelineName: "quae",
   workspaceName: "earum",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: AddFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -73,7 +73,7 @@ sdk.pipeline.create({
   dryRun: false,
   workspaceName: "vel",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -97,7 +97,7 @@ sdk.pipeline.delete({
   pipelineName: "in",
   workspaceName: "eius",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: DeletePipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeleteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -123,7 +123,7 @@ sdk.pipeline.deploy({
   pipelineName: "libero",
   workspaceName: "illum",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: DeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeployPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -147,7 +147,7 @@ sdk.pipeline.get({
   pipelineName: "soluta",
   workspaceName: "accusantium",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -184,7 +184,7 @@ sdk.pipeline.getFeedback({
   select: "labore",
   workspaceName: "ab",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -212,7 +212,7 @@ sdk.pipeline.getFiles({
   status: GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetStatusFileIndexingStatusQueryEnum.IndexedNoDocuments,
   workspaceName: "id",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -238,7 +238,7 @@ sdk.pipeline.getIndexing({
   pipelineName: "suscipit",
   workspaceName: "velit",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineIndexingApiV1WorkspacesWorkspaceNamePipelinesPipelineNameIndexingGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -264,7 +264,7 @@ sdk.pipeline.getJson({
   pipelineName: "culpa",
   workspaceName: "est",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -290,7 +290,7 @@ sdk.pipeline.getMetadata({
   pipelineName: "recusandae",
   workspaceName: "totam",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -320,7 +320,7 @@ sdk.pipeline.getMetadataFieldValues({
   query: "vel",
   workspaceName: "labore",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineMetadataFieldValuesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaFieldNameGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -347,7 +347,7 @@ sdk.pipeline.getMinMaxAggregationMetadata({
   pipelineName: "facilis",
   workspaceName: "cum",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -373,7 +373,7 @@ sdk.pipeline.getStats({
   pipelineName: "commodi",
   workspaceName: "in",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineStatsApiV1WorkspacesWorkspaceNamePipelinesPipelineNameStatsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -397,7 +397,7 @@ sdk.pipeline.getYaml({
   pipelineName: "corporis",
   workspaceName: "reiciendis",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -428,7 +428,7 @@ sdk.pipeline.list({
   status: "hic",
   workspaceName: "exercitationem",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: ListPipelinesApiV1WorkspacesWorkspaceNamePipelinesGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -471,7 +471,7 @@ sdk.pipeline.search({
   pipelineName: "voluptas",
   workspaceName: "unde",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: SearchApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -501,7 +501,7 @@ sdk.pipeline.searchHistory({
   pipelineName: "officia",
   workspaceName: "dolorum",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: PipelineSearchHistoryApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchHistoryGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -527,7 +527,7 @@ sdk.pipeline.setDefault({
   pipelineName: "corrupti",
   workspaceName: "accusamus",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: SetDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -553,7 +553,7 @@ sdk.pipeline.undeploy({
   pipelineName: "tempora",
   workspaceName: "atque",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -579,7 +579,7 @@ sdk.pipeline.updateYaml({
   pipelineName: "fugit",
   workspaceName: "ut",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutResponse) => {
   if (res.statusCode == 200) {
     // handle response

@@ -25,7 +25,7 @@ sdk.documentStore.checkConnection({
   indexName: "quidem",
   workspaceName: "molestias",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: CheckConnectionApiV1WorkspacesWorkspaceNameIndexesIndexNameGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -60,7 +60,7 @@ sdk.documentStore.countDocuments({
   indexName: "repudiandae",
   workspaceName: "sint",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: CountDocumentsStreamApiV1WorkspacesWorkspaceNameIndexesIndexNameDocumentsCountPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -88,7 +88,7 @@ sdk.documentStore.get({
   indexName: "itaque",
   workspaceName: "incidunt",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetDocumentApiV1WorkspacesWorkspaceNameIndexesIndexNameDocumentsDocumentIdGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -122,7 +122,7 @@ sdk.documentStore.listDocumentStreams({
   indexName: "deserunt",
   workspaceName: "distinctio",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetAllDocumentsStreamApiV1WorkspacesWorkspaceNameIndexesIndexNameDocumentsStreamPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -148,7 +148,7 @@ sdk.documentStore.listDocuments({
   returnEmbedding: false,
   workspaceName: "labore",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetAllDocumentsApiV1WorkspacesWorkspaceNameIndexesIndexNameDocumentsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -189,7 +189,7 @@ sdk.documentStore.search({
   indexName: "ipsam",
   workspaceName: "alias",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: QueryDocumentsStreamApiV1WorkspacesWorkspaceNameIndexesIndexNameDocumentsQueryPostResponse) => {
   if (res.statusCode == 200) {
     // handle response

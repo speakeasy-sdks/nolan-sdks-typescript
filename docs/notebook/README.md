@@ -26,7 +26,7 @@ sdk.notebook.create({
   },
   pipelineId: "c688282a-a482-4562-b222-e9817ee17cbe",
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: PostNotebookApiV1NotebookPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -48,7 +48,7 @@ import { ServerStateEnum, ServerTypeEnum } from "ds-test/dist/sdk/models/shared"
 const sdk = new Deepset();
 
 sdk.notebook.getServerState({
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetJupyterLabApiV1NotebookServerGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -72,7 +72,7 @@ const sdk = new Deepset();
 sdk.notebook.start({
   serverType: NotebookServerPostServerTypeEnum.GpuServer,
 }, {
-  httpBearer: "Bearer YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: StartJupyterLabApiV1NotebookServerPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
