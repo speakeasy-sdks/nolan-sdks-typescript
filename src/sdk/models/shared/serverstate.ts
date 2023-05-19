@@ -5,10 +5,8 @@
 /**
  * An enumeration.
  */
-export enum RolesToDBEnum {
-  Zero = "0",
-  One = "1",
-  Two = "2",
-  Three = "3",
-  Four = "4",
+export enum ServerState {
+  Starting = "STARTING",
+  Up = "UP",
+  Down = "DOWN",
 }

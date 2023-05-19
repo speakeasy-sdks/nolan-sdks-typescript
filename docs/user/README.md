@@ -21,7 +21,7 @@ import { DeleteUserApiV1UsersUserIdDeleteResponse } from "ds-test/dist/sdk/model
 const sdk = new Deepset();
 
 sdk.user.delete({
-  userId: "8d162309-fb09-4299-a1ae-fb9f58c4d86e",
+  userId: "18d16230-9fb0-4929-921a-efb9f58c4d86",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: DeleteUserApiV1UsersUserIdDeleteResponse) => {
@@ -44,7 +44,7 @@ import { GetUserApiV1UsersUserIdGetResponse } from "ds-test/dist/sdk/models/oper
 const sdk = new Deepset();
 
 sdk.user.get({
-  userId: "68e4be05-6013-4f59-9a75-7a59ecfef66e",
+  userId: "e68e4be0-5601-43f5-9da7-57a59ecfef66",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetUserApiV1UsersUserIdGetResponse) => {
@@ -67,11 +67,11 @@ import { ListUsersApiV1UsersGetResponse } from "ds-test/dist/sdk/models/operatio
 const sdk = new Deepset();
 
 sdk.user.list({
-  after: "f1caa338-3c2b-4eb4-b737-3c8d72f64d1d",
-  before: "b1f2c431-0661-4e96-b49e-1cf9e06e3a43",
+  after: "ef1caa33-83c2-4beb-8773-73c8d72f64d1",
+  before: "db1f2c43-1066-41e9-a349-e1cf9e06e3a4",
   includeDeleted: false,
-  limit: 483394,
-  pageNumber: 24753,
+  limit: 224467,
+  pageNumber: 483394,
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: ListUsersApiV1UsersGetResponse) => {
@@ -111,15 +111,15 @@ Updates user permissions. This is an endpoint we use internally. This means it c
 ```typescript
 import { Deepset } from "ds-test";
 import { UpdateUserPermissionApiV1UsersUserIdPatchResponse } from "ds-test/dist/sdk/models/operations";
-import { RolesToDBEnum } from "ds-test/dist/sdk/models/shared";
+import { RolesToDB } from "ds-test/dist/sdk/models/shared";
 
 const sdk = new Deepset();
 
 sdk.user.updatePermission({
   requestBody: {
-    role: RolesToDBEnum.Zero,
+    role: RolesToDB.Zero,
   },
-  userId: "0ae6b6bc-9b8f-4759-aac5-5a9741d31135",
+  userId: "00ae6b6b-c9b8-4f75-9eac-55a9741d3113",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: UpdateUserPermissionApiV1UsersUserIdPatchResponse) => {

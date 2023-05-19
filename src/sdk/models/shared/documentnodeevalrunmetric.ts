@@ -8,7 +8,7 @@ import { Expose } from "class-transformer";
 /**
  * This node returns 'Document' objects, not 'Answer' objects.
  */
-export enum DocumentNodeEvalRunMetricNodeTypeEnum {
+export enum DocumentNodeEvalRunMetricNodeType {
   DocumentNode = "document_node",
 }
 
@@ -67,5 +67,5 @@ export class DocumentNodeEvalRunMetric extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "node_type" })
-  nodeType: DocumentNodeEvalRunMetricNodeTypeEnum;
+  nodeType: DocumentNodeEvalRunMetricNodeType;
 }

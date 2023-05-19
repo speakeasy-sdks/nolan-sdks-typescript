@@ -8,7 +8,7 @@ import { Expose } from "class-transformer";
 /**
  * An enumeration.
  */
-export enum CreateSessionFileWriteModeEnumEnum {
+export enum CreateSessionFileWriteModeEnum {
   Keep = "KEEP",
   Overwrite = "OVERWRITE",
   Fail = "FAIL",
@@ -20,5 +20,5 @@ export class CreateSession extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "write_mode" })
-  writeMode?: CreateSessionFileWriteModeEnumEnum;
+  writeMode?: CreateSessionFileWriteModeEnum;
 }

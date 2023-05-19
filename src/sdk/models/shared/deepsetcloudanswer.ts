@@ -9,7 +9,7 @@ import { Expose, Type } from "class-transformer";
 /**
  * Type of the answer.
  */
-export enum DeepsetCloudAnswerAnswerTypeEnum {
+export enum DeepsetCloudAnswerAnswerType {
   Generative = "generative",
   Extractive = "extractive",
   Other = "other",
@@ -104,5 +104,5 @@ export class DeepsetCloudAnswer extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "type" })
-  type: DeepsetCloudAnswerAnswerTypeEnum;
+  type: DeepsetCloudAnswerAnswerType;
 }

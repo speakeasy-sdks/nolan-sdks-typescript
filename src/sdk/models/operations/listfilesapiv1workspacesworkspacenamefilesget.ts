@@ -16,7 +16,7 @@ export class ListFilesApiV1WorkspacesWorkspaceNameFilesGetSecurity extends Speak
 /**
  * The name of the entity you want to sort by.
  */
-export enum ListFilesApiV1WorkspacesWorkspaceNameFilesGetFieldFieldEnum {
+export enum ListFilesApiV1WorkspacesWorkspaceNameFilesGetFieldField {
   CreatedAt = "created_at",
   Name = "name",
 }
@@ -24,7 +24,7 @@ export enum ListFilesApiV1WorkspacesWorkspaceNameFilesGetFieldFieldEnum {
 /**
  * Choose how you want to sort the results.
  */
-export enum ListFilesApiV1WorkspacesWorkspaceNameFilesGetOrderOrderEnum {
+export enum ListFilesApiV1WorkspacesWorkspaceNameFilesGetOrderOrder {
   Asc = "ASC",
   Desc = "DESC",
 }
@@ -58,7 +58,7 @@ export class ListFilesApiV1WorkspacesWorkspaceNameFilesGetRequest extends Speake
    * The name of the entity you want to sort by.
    */
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=field" })
-  field?: ListFilesApiV1WorkspacesWorkspaceNameFilesGetFieldFieldEnum;
+  field?: ListFilesApiV1WorkspacesWorkspaceNameFilesGetFieldField;
 
   /**
    * The OData filter you want to use to in your query. It supports exact match and `AND` operations. For example, to filter for a metadata `category:news`, here's what the URL could look like: 'url = "https://api.cloud.deepset.ai/api/v1/workspaces/production/files?limit=10&filter=category eq 'news'"'. OData filters only work with cursor-based pagination (leave the `page_number` field blank to enable it).To learn more about the OData filter syntax, see: [Querying Data](https://www.odata.org/getting-started/basic-tutorial/#queryData).
@@ -104,7 +104,7 @@ export class ListFilesApiV1WorkspacesWorkspaceNameFilesGetRequest extends Speake
    * Choose how you want to sort the results.
    */
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=order" })
-  order?: ListFilesApiV1WorkspacesWorkspaceNameFilesGetOrderOrderEnum;
+  order?: ListFilesApiV1WorkspacesWorkspaceNameFilesGetOrderOrder;
 
   /**
    * Which page do you want to see? Type the number.

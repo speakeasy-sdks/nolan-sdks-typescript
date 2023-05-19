@@ -31,7 +31,7 @@ export class SessionOauthUser extends SpeakeasyBase {
 /**
  * An enumeration.
  */
-export enum SessionFileWriteModeEnumEnum {
+export enum SessionFileWriteModeEnum {
   Keep = "KEEP",
   Overwrite = "OVERWRITE",
   Fail = "FAIL",
@@ -74,5 +74,5 @@ export class Session extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "write_mode" })
-  writeMode?: SessionFileWriteModeEnumEnum;
+  writeMode?: SessionFileWriteModeEnum;
 }

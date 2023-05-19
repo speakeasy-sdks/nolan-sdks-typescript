@@ -35,7 +35,7 @@ Sends an email to the user inviting them to your deepset Cloud organization. Thi
 ```typescript
 import { Deepset } from "ds-test";
 import { InviteUserToOrganizationApiV1OrganizationOrganizationIdInvitationPostResponse } from "ds-test/dist/sdk/models/operations";
-import { RolesToDBEnum } from "ds-test/dist/sdk/models/shared";
+import { RolesToDB } from "ds-test/dist/sdk/models/shared";
 
 const sdk = new Deepset();
 
@@ -44,7 +44,7 @@ sdk.organization.invite({
     email: "Stuart.Kautzer69@gmail.com",
     familyName: "occaecati",
     givenName: "minima",
-    role: RolesToDBEnum.Three,
+    role: RolesToDB.Three,
   },
   organizationId: "eligendi",
 }, {

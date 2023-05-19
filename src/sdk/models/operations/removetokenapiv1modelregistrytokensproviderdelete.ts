@@ -16,7 +16,7 @@ export class RemoveTokenApiV1ModelRegistryTokensProviderDeleteSecurity extends S
 /**
  * The provider of the model registry
  */
-export enum RemoveTokenApiV1ModelRegistryTokensProviderDeleteProviderModelProviderEnum {
+export enum RemoveTokenApiV1ModelRegistryTokensProviderDeleteProviderModelProvider {
   Huggingface = "huggingface",
   Openai = "openai",
   Cohere = "cohere",
@@ -29,7 +29,7 @@ export class RemoveTokenApiV1ModelRegistryTokensProviderDeleteRequest extends Sp
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=provider",
   })
-  provider: RemoveTokenApiV1ModelRegistryTokensProviderDeleteProviderModelProviderEnum;
+  provider: RemoveTokenApiV1ModelRegistryTokensProviderDeleteProviderModelProvider;
 }
 
 export class RemoveTokenApiV1ModelRegistryTokensProviderDeleteResponse extends SpeakeasyBase {

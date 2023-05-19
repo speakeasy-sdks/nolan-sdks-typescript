@@ -23,16 +23,17 @@ const sdk = new Deepset();
 
 sdk.sharedPrototype.create({
   postSharedPrototype: {
-    description: "voluptatem",
-    expirationDate: new Date("2021-07-31T10:53:55.286Z"),
+    description: "ut",
+    expirationDate: new Date("2022-11-28T21:25:01.550Z"),
     pipelineNames: [
+      "expedita",
+      "magnam",
       "consequatur",
-      "esse",
     ],
     showFiles: false,
     showMetadataFilters: false,
   },
-  workspaceName: "ipsam",
+  workspaceName: "esse",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: CreatePrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesPostResponse) => {
@@ -55,8 +56,8 @@ import { CreateExternalUserApiV1WorkspacesWorkspaceNameSharedPrototypeUsersPostR
 const sdk = new Deepset();
 
 sdk.sharedPrototype.createExternalUser({
-  existingUserId: "088e5186-2065-4e90-8f3b-1194b8abf603",
-  workspaceName: "deserunt",
+  existingUserId: "5088e518-6206-45e9-84f3-b1194b8abf60",
+  workspaceName: "amet",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: CreateExternalUserApiV1WorkspacesWorkspaceNameSharedPrototypeUsersPostResponse) => {
@@ -81,8 +82,8 @@ import {
 const sdk = new Deepset();
 
 sdk.sharedPrototype.get({
-  sharedPrototypeId: "79f9dfe0-ab7d-4a8a-90ce-187f86bc173d",
-  workspaceName: "ea",
+  sharedPrototypeId: "a79f9dfe-0ab7-4da8-a50c-e187f86bc173",
+  workspaceName: "assumenda",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetSharedPrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesSharedPrototypeIdGetResponse) => {
@@ -105,12 +106,12 @@ import { ListPrototypesApiV1WorkspacesWorkspaceNameSharedPrototypesGetResponse }
 const sdk = new Deepset();
 
 sdk.sharedPrototype.list({
-  after: "89eee952-6f8d-4986-a881-ead4f0e10125",
-  before: "63f94e29-e973-4e92-aa57-a15be3e06080",
-  filter: "molestiae",
-  limit: 907733,
-  pageNumber: 184362,
-  workspaceName: "cum",
+  after: "689eee95-26f8-4d98-ae88-1ead4f0e1012",
+  before: "563f94e2-9e97-43e9-a2a5-7a15be3e0608",
+  filter: "quae",
+  limit: 474668,
+  pageNumber: 907733,
+  workspaceName: "qui",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: ListPrototypesApiV1WorkspacesWorkspaceNameSharedPrototypesGetResponse) => {
@@ -135,8 +136,8 @@ import {
 const sdk = new Deepset();
 
 sdk.sharedPrototype.revoke({
-  sharedPrototypeId: "6e3ab884-5f05-497a-a0ff-2a54a31e9476",
-  workspaceName: "ut",
+  sharedPrototypeId: "b6e3ab88-45f0-4597-a60f-f2a54a31e947",
+  workspaceName: "ex",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: RevokeSharedPrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesSharedPrototypeIdDeleteResponse) => {
@@ -162,12 +163,12 @@ const sdk = new Deepset();
 
 sdk.sharedPrototype.update({
   patchSharedPrototype: {
-    description: "culpa",
+    description: "ut",
     showFiles: false,
     showMetadataFilters: false,
   },
-  sharedPrototypeId: "3e865e79-56f9-4251-a5a9-da660ff57bfa",
-  workspaceName: "laborum",
+  sharedPrototypeId: "a3e865e7-956f-4925-9a5a-9da660ff57bf",
+  workspaceName: "officia",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: EditSharedPrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesSharedPrototypeIdPatchResponse) => {

@@ -8,7 +8,7 @@ import { Expose } from "class-transformer";
 /**
  * An enumeration.
  */
-export enum CloseSessionSessionCloseStatusEnumEnum {
+export enum CloseSessionSessionCloseStatusEnum {
   Closed = "closed",
 }
 
@@ -18,5 +18,5 @@ export class CloseSession extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "status" })
-  status?: CloseSessionSessionCloseStatusEnumEnum;
+  status?: CloseSessionSessionCloseStatusEnum;
 }

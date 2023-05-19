@@ -1,17 +1,17 @@
 <!-- Start SDK Example Usage -->
 ```typescript
 import { Deepset } from "ds-test";
-import { ListEvalRunsFieldFieldEnum, ListEvalRunsOrderOrderEnum, ListEvalRunsResponse } from "ds-test/dist/sdk/models/operations";
+import { ListEvalRunsFieldField, ListEvalRunsOrderOrder, ListEvalRunsResponse } from "ds-test/dist/sdk/models/operations";
 
 const sdk = new Deepset();
 
 sdk.evalRun.list({
   after: "89bd9d8d-69a6-474e-8f46-7cc8796ed151",
   before: "a05dfc2d-df7c-4c78-8a1b-a928fc816742",
-  field: ListEvalRunsFieldFieldEnum.IntegratedRecallSingleHit,
+  field: ListEvalRunsFieldField.IntegratedRecallSingleHit,
   filter: "cum",
   limit: 456150,
-  order: ListEvalRunsOrderOrderEnum.Asc,
+  order: ListEvalRunsOrderOrder.Asc,
   pageNumber: 568434,
   select: "aspernatur",
   workspaceName: "perferendis",

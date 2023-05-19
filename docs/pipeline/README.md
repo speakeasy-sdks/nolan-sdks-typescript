@@ -164,25 +164,24 @@ Returns the feedback in JSON or CSV format.
 ```typescript
 import { Deepset } from "ds-test";
 import {
-  GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetFieldFieldEnum,
-  GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetOrderOrderEnum,
+  GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetFieldField,
+  GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetOrderOrder,
   GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetResponse,
 } from "ds-test/dist/sdk/models/operations";
 
 const sdk = new Deepset();
 
 sdk.pipeline.getFeedback({
-  accept: "aliquam",
-  after: "f1575608-2d68-4ea1-9f1d-17051339d080",
-  before: "86a18403-94c2-4607-9f93-f5f0642dac7a",
-  field: GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetFieldFieldEnum.SearchResultSearchQuery,
-  filter: "nemo",
-  limit: 65304,
-  order: GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetOrderOrderEnum.Asc,
-  pageNumber: 783235,
-  pipelineName: "quod",
-  select: "labore",
-  workspaceName: "ab",
+  after: "4f157560-82d6-48ea-99f1-d17051339d08",
+  before: "086a1840-394c-4260-b1f9-3f5f0642dac7",
+  field: GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetFieldField.SearchResultSearchCreatedAt,
+  filter: "asperiores",
+  limit: 368102,
+  order: GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetOrderOrder.Asc,
+  pageNumber: 312753,
+  pipelineName: "porro",
+  select: "quod",
+  workspaceName: "labore",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetResponse) => {
@@ -202,15 +201,15 @@ Returns IDs of all files with a specific status.
 import { Deepset } from "ds-test";
 import {
   GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetResponse,
-  GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetStatusFileIndexingStatusQueryEnum,
+  GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetStatusFileIndexingStatusQuery,
 } from "ds-test/dist/sdk/models/operations";
 
 const sdk = new Deepset();
 
 sdk.pipeline.getFiles({
-  pipelineName: "adipisci",
-  status: GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetStatusFileIndexingStatusQueryEnum.IndexedNoDocuments,
-  workspaceName: "id",
+  pipelineName: "ab",
+  status: GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetStatusFileIndexingStatusQuery.Failed,
+  workspaceName: "fuga",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetResponse) => {
@@ -235,8 +234,8 @@ import {
 const sdk = new Deepset();
 
 sdk.pipeline.getIndexing({
-  pipelineName: "suscipit",
-  workspaceName: "velit",
+  pipelineName: "id",
+  workspaceName: "suscipit",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineIndexingApiV1WorkspacesWorkspaceNamePipelinesPipelineNameIndexingGetResponse) => {
@@ -261,8 +260,8 @@ import {
 const sdk = new Deepset();
 
 sdk.pipeline.getJson({
-  pipelineName: "culpa",
-  workspaceName: "est",
+  pipelineName: "velit",
+  workspaceName: "culpa",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetResponse) => {
@@ -287,8 +286,8 @@ import {
 const sdk = new Deepset();
 
 sdk.pipeline.getMetadata({
-  pipelineName: "recusandae",
-  workspaceName: "totam",
+  pipelineName: "est",
+  workspaceName: "recusandae",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGetResponse) => {
@@ -313,12 +312,12 @@ import {
 const sdk = new Deepset();
 
 sdk.pipeline.getMetadataFieldValues({
-  after: 853940,
-  fieldName: "vel",
-  limit: 497678,
-  pipelineName: "quos",
-  query: "vel",
-  workspaceName: "labore",
+  after: 517309,
+  fieldName: "fugiat",
+  limit: 424089,
+  pipelineName: "ducimus",
+  query: "quos",
+  workspaceName: "vel",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineMetadataFieldValuesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaFieldNameGetResponse) => {
@@ -343,9 +342,9 @@ import {
 const sdk = new Deepset();
 
 sdk.pipeline.getMinMaxAggregationMetadata({
-  metaField: "possimus",
-  pipelineName: "facilis",
-  workspaceName: "cum",
+  metaField: "labore",
+  pipelineName: "possimus",
+  workspaceName: "facilis",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetResponse) => {
@@ -370,8 +369,8 @@ import {
 const sdk = new Deepset();
 
 sdk.pipeline.getStats({
-  pipelineName: "commodi",
-  workspaceName: "in",
+  pipelineName: "cum",
+  workspaceName: "commodi",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineStatsApiV1WorkspacesWorkspaceNamePipelinesPipelineNameStatsGetResponse) => {
@@ -394,8 +393,8 @@ import { GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGet
 const sdk = new Deepset();
 
 sdk.pipeline.getYaml({
-  pipelineName: "corporis",
-  workspaceName: "reiciendis",
+  pipelineName: "in",
+  workspaceName: "corporis",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetResponse) => {
@@ -418,15 +417,15 @@ import { ListPipelinesApiV1WorkspacesWorkspaceNamePipelinesGetResponse } from "d
 const sdk = new Deepset();
 
 sdk.pipeline.list({
-  after: "d5e60b37-5ed4-4f6f-bee4-1f33317fe35b",
-  before: "60eb1ea4-2655-45ba-bc28-744ed53b88f3",
+  after: "fd5e60b3-75ed-44f6-bbee-41f33317fe35",
+  before: "b60eb1ea-4265-455b-a3c2-8744ed53b88f",
   deleted: false,
-  desiredStatus: "culpa",
-  limit: 548519,
-  pageNumber: 867290,
-  pipelineName: "totam",
-  status: "hic",
-  workspaceName: "exercitationem",
+  desiredStatus: "nesciunt",
+  limit: 633998,
+  pageNumber: 548519,
+  pipelineName: "pariatur",
+  status: "totam",
+  workspaceName: "hic",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: ListPipelinesApiV1WorkspacesWorkspaceNamePipelinesGetResponse) => {
@@ -445,7 +444,7 @@ Run a search using a pipeline.
 ```typescript
 import { Deepset } from "ds-test";
 import { SearchApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchPostResponse } from "ds-test/dist/sdk/models/operations";
-import { DeepsetCloudAnswerAnswerTypeEnum, DeepsetCloudDocumentContentTypeEnum } from "ds-test/dist/sdk/models/shared";
+import { DeepsetCloudAnswerAnswerType, DeepsetCloudDocumentContentType } from "ds-test/dist/sdk/models/shared";
 
 const sdk = new Deepset();
 
@@ -453,23 +452,23 @@ sdk.pipeline.search({
   pipelineQuery: {
     debug: false,
     filters: {
-      "sit": "rerum",
-      "sed": "reiciendis",
-      "explicabo": "asperiores",
-      "facilis": "voluptate",
+      "nobis": "sit",
+      "rerum": "sed",
     },
     params: {
-      "ab": "iste",
-      "dolore": "laborum",
-      "sed": "in",
+      "explicabo": "asperiores",
+      "facilis": "voluptate",
+      "expedita": "ab",
+      "iste": "dolore",
     },
     queries: [
-      "quidem",
-      "explicabo",
+      "sed",
+      "in",
+      "commodi",
     ],
   },
-  pipelineName: "voluptas",
-  workspaceName: "unde",
+  pipelineName: "quidem",
+  workspaceName: "explicabo",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: SearchApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchPostResponse) => {
@@ -494,12 +493,12 @@ import {
 const sdk = new Deepset();
 
 sdk.pipeline.searchHistory({
-  after: "16fe1f08-f429-44e3-a98f-447f603e8b44",
-  before: "5e80ca55-efd2-40e4-97e1-858b6a89fbe3",
-  limit: 677115,
-  pageNumber: 341698,
-  pipelineName: "officia",
-  workspaceName: "dolorum",
+  after: "6916fe1f-08f4-4294-a369-8f447f603e8b",
+  before: "445e80ca-55ef-4d20-a457-e1858b6a89fb",
+  limit: 892863,
+  pageNumber: 204923,
+  pipelineName: "dolorum",
+  workspaceName: "nostrum",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: PipelineSearchHistoryApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchHistoryGetResponse) => {
@@ -524,8 +523,8 @@ import {
 const sdk = new Deepset();
 
 sdk.pipeline.setDefault({
-  pipelineName: "corrupti",
-  workspaceName: "accusamus",
+  pipelineName: "officia",
+  workspaceName: "dolorum",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: SetDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPostResponse) => {
@@ -550,8 +549,8 @@ import {
 const sdk = new Deepset();
 
 sdk.pipeline.undeploy({
-  pipelineName: "tempora",
-  workspaceName: "atque",
+  pipelineName: "corrupti",
+  workspaceName: "accusamus",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostResponse) => {
@@ -576,8 +575,8 @@ import {
 const sdk = new Deepset();
 
 sdk.pipeline.updateYaml({
-  pipelineName: "fugit",
-  workspaceName: "ut",
+  pipelineName: "tempora",
+  workspaceName: "atque",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutResponse) => {

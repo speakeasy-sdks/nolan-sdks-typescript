@@ -8,7 +8,7 @@ import { Expose } from "class-transformer";
 /**
  * An enumeration.
  */
-export enum NotebookServerPostServerTypeEnum {
+export enum NotebookServerPostServerType {
   CpuServer = "cpu-server",
   GpuServer = "gpu-server",
   Unknown = "unknown",
@@ -20,5 +20,5 @@ export class NotebookServerPost extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "server_type" })
-  serverType?: NotebookServerPostServerTypeEnum;
+  serverType?: NotebookServerPostServerType;
 }

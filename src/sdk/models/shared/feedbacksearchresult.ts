@@ -103,7 +103,7 @@ export class FeedbackSearchResultFeedbackSearchQuery extends SpeakeasyBase {
 /**
  * An enumeration.
  */
-export enum FeedbackSearchResultSearchTypeEnum {
+export enum FeedbackSearchResultSearchType {
   Document = "document",
   Extractive = "extractive",
   Generative = "generative",
@@ -195,5 +195,5 @@ export class FeedbackSearchResult extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "type" })
-  type: FeedbackSearchResultSearchTypeEnum;
+  type: FeedbackSearchResultSearchType;
 }

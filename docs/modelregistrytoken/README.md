@@ -21,14 +21,14 @@ Returns the model token. This is an endpoint we use internally. This means it ca
 ```typescript
 import { Deepset } from "ds-test";
 import {
-  GetTokenApiV1ModelRegistryTokensProviderGetProviderModelProviderEnum,
+  GetTokenApiV1ModelRegistryTokensProviderGetProviderModelProvider,
   GetTokenApiV1ModelRegistryTokensProviderGetResponse,
 } from "ds-test/dist/sdk/models/operations";
 
 const sdk = new Deepset();
 
 sdk.modelRegistryToken.get({
-  provider: GetTokenApiV1ModelRegistryTokensProviderGetProviderModelProviderEnum.Huggingface,
+  provider: GetTokenApiV1ModelRegistryTokensProviderGetProviderModelProvider.Huggingface,
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetTokenApiV1ModelRegistryTokensProviderGetResponse) => {
@@ -91,14 +91,14 @@ Deletes the model token from deepset Cloud. This is an endpoint we use internall
 ```typescript
 import { Deepset } from "ds-test";
 import {
-  RemoveTokenApiV1ModelRegistryTokensProviderDeleteProviderModelProviderEnum,
+  RemoveTokenApiV1ModelRegistryTokensProviderDeleteProviderModelProvider,
   RemoveTokenApiV1ModelRegistryTokensProviderDeleteResponse,
 } from "ds-test/dist/sdk/models/operations";
 
 const sdk = new Deepset();
 
 sdk.modelRegistryToken.remove({
-  provider: RemoveTokenApiV1ModelRegistryTokensProviderDeleteProviderModelProviderEnum.Cohere,
+  provider: RemoveTokenApiV1ModelRegistryTokensProviderDeleteProviderModelProvider.Cohere,
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: RemoveTokenApiV1ModelRegistryTokensProviderDeleteResponse) => {
@@ -140,7 +140,7 @@ Imports your model token and saves it in deepset Cloud. This is an endpoint we u
 ```typescript
 import { Deepset } from "ds-test";
 import {
-  SaveTokenApiV1ModelRegistryTokensProviderPostProviderModelProviderEnum,
+  SaveTokenApiV1ModelRegistryTokensProviderPostProviderModelProvider,
   SaveTokenApiV1ModelRegistryTokensProviderPostResponse,
 } from "ds-test/dist/sdk/models/operations";
 
@@ -150,7 +150,7 @@ sdk.modelRegistryToken.save({
   createModelRegistryToken: {
     token: "quod",
   },
-  provider: SaveTokenApiV1ModelRegistryTokensProviderPostProviderModelProviderEnum.Openai,
+  provider: SaveTokenApiV1ModelRegistryTokensProviderPostProviderModelProvider.Openai,
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: SaveTokenApiV1ModelRegistryTokensProviderPostResponse) => {
@@ -194,7 +194,7 @@ Replaces the current model token with a new one. This is an endpoint we use inte
 ```typescript
 import { Deepset } from "ds-test";
 import {
-  UpdateTokenApiV1ModelRegistryTokensProviderPutProviderModelProviderEnum,
+  UpdateTokenApiV1ModelRegistryTokensProviderPutProviderModelProvider,
   UpdateTokenApiV1ModelRegistryTokensProviderPutResponse,
 } from "ds-test/dist/sdk/models/operations";
 
@@ -204,7 +204,7 @@ sdk.modelRegistryToken.update({
   updateModelRegistryToken: {
     token: "nihil",
   },
-  provider: UpdateTokenApiV1ModelRegistryTokensProviderPutProviderModelProviderEnum.Openai,
+  provider: UpdateTokenApiV1ModelRegistryTokensProviderPutProviderModelProvider.Openai,
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: UpdateTokenApiV1ModelRegistryTokensProviderPutResponse) => {

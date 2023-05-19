@@ -16,7 +16,7 @@ export class GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNam
 /**
  * The name of the field you want to sort by.
  */
-export enum GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetFieldFieldEnum {
+export enum GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetFieldField {
   CreatedAt = "created_at",
   SearchResultRank = "search_result/rank",
   SearchResultScore = "search_result/score",
@@ -27,18 +27,12 @@ export enum GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineName
 /**
  * Choose how you want to sort the results.
  */
-export enum GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetOrderOrderEnum {
+export enum GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetOrderOrder {
   Asc = "ASC",
   Desc = "DESC",
 }
 
 export class GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetRequest extends SpeakeasyBase {
-  /**
-   * Type 'text/csv' to download the feedback as a CSV file or 'application/json' to get the feedback as JSONs.
-   */
-  @SpeakeasyMetadata({ data: "header, style=simple;explode=false;name=accept" })
-  accept?: string;
-
   /**
    * Enter an ID if you want to see all entries after this ID.
    */
@@ -57,7 +51,7 @@ export class GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNam
    * The name of the field you want to sort by.
    */
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=field" })
-  field?: GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetFieldFieldEnum;
+  field?: GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetFieldField;
 
   /**
    * The OData filter you want to use to in your query. It supports exact match and `AND` operations. For example, to filter for a metadata `category:news`, here's what the URL could look like: 'url = "https://api.cloud.deepset.ai/api/v1/workspaces/production/files?limit=10&filter=category eq 'news'"'. OData filters only work with cursor-based pagination (leave the `page_number` field blank to enable it).To learn more about the OData filter syntax, see: [Querying Data](https://www.odata.org/getting-started/basic-tutorial/#queryData).
@@ -77,7 +71,7 @@ export class GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNam
    * Choose how you want to sort the results.
    */
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=order" })
-  order?: GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetOrderOrderEnum;
+  order?: GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetOrderOrder;
 
   /**
    * Which page do you want to see? Type the number.

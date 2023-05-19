@@ -178,11 +178,11 @@ src/sdk/models/shared/updatemodelregistrytoken.ts
 src/sdk/models/shared/modelmeta.ts
 src/sdk/models/shared/notebook.ts
 src/sdk/models/shared/server.ts
-src/sdk/models/shared/serverstateenum.ts
-src/sdk/models/shared/servertypeenum.ts
+src/sdk/models/shared/serverstate.ts
+src/sdk/models/shared/servertype.ts
 src/sdk/models/shared/notebookserverpost.ts
 src/sdk/models/shared/organizationname.ts
-src/sdk/models/shared/rolestodbenum.ts
+src/sdk/models/shared/rolestodb.ts
 src/sdk/models/shared/postpipelinefeedback.ts
 src/sdk/models/shared/pipelinename.ts
 src/sdk/models/shared/pipelineindexing.ts

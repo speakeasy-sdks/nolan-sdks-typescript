@@ -44,7 +44,7 @@ export class InviteUserToOrganizationApiV1OrganizationOrganizationIdInvitationPo
    */
   @SpeakeasyMetadata()
   @Expose({ name: "role" })
-  role: shared.RolesToDBEnum;
+  role: shared.RolesToDB;
 }
 
 export class InviteUserToOrganizationApiV1OrganizationOrganizationIdInvitationPostRequest extends SpeakeasyBase {

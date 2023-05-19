@@ -43,7 +43,7 @@ Returns the state of the Jupyter lab server. This is an endpoint we use internal
 ```typescript
 import { Deepset } from "ds-test";
 import { GetJupyterLabApiV1NotebookServerGetResponse } from "ds-test/dist/sdk/models/operations";
-import { ServerStateEnum, ServerTypeEnum } from "ds-test/dist/sdk/models/shared";
+import { ServerState, ServerType } from "ds-test/dist/sdk/models/shared";
 
 const sdk = new Deepset();
 
@@ -65,12 +65,12 @@ Opens the Jupyter lab. This is an endpoint we use internally. This means it can 
 ```typescript
 import { Deepset } from "ds-test";
 import { StartJupyterLabApiV1NotebookServerPostResponse } from "ds-test/dist/sdk/models/operations";
-import { NotebookServerPostServerTypeEnum } from "ds-test/dist/sdk/models/shared";
+import { NotebookServerPostServerType } from "ds-test/dist/sdk/models/shared";
 
 const sdk = new Deepset();
 
 sdk.notebook.start({
-  serverType: NotebookServerPostServerTypeEnum.GpuServer,
+  serverType: NotebookServerPostServerType.GpuServer,
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: StartJupyterLabApiV1NotebookServerPostResponse) => {

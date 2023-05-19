@@ -3,8 +3,8 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { ServerStateEnum } from "./serverstateenum";
-import { ServerTypeEnum } from "./servertypeenum";
+import { ServerState } from "./serverstate";
+import { ServerType } from "./servertype";
 import { Expose } from "class-transformer";
 
 /**
@@ -16,12 +16,12 @@ export class Server extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "server_type" })
-  serverType: ServerTypeEnum;
+  serverType: ServerType;
 
   /**
    * An enumeration.
    */
   @SpeakeasyMetadata()
   @Expose({ name: "state" })
-  state: ServerStateEnum;
+  state: ServerState;
 }

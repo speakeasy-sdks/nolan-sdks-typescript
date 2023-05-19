@@ -18,16 +18,16 @@ If the session is not closed explicitly, the session will be automatically close
 ```typescript
 import { Deepset } from "ds-test";
 import { CloseSessionApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdPutResponse } from "ds-test/dist/sdk/models/operations";
-import { CloseSessionSessionCloseStatusEnumEnum } from "ds-test/dist/sdk/models/shared";
+import { CloseSessionSessionCloseStatusEnum } from "ds-test/dist/sdk/models/shared";
 
 const sdk = new Deepset();
 
 sdk.uploadSession.close({
   closeSession: {
-    status: CloseSessionSessionCloseStatusEnumEnum.Closed,
+    status: CloseSessionSessionCloseStatusEnum.Closed,
   },
-  sessionId: "d4f9efc1-b451-42c1-8326-48dc2f615199",
-  workspaceName: "earum",
+  sessionId: "ad4f9efc-1b45-412c-9032-648dc2f61519",
+  workspaceName: "provident",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: CloseSessionApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdPutResponse) => {
@@ -46,15 +46,15 @@ Creates a session for uploading files and file metadata. The session remains act
 ```typescript
 import { Deepset } from "ds-test";
 import { CreateUploadSessionApiV1WorkspacesWorkspaceNameUploadSessionsPostResponse } from "ds-test/dist/sdk/models/operations";
-import { CreateSessionFileWriteModeEnumEnum } from "ds-test/dist/sdk/models/shared";
+import { CreateSessionFileWriteModeEnum } from "ds-test/dist/sdk/models/shared";
 
 const sdk = new Deepset();
 
 sdk.uploadSession.create({
   createSession: {
-    writeMode: CreateSessionFileWriteModeEnumEnum.Fail,
+    writeMode: CreateSessionFileWriteModeEnum.Fail,
   },
-  workspaceName: "hic",
+  workspaceName: "soluta",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: CreateUploadSessionApiV1WorkspacesWorkspaceNameUploadSessionsPostResponse) => {
@@ -73,24 +73,21 @@ Displays the file details of a session. Use this endpoint to check the status of
 ```typescript
 import { Deepset } from "ds-test";
 import {
-  GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetIngestionStatusFileIngestionStatusEnumEnum,
+  GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetIngestionStatusFileIngestionStatusEnum,
   GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetResponse,
 } from "ds-test/dist/sdk/models/operations";
-import {
-  SessionFileFileIngestionStatusEnumEnum,
-  SessionFileFileIngestionStatusReasonEnumEnum,
-} from "ds-test/dist/sdk/models/shared";
+import { SessionFileFileIngestionStatusEnum, SessionFileFileIngestionStatusReasonEnum } from "ds-test/dist/sdk/models/shared";
 
 const sdk = new Deepset();
 
 sdk.uploadSession.getFiles({
-  after: "d0e9fe6c-632c-4a3a-ad01-17996312fde0",
-  before: "4771778f-f61d-4017-8763-60a15db6a660",
-  ingestionStatus: GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetIngestionStatusFileIngestionStatusEnumEnum.Failed,
-  limit: 374753,
-  pageNumber: 614528,
-  sessionId: "a1adeaab-5851-4d6c-a45b-08b61891baa0",
-  workspaceName: "sapiente",
+  after: "fd0e9fe6-c632-4ca3-aed0-117996312fde",
+  before: "04771778-ff61-4d01-b476-360a15db6a66",
+  ingestionStatus: GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetIngestionStatusFileIngestionStatusEnum.Pending,
+  limit: 431760,
+  pageNumber: 374753,
+  sessionId: "9a1adeaa-b585-41d6-8645-b08b61891baa",
+  workspaceName: "voluptatem",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetResponse) => {
@@ -113,8 +110,8 @@ import { GetSessionStatusApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdGetR
 const sdk = new Deepset();
 
 sdk.uploadSession.getStatus({
-  sessionId: "e1ade008-e6f8-4c5f-b50d-8cdb5a341814",
-  workspaceName: "dolor",
+  sessionId: "fe1ade00-8e6f-48c5-b350-d8cdb5a34181",
+  workspaceName: "tempora",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetSessionStatusApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdGetResponse) => {
@@ -133,17 +130,17 @@ Returns a list of all active upload sessions.
 ```typescript
 import { Deepset } from "ds-test";
 import { ListUploadSessionsApiV1WorkspacesWorkspaceNameUploadSessionsGetResponse } from "ds-test/dist/sdk/models/operations";
-import { SessionFileWriteModeEnumEnum } from "ds-test/dist/sdk/models/shared";
+import { SessionFileWriteModeEnum } from "ds-test/dist/sdk/models/shared";
 
 const sdk = new Deepset();
 
 sdk.uploadSession.list({
-  after: "01042181-3d52-408e-8e7e-253b668451c6",
-  before: "c6e205e1-6dea-4b3f-ac95-78a64584273a",
+  after: "30104218-13d5-4208-ace7-e253b668451c",
+  before: "6c6e205e-16de-4ab3-bec9-578a64584273",
   isExpired: false,
-  limit: 514054,
-  pageNumber: 277340,
-  workspaceName: "quasi",
+  limit: 681740,
+  pageNumber: 514054,
+  workspaceName: "incidunt",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: ListUploadSessionsApiV1WorkspacesWorkspaceNameUploadSessionsGetResponse) => {

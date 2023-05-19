@@ -16,7 +16,7 @@ export class UpdateTokenApiV1ModelRegistryTokensProviderPutSecurity extends Spea
 /**
  * The provider of the model registry
  */
-export enum UpdateTokenApiV1ModelRegistryTokensProviderPutProviderModelProviderEnum {
+export enum UpdateTokenApiV1ModelRegistryTokensProviderPutProviderModelProvider {
   Huggingface = "huggingface",
   Openai = "openai",
   Cohere = "cohere",
@@ -32,7 +32,7 @@ export class UpdateTokenApiV1ModelRegistryTokensProviderPutRequest extends Speak
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=provider",
   })
-  provider: UpdateTokenApiV1ModelRegistryTokensProviderPutProviderModelProviderEnum;
+  provider: UpdateTokenApiV1ModelRegistryTokensProviderPutProviderModelProvider;
 }
 
 export class UpdateTokenApiV1ModelRegistryTokensProviderPutResponse extends SpeakeasyBase {

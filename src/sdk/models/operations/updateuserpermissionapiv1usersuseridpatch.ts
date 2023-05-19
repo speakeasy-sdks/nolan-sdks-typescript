@@ -23,7 +23,7 @@ export class UpdateUserPermissionApiV1UsersUserIdPatchUserRole extends Speakeasy
    */
   @SpeakeasyMetadata()
   @Expose({ name: "role" })
-  role: shared.RolesToDBEnum;
+  role: shared.RolesToDB;
 }
 
 export class UpdateUserPermissionApiV1UsersUserIdPatchRequest extends SpeakeasyBase {

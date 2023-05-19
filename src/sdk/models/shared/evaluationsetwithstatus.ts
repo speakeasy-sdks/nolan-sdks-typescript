@@ -31,7 +31,7 @@ export class EvaluationSetWithStatusOauthUser extends SpeakeasyBase {
 /**
  * An enumeration.
  */
-export enum EvaluationSetWithStatusEvaluationSetStatusAsStrEnum {
+export enum EvaluationSetWithStatusEvaluationSetStatusAsStr {
   Received = "RECEIVED",
   LabelExtractionStarted = "LABEL_EXTRACTION_STARTED",
   ContextMatchingStarted = "CONTEXT_MATCHING_STARTED",
@@ -83,7 +83,7 @@ export class EvaluationSetWithStatus extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "status" })
-  status: EvaluationSetWithStatusEvaluationSetStatusAsStrEnum;
+  status: EvaluationSetWithStatusEvaluationSetStatusAsStr;
 
   /**
    * The total number of uploaded labels

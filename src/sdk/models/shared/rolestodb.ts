@@ -5,8 +5,10 @@
 /**
  * An enumeration.
  */
-export enum ServerTypeEnum {
-  CpuServer = "cpu-server",
-  GpuServer = "gpu-server",
-  Unknown = "unknown",
+export enum RolesToDB {
+  Zero = "0",
+  One = "1",
+  Two = "2",
+  Three = "3",
+  Four = "4",
 }

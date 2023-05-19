@@ -16,7 +16,7 @@ export class GetTokenApiV1ModelRegistryTokensProviderGetSecurity extends Speakea
 /**
  * The provider of the model registry
  */
-export enum GetTokenApiV1ModelRegistryTokensProviderGetProviderModelProviderEnum {
+export enum GetTokenApiV1ModelRegistryTokensProviderGetProviderModelProvider {
   Huggingface = "huggingface",
   Openai = "openai",
   Cohere = "cohere",
@@ -29,7 +29,7 @@ export class GetTokenApiV1ModelRegistryTokensProviderGetRequest extends Speakeas
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=provider",
   })
-  provider: GetTokenApiV1ModelRegistryTokensProviderGetProviderModelProviderEnum;
+  provider: GetTokenApiV1ModelRegistryTokensProviderGetProviderModelProvider;
 }
 
 export class GetTokenApiV1ModelRegistryTokensProviderGetResponse extends SpeakeasyBase {

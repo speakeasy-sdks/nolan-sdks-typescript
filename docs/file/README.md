@@ -26,6 +26,7 @@ const sdk = new Deepset();
 sdk.file.deleteMulti({
   requestBody: {
     names: [
+      "nihil",
       "sit",
       "expedita",
     ],
@@ -145,8 +146,8 @@ List files in a workspace. This endpoint supports pagination and filtering by na
 ```typescript
 import { Deepset } from "ds-test";
 import {
-  ListFilesApiV1WorkspacesWorkspaceNameFilesGetFieldFieldEnum,
-  ListFilesApiV1WorkspacesWorkspaceNameFilesGetOrderOrderEnum,
+  ListFilesApiV1WorkspacesWorkspaceNameFilesGetFieldField,
+  ListFilesApiV1WorkspacesWorkspaceNameFilesGetOrderOrder,
   ListFilesApiV1WorkspacesWorkspaceNameFilesGetResponse,
 } from "ds-test/dist/sdk/models/operations";
 
@@ -156,13 +157,13 @@ sdk.file.list({
   afterFileId: "5fce6c55-6146-4c3e-a50f-b008c42e141a",
   afterValue: "laborum",
   content: "placeat",
-  field: ListFilesApiV1WorkspacesWorkspaceNameFilesGetFieldFieldEnum.CreatedAt,
+  field: ListFilesApiV1WorkspacesWorkspaceNameFilesGetFieldField.CreatedAt,
   filter: "eum",
   limit: 420539,
   metaKey: "nobis",
   metaValue: "quas",
   name: "Drew Hoeger I",
-  order: ListFilesApiV1WorkspacesWorkspaceNameFilesGetOrderOrderEnum.Asc,
+  order: ListFilesApiV1WorkspacesWorkspaceNameFilesGetOrderOrder.Asc,
   pageNumber: 131482,
   workspaceName: "provident",
 }, {
@@ -212,7 +213,7 @@ Uploads a file into the workspace. You can also use this endpoint to create a te
 import { Deepset } from "ds-test";
 import {
   UploadFileApiV1WorkspacesWorkspaceNameFilesPostResponse,
-  UploadFileApiV1WorkspacesWorkspaceNameFilesPostWriteModeFileWriteModeEnumEnum,
+  UploadFileApiV1WorkspacesWorkspaceNameFilesPostWriteModeFileWriteModeEnum,
 } from "ds-test/dist/sdk/models/operations";
 
 const sdk = new Deepset();
@@ -228,7 +229,7 @@ sdk.file.upload({
   },
   fileName: "quo",
   workspaceName: "esse",
-  writeMode: UploadFileApiV1WorkspacesWorkspaceNameFilesPostWriteModeFileWriteModeEnumEnum.Fail,
+  writeMode: UploadFileApiV1WorkspacesWorkspaceNameFilesPostWriteModeFileWriteModeEnum.Fail,
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: UploadFileApiV1WorkspacesWorkspaceNameFilesPostResponse) => {

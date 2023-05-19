@@ -16,7 +16,7 @@ export class ListEvalRunsSecurity extends SpeakeasyBase {
 /**
  * The name of the entity you want to sort by.
  */
-export enum ListEvalRunsFieldFieldEnum {
+export enum ListEvalRunsFieldField {
   Name = "name",
   CreatedAt = "created_at",
   CreatedBy = "created_by",
@@ -36,7 +36,7 @@ export enum ListEvalRunsFieldFieldEnum {
 /**
  * Choose how you want to sort the results.
  */
-export enum ListEvalRunsOrderOrderEnum {
+export enum ListEvalRunsOrderOrder {
   Asc = "ASC",
   Desc = "DESC",
 }
@@ -60,7 +60,7 @@ export class ListEvalRunsRequest extends SpeakeasyBase {
    * The name of the entity you want to sort by.
    */
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=field" })
-  field?: ListEvalRunsFieldFieldEnum;
+  field?: ListEvalRunsFieldField;
 
   /**
    * The OData filter you want to use to in your query. It supports exact match and `AND` operations. For example, to filter for a metadata `category:news`, here's what the URL could look like: 'url = "https://api.cloud.deepset.ai/api/v1/workspaces/production/files?limit=10&filter=category eq 'news'"'. OData filters only work with cursor-based pagination (leave the `page_number` field blank to enable it).To learn more about the OData filter syntax, see: [Querying Data](https://www.odata.org/getting-started/basic-tutorial/#queryData).
@@ -80,7 +80,7 @@ export class ListEvalRunsRequest extends SpeakeasyBase {
    * Choose how you want to sort the results.
    */
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=order" })
-  order?: ListEvalRunsOrderOrderEnum;
+  order?: ListEvalRunsOrderOrder;
 
   /**
    * Which page do you want to see? Type the number.

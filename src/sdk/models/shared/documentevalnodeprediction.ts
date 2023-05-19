@@ -9,7 +9,7 @@ import { Expose, Transform, Type } from "class-transformer";
 /**
  * An enumeration.
  */
-export enum DocumentEvalNodePredictionEvaluationModeEnum {
+export enum DocumentEvalNodePredictionEvaluationMode {
   Isolated = "ISOLATED",
   Integrated = "INTEGRATED",
 }
@@ -17,7 +17,7 @@ export enum DocumentEvalNodePredictionEvaluationModeEnum {
 /**
  * This node returns document objects during the prediction.
  */
-export enum DocumentEvalNodePredictionPredictionTypeEnum {
+export enum DocumentEvalNodePredictionPredictionType {
   Document = "document",
 }
 
@@ -77,7 +77,7 @@ export class DocumentEvalNodePrediction extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "eval_mode" })
-  evalMode: DocumentEvalNodePredictionEvaluationModeEnum;
+  evalMode: DocumentEvalNodePredictionEvaluationMode;
 
   /**
    * ID for the results of a node which this prediction belongs to.
@@ -162,7 +162,7 @@ export class DocumentEvalNodePrediction extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "prediction_type" })
-  predictionType: DocumentEvalNodePredictionPredictionTypeEnum;
+  predictionType: DocumentEvalNodePredictionPredictionType;
 
   /**
    * The text which was used to evaluate this particular node's query behavior.

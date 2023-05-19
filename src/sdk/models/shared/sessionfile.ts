@@ -8,7 +8,7 @@ import { Expose } from "class-transformer";
 /**
  * An enumeration.
  */
-export enum SessionFileFileIngestionStatusEnumEnum {
+export enum SessionFileFileIngestionStatusEnum {
   Pending = "PENDING",
   Failed = "FAILED",
   Finished = "FINISHED",
@@ -17,7 +17,7 @@ export enum SessionFileFileIngestionStatusEnumEnum {
 /**
  * An enumeration.
  */
-export enum SessionFileFileIngestionStatusReasonEnumEnum {
+export enum SessionFileFileIngestionStatusReasonEnum {
   EmptyFile = "EMPTY_FILE",
   FileNotFound = "FILE_NOT_FOUND",
   FailedToParseMeta = "FAILED_TO_PARSE_META",
@@ -38,14 +38,14 @@ export class SessionFile extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "ingestion_status" })
-  ingestionStatus: SessionFileFileIngestionStatusEnumEnum;
+  ingestionStatus: SessionFileFileIngestionStatusEnum;
 
   /**
    * The ingestion status message that explains the ingestion status. This is only available for files that failed to ingest.
    */
   @SpeakeasyMetadata()
   @Expose({ name: "ingestion_status_reason" })
-  ingestionStatusReason?: SessionFileFileIngestionStatusReasonEnumEnum;
+  ingestionStatusReason?: SessionFileFileIngestionStatusReasonEnum;
 
   /**
    * The name of the ingested file.

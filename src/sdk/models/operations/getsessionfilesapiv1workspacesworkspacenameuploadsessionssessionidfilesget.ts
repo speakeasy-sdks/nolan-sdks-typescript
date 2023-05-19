@@ -16,7 +16,7 @@ export class GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdF
 /**
  * An enumeration.
  */
-export enum GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetIngestionStatusFileIngestionStatusEnumEnum {
+export enum GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetIngestionStatusFileIngestionStatusEnum {
   Pending = "PENDING",
   Failed = "FAILED",
   Finished = "FINISHED",
@@ -43,7 +43,7 @@ export class GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdF
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=ingestion_status",
   })
-  ingestionStatus?: GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetIngestionStatusFileIngestionStatusEnumEnum;
+  ingestionStatus?: GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetIngestionStatusFileIngestionStatusEnum;
 
   /**
    * How many entries do you want to display? Leaving this field empty keeps the default and max 10 results are returned.

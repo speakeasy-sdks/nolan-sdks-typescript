@@ -8,7 +8,7 @@ import { Expose } from "class-transformer";
 /**
  * An enumeration.
  */
-export enum LabelLabelStateAsStrEnum {
+export enum LabelLabelStateAsStr {
   MatchingNotStarted = "MATCHING_NOT_STARTED",
   Matched = "MATCHED",
   NoMatchFound = "NO_MATCH_FOUND",
@@ -74,5 +74,5 @@ export class Label extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "state" })
-  state: LabelLabelStateAsStrEnum;
+  state: LabelLabelStateAsStr;
 }

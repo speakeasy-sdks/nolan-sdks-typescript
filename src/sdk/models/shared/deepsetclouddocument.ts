@@ -8,7 +8,7 @@ import { Expose } from "class-transformer";
 /**
  * Type of the content.
  */
-export enum DeepsetCloudDocumentContentTypeEnum {
+export enum DeepsetCloudDocumentContentType {
   Text = "text",
   Table = "table",
   Image = "image",
@@ -31,7 +31,7 @@ export class DeepsetCloudDocument extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "content_type" })
-  contentType: DeepsetCloudDocumentContentTypeEnum;
+  contentType: DeepsetCloudDocumentContentType;
 
   /**
    * Embedding of the document.

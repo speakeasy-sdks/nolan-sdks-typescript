@@ -45,6 +45,7 @@ export class Health {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -95,6 +96,7 @@ export class Health {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;

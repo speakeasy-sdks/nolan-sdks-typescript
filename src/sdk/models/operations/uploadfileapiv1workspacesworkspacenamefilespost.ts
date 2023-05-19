@@ -16,7 +16,7 @@ export class UploadFileApiV1WorkspacesWorkspaceNameFilesPostSecurity extends Spe
 /**
  * An enumeration.
  */
-export enum UploadFileApiV1WorkspacesWorkspaceNameFilesPostWriteModeFileWriteModeEnumEnum {
+export enum UploadFileApiV1WorkspacesWorkspaceNameFilesPostWriteModeFileWriteModeEnum {
   Keep = "KEEP",
   Overwrite = "OVERWRITE",
   Fail = "FAIL",
@@ -48,7 +48,7 @@ export class UploadFileApiV1WorkspacesWorkspaceNameFilesPostRequest extends Spea
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=write_mode",
   })
-  writeMode?: UploadFileApiV1WorkspacesWorkspaceNameFilesPostWriteModeFileWriteModeEnumEnum;
+  writeMode?: UploadFileApiV1WorkspacesWorkspaceNameFilesPostWriteModeFileWriteModeEnum;
 }
 
 export class UploadFileApiV1WorkspacesWorkspaceNameFilesPostResponse extends SpeakeasyBase {

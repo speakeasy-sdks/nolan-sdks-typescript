@@ -16,7 +16,7 @@ export class GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFi
 /**
  * An enumeration.
  */
-export enum GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetStatusFileIndexingStatusQueryEnum {
+export enum GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetStatusFileIndexingStatusQuery {
   Failed = "FAILED",
   IndexedNoDocuments = "INDEXED_NO_DOCUMENTS",
 }
@@ -36,7 +36,7 @@ export class GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFi
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=status",
   })
-  status?: GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetStatusFileIndexingStatusQueryEnum;
+  status?: GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetStatusFileIndexingStatusQuery;
 
   /**
    * Type the name of the workspace.

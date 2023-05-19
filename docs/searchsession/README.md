@@ -17,7 +17,7 @@ import { CreateSearchSessionApiV1WorkspacesWorkspaceNameSearchSessionsPostRespon
 const sdk = new Deepset();
 
 sdk.searchSession.create({
-  workspaceName: "fugiat",
+  workspaceName: "fugit",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: CreateSearchSessionApiV1WorkspacesWorkspaceNameSearchSessionsPostResponse) => {

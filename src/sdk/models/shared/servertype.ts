@@ -5,8 +5,8 @@
 /**
  * An enumeration.
  */
-export enum ServerStateEnum {
-  Starting = "STARTING",
-  Up = "UP",
-  Down = "DOWN",
+export enum ServerType {
+  CpuServer = "cpu-server",
+  GpuServer = "gpu-server",
+  Unknown = "unknown",
 }

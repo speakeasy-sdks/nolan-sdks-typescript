@@ -79,7 +79,7 @@ import { Deepset } from "ds-test";
 import {
   GetDocumentApiV1WorkspacesWorkspaceNameIndexesIndexNameDocumentsDocumentIdGetResponse,
 } from "ds-test/dist/sdk/models/operations";
-import { DeepsetCloudDocumentContentTypeEnum } from "ds-test/dist/sdk/models/shared";
+import { DeepsetCloudDocumentContentType } from "ds-test/dist/sdk/models/shared";
 
 const sdk = new Deepset();
 
@@ -139,7 +139,7 @@ Displays all documents processed by the specified pipeline together with their p
 ```typescript
 import { Deepset } from "ds-test";
 import { GetAllDocumentsApiV1WorkspacesWorkspaceNameIndexesIndexNameDocumentsGetResponse } from "ds-test/dist/sdk/models/operations";
-import { DeepsetCloudDocumentContentTypeEnum } from "ds-test/dist/sdk/models/shared";
+import { DeepsetCloudDocumentContentType } from "ds-test/dist/sdk/models/shared";
 
 const sdk = new Deepset();
 
@@ -167,7 +167,7 @@ import { Deepset } from "ds-test";
 import {
   QueryDocumentsStreamApiV1WorkspacesWorkspaceNameIndexesIndexNameDocumentsQueryPostResponse,
 } from "ds-test/dist/sdk/models/operations";
-import { DeepsetCloudDocumentContentTypeEnum } from "ds-test/dist/sdk/models/shared";
+import { DeepsetCloudDocumentContentType } from "ds-test/dist/sdk/models/shared";
 
 const sdk = new Deepset();
 

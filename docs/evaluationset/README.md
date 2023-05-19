@@ -24,8 +24,8 @@ import {
 const sdk = new Deepset();
 
 sdk.evaluationSet.delete({
-  evaluationSetName: "qui",
-  workspaceName: "ipsum",
+  evaluationSetName: "dolor",
+  workspaceName: "qui",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: DeleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDeleteResponse) => {
@@ -46,13 +46,13 @@ import { Deepset } from "ds-test";
 import {
   GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetResponse,
 } from "ds-test/dist/sdk/models/operations";
-import { LabelLabelStateAsStrEnum } from "ds-test/dist/sdk/models/shared";
+import { LabelLabelStateAsStr } from "ds-test/dist/sdk/models/shared";
 
 const sdk = new Deepset();
 
 sdk.evaluationSet.get({
-  evaluationSetName: "hic",
-  workspaceName: "excepturi",
+  evaluationSetName: "ipsum",
+  workspaceName: "hic",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetResponse) => {
@@ -77,8 +77,8 @@ import {
 const sdk = new Deepset();
 
 sdk.evaluationSet.getCsv({
-  evaluationSetName: "cum",
-  workspaceName: "voluptate",
+  evaluationSetName: "excepturi",
+  workspaceName: "cum",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGetResponse) => {
@@ -103,11 +103,11 @@ const sdk = new Deepset();
 sdk.evaluationSet.importEvaluationSet({
   bodyImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPost: {
     file: {
-      file: "dignissimos",
-      content: "reiciendis".encode(),
+      file: "voluptate",
+      content: "dignissimos".encode(),
     },
   },
-  workspaceName: "amet",
+  workspaceName: "reiciendis",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostResponse) => {
@@ -126,17 +126,17 @@ Displays all evaluation sets and their properties.
 ```typescript
 import { Deepset } from "ds-test";
 import { ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetResponse } from "ds-test/dist/sdk/models/operations";
-import { EvaluationSetWithStatusEvaluationSetStatusAsStrEnum } from "ds-test/dist/sdk/models/shared";
+import { EvaluationSetWithStatusEvaluationSetStatusAsStr } from "ds-test/dist/sdk/models/shared";
 
 const sdk = new Deepset();
 
 sdk.evaluationSet.list({
-  after: "a4100674-ebf6-4928-8d1b-a77a89ebf737",
-  before: "ae4203ce-5e6a-495d-8a0d-446ce2af7a73",
-  limit: 788740,
-  name: "Marvin Renner",
-  pageNumber: 313692,
-  workspaceName: "dolorem",
+  after: "3a410067-4ebf-4692-80d1-ba77a89ebf73",
+  before: "7ae4203c-e5e6-4a95-98a0-d446ce2af7a7",
+  limit: 215507,
+  name: "Saul Fay",
+  pageNumber: 253941,
+  workspaceName: "enim",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetResponse) => {
@@ -161,8 +161,8 @@ import {
 const sdk = new Deepset();
 
 sdk.evaluationSet.retrigger({
-  evaluationSetName: "sapiente",
-  workspaceName: "totam",
+  evaluationSetName: "dolorem",
+  workspaceName: "sapiente",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: RetriggerLabelMatchingApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameLabelMatchingPostResponse) => {

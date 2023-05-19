@@ -16,7 +16,7 @@ export class GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNa
 /**
  * The name of the entity you want to sort by.
  */
-export enum GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetFieldFieldEnum {
+export enum GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetFieldField {
   Query = "query",
   Index = "index",
   Rank = "rank",
@@ -30,18 +30,12 @@ export enum GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNam
 /**
  * Choose how you want to sort the results.
  */
-export enum GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetOrderOrderEnum {
+export enum GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetOrderOrder {
   Asc = "ASC",
   Desc = "DESC",
 }
 
 export class GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetRequest extends SpeakeasyBase {
-  /**
-   * Type 'text/csv' to view the predicted answers as a CSV file. Otherwise, they'll be displayed as JSON.
-   */
-  @SpeakeasyMetadata({ data: "header, style=simple;explode=false;name=accept" })
-  accept?: string;
-
   /**
    * Enter an ID if you want to see all entries after this ID.
    */
@@ -68,7 +62,7 @@ export class GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNa
    * The name of the entity you want to sort by.
    */
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=field" })
-  field?: GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetFieldFieldEnum;
+  field?: GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetFieldField;
 
   /**
    * The OData filter you want to use to in your query. It supports exact match and `AND` operations. For example, to filter for a metadata `category:news`, here's what the URL could look like: 'url = "https://api.cloud.deepset.ai/api/v1/workspaces/production/files?limit=10&filter=category eq 'news'"'. OData filters only work with cursor-based pagination (leave the `page_number` field blank to enable it).To learn more about the OData filter syntax, see: [Querying Data](https://www.odata.org/getting-started/basic-tutorial/#queryData).
@@ -96,7 +90,7 @@ export class GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNa
    * Choose how you want to sort the results.
    */
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=order" })
-  order?: GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetOrderOrderEnum;
+  order?: GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetOrderOrder;
 
   /**
    * Which page do you want to see? Type the number.

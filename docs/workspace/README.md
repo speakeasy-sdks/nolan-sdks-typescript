@@ -23,7 +23,7 @@ import { CreateWorkspaceApiV1WorkspacesPostResponse } from "ds-test/dist/sdk/mod
 const sdk = new Deepset();
 
 sdk.workspace.create({
-  name: "Margarita Jacobson",
+  name: "Tina Moore",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: CreateWorkspaceApiV1WorkspacesPostResponse) => {
@@ -46,7 +46,7 @@ import { DeleteWorkspaceApiV1WorkspacesWorkspaceNameDeleteResponse } from "ds-te
 const sdk = new Deepset();
 
 sdk.workspace.delete({
-  workspaceName: "libero",
+  workspaceName: "soluta",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: DeleteWorkspaceApiV1WorkspacesWorkspaceNameDeleteResponse) => {
@@ -69,7 +69,7 @@ import { GetWorkspaceApiV1WorkspacesWorkspaceNameGetResponse } from "ds-test/dis
 const sdk = new Deepset();
 
 sdk.workspace.get({
-  workspaceName: "rem",
+  workspaceName: "libero",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetWorkspaceApiV1WorkspacesWorkspaceNameGetResponse) => {
@@ -92,7 +92,7 @@ import { GetWorkspaceStatsApiV1WorkspacesWorkspaceNameStatsGetResponse } from "d
 const sdk = new Deepset();
 
 sdk.workspace.getStats({
-  workspaceName: "dolorum",
+  workspaceName: "rem",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetWorkspaceStatsApiV1WorkspacesWorkspaceNameStatsGetResponse) => {
@@ -136,11 +136,11 @@ import { SearchCountApiV1WorkspacesWorkspaceNameSearchCountGetResponse } from "d
 const sdk = new Deepset();
 
 sdk.workspace.searchCount({
-  after: "72026114-35e1-439d-bc22-59b1abda8c07",
-  before: "0e1084cb-0672-4d1a-9879-eeb9665b85ef",
-  limit: 737279,
-  pageNumber: 872303,
-  workspaceName: "alias",
+  after: "a7202611-435e-4139-9bc2-259b1abda8c0",
+  before: "70e1084c-b067-42d1-ad87-9eeb9665b85e",
+  limit: 972912,
+  pageNumber: 737279,
+  workspaceName: "at",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: SearchCountApiV1WorkspacesWorkspaceNameSearchCountGetResponse) => {
@@ -163,11 +163,11 @@ import { SearchHistoryApiV1WorkspacesWorkspaceNameSearchHistoryGetResponse } fro
 const sdk = new Deepset();
 
 sdk.workspace.searchHistory({
-  after: "2bae0be2-d782-4259-a3ea-4b5197f92443",
-  before: "da7ce52b-895c-4537-8645-4efb0b34896c",
-  limit: 242099,
-  pageNumber: 795591,
-  workspaceName: "fuga",
+  after: "02bae0be-2d78-4225-9e3e-a4b5197f9244",
+  before: "3da7ce52-b895-4c53-bc64-54efb0b34896",
+  limit: 779180,
+  pageNumber: 242099,
+  workspaceName: "minus",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: SearchHistoryApiV1WorkspacesWorkspaceNameSearchHistoryGetResponse) => {

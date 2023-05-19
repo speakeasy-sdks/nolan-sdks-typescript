@@ -9,7 +9,7 @@ import { Expose, Transform, Type } from "class-transformer";
 /**
  * An enumeration.
  */
-export enum AnswerEvalNodePredictionEvaluationModeEnum {
+export enum AnswerEvalNodePredictionEvaluationMode {
   Isolated = "ISOLATED",
   Integrated = "INTEGRATED",
 }
@@ -17,7 +17,7 @@ export enum AnswerEvalNodePredictionEvaluationModeEnum {
 /**
  * This node returns answer objects during the prediction.
  */
-export enum AnswerEvalNodePredictionPredictionTypeEnum {
+export enum AnswerEvalNodePredictionPredictionType {
   Answer = "answer",
 }
 
@@ -98,7 +98,7 @@ export class AnswerEvalNodePrediction extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "eval_mode" })
-  evalMode: AnswerEvalNodePredictionEvaluationModeEnum;
+  evalMode: AnswerEvalNodePredictionEvaluationMode;
 
   /**
    * ID for the results of a node which this prediction belongs to.
@@ -190,7 +190,7 @@ export class AnswerEvalNodePrediction extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "prediction_type" })
-  predictionType: AnswerEvalNodePredictionPredictionTypeEnum;
+  predictionType: AnswerEvalNodePredictionPredictionType;
 
   /**
    * The prompt that was used to generate the result.

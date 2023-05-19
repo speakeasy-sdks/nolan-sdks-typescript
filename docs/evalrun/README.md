@@ -155,26 +155,25 @@ Returns the predicted answers for the pipeline nodes as a JSON or a CSV file
 ```typescript
 import { Deepset } from "ds-test";
 import {
-  GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetFieldFieldEnum,
-  GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetOrderOrderEnum,
+  GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetFieldField,
+  GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetOrderOrder,
   GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetResponse,
 } from "ds-test/dist/sdk/models/operations";
 
 const sdk = new Deepset();
 
 sdk.evalRun.getNodeEvalPredictions({
-  accept: "maiores",
-  after: "b14cd66a-e395-4efb-9ba8-8f3a66997074",
-  before: "ba4469b6-e214-4195-9890-afa563e2516f",
-  evalRunName: "debitis",
-  field: GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetFieldFieldEnum.Rank,
-  filter: "maxime",
-  limit: 537023,
-  nodeName: "facilis",
-  order: GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetOrderOrderEnum.Asc,
-  pageNumber: 100226,
+  after: "fb14cd66-ae39-45ef-b9ba-88f3a6699707",
+  before: "4ba4469b-6e21-4419-9989-0afa563e2516",
+  evalRunName: "doloribus",
+  field: GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetFieldField.Answer,
+  filter: "eius",
+  limit: 806194,
+  nodeName: "deleniti",
+  order: GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetOrderOrder.Desc,
+  pageNumber: 447926,
   select: "architecto",
-  workspaceName: "repudiandae",
+  workspaceName: "architecto",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetResponse) => {
@@ -192,20 +191,20 @@ Returns all the evaluation runs created in deepset Cloud.
 
 ```typescript
 import { Deepset } from "ds-test";
-import { ListEvalRunsFieldFieldEnum, ListEvalRunsOrderOrderEnum, ListEvalRunsResponse } from "ds-test/dist/sdk/models/operations";
+import { ListEvalRunsFieldField, ListEvalRunsOrderOrder, ListEvalRunsResponse } from "ds-test/dist/sdk/models/operations";
 
 const sdk = new Deepset();
 
 sdk.evalRun.list({
-  after: "5b7fd2ed-0289-421c-9dc6-92601fb576b0",
-  before: "d5f0d30c-5fbb-4258-b053-202c73d5fe9b",
-  field: ListEvalRunsFieldFieldEnum.IntegratedMeanReciprocalRank,
-  filter: "voluptatem",
-  limit: 783645,
-  order: ListEvalRunsOrderOrderEnum.Asc,
-  pageNumber: 500026,
-  select: "error",
-  workspaceName: "eaque",
+  after: "e5b7fd2e-d028-4921-8ddc-692601fb576b",
+  before: "0d5f0d30-c5fb-4b25-8705-3202c73d5fe9",
+  field: ListEvalRunsFieldField.IntegratedMeanAveragePrecision,
+  filter: "perspiciatis",
+  limit: 31838,
+  order: ListEvalRunsOrderOrder.Desc,
+  pageNumber: 164694,
+  select: "blanditiis",
+  workspaceName: "error",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: ListEvalRunsResponse) => {
@@ -228,8 +227,8 @@ import { GetTagsApiV1WorkspacesWorkspaceNameTagsGetResponse } from "ds-test/dist
 const sdk = new Deepset();
 
 sdk.evalRun.listTags({
-  filter: "occaecati",
-  workspaceName: "rerum",
+  filter: "eaque",
+  workspaceName: "occaecati",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: GetTagsApiV1WorkspacesWorkspaceNameTagsGetResponse) => {
@@ -252,8 +251,8 @@ import { StartEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameStartPostRes
 const sdk = new Deepset();
 
 sdk.evalRun.start({
-  evalRunName: "adipisci",
-  workspaceName: "asperiores",
+  evalRunName: "rerum",
+  workspaceName: "adipisci",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: StartEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameStartPostResponse) => {
@@ -277,17 +276,17 @@ const sdk = new Deepset();
 
 sdk.evalRun.update({
   evalRunPatch: {
-    comment: "earum",
-    evaluationSetName: "modi",
-    pipelineName: "iste",
+    comment: "asperiores",
+    evaluationSetName: "earum",
+    pipelineName: "modi",
     tags: [
+      "dolorum",
       "deleniti",
       "pariatur",
-      "provident",
     ],
   },
-  evalRunName: "nobis",
-  workspaceName: "libero",
+  evalRunName: "provident",
+  workspaceName: "nobis",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchResponse) => {
@@ -311,10 +310,10 @@ const sdk = new Deepset();
 
 sdk.evalRun.updateTag({
   requestBody: {
-    name: "Alex Luettgen",
+    name: "Toby Hahn",
   },
   tagName: "dolorem",
-  workspaceName: "dolor",
+  workspaceName: "dolorem",
 }, {
   httpBearer: "YOUR_BEARER_TOKEN_HERE",
 }).then((res: UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchResponse) => {
