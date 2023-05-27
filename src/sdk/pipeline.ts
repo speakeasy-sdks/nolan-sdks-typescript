@@ -8,1799 +8,1712 @@ import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 export class Pipeline {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
+    }
 
-  /**
-   * Add Feedback
-   *
-   * @remarks
-   * Adds feedback to search results.
-   */
-  async addFeedback(
-    req: operations.AddFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackPostRequest,
-    security: operations.AddFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackPostSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.AddFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackPostResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.AddFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackPostRequest(
-          req
+    /**
+     * Add Feedback
+     *
+     * @remarks
+     * Adds feedback to search results.
+     */
+    async addFeedback(
+        req: operations.AddFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackPostRequest,
+        security: operations.AddFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackPostSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.AddFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackPostResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.AddFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackPostRequest(
+                    req
+                );
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/feedback",
+            req
         );
-    }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/feedback",
-      req
-    );
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "postPipelineFeedback",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.AddFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackPostSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.AddFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackPostResponse =
-      new operations.AddFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackPostResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "postPipelineFeedback",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.addFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackPost200ApplicationJSONAny =
-            httpRes?.data;
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.AddFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackPostSecurity(
+                    security
+                );
         }
-        break;
-      case httpRes?.status == 404:
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Create Pipeline
-   *
-   * @remarks
-   * Creates a pipeline YAML file.
-   */
-  async create(
-    req: operations.CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostRequest,
-    security: operations.CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostRequest(
-          req
-        );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines",
-      req
-    );
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "post",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostResponse =
-      new operations.CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        const res: operations.AddFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackPostResponse =
+            new operations.AddFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackPostResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.addFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackPost200ApplicationJSONAny =
+                        httpRes?.data;
+                }
+                break;
+            case httpRes?.status == 404:
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
         }
-      );
-    switch (true) {
-      case [200, 201].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.pipelineName = utils.objectToClass(
-            httpRes?.data,
-            shared.PipelineName
-          );
-        }
-        break;
-      case [400, 409, 424].includes(httpRes?.status):
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * Delete Pipeline
-   *
-   * @remarks
-   * Deletes a pipeline from deepset Cloud.
-   */
-  async delete(
-    req: operations.DeletePipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeleteRequest,
-    security: operations.DeletePipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeleteSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeletePipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeleteResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.DeletePipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeleteRequest(
-          req
-        );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}",
-      req
-    );
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.DeletePipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeleteSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeletePipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeleteResponse =
-      new operations.DeletePipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeleteResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.deletePipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDelete200ApplicationJSONAny =
-            httpRes?.data;
-        }
-        break;
-      case httpRes?.status == 404:
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Deploy Pipeline
-   *
-   * @remarks
-   * Deploys a pipeline in deepset Cloud.
-   */
-  async deploy(
-    req: operations.DeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeployPostRequest,
-    security: operations.DeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeployPostSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeployPostResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.DeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeployPostRequest(
-          req
-        );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/deploy",
-      req
-    );
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.DeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeployPostSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeployPostResponse =
-      new operations.DeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeployPostResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.pipelineIndexing = utils.objectToClass(
-            httpRes?.data,
-            shared.PipelineIndexing
-          );
-        }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Get Pipeline
-   *
-   * @remarks
-   * Returns a pipeline.
-   */
-  async get(
-    req: operations.GetPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameGetRequest,
-    security: operations.GetPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameGetRequest(
-          req
-        );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}",
-      req
-    );
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.GetPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameGetSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameGetResponse =
-      new operations.GetPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameGetResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.pipelineIndexing = utils.objectToClass(
-            httpRes?.data,
-            shared.PipelineIndexing
-          );
-        }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Get Pipeline Feedback
-   *
-   * @remarks
-   * Returns the feedback in JSON or CSV format.
-   */
-  async getFeedback(
-    req: operations.GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetRequest,
-    security: operations.GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetRequest(
-          req
-        );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/feedback",
-      req
-    );
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetResponse =
-      new operations.GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.response200GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGet =
-            httpRes?.data;
-        }
-        break;
-      case [404, 406].includes(httpRes?.status):
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Get Pipeline Files
-   *
-   * @remarks
-   * Returns IDs of all files with a specific status.
-   */
-  async getFiles(
-    req: operations.GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetRequest,
-    security: operations.GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetRequest(
-          req
-        );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/files",
-      req
-    );
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetResponse =
-      new operations.GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.getPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGet200ApplicationJSONUuidStrings =
-            utils.objectToClass(httpRes?.data);
-        }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Get Pipeline Indexing
-   *
-   * @remarks
-   * Returns the indexing information for a pipeline.
-   */
-  async getIndexing(
-    req: operations.GetPipelineIndexingApiV1WorkspacesWorkspaceNamePipelinesPipelineNameIndexingGetRequest,
-    security: operations.GetPipelineIndexingApiV1WorkspacesWorkspaceNamePipelinesPipelineNameIndexingGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetPipelineIndexingApiV1WorkspacesWorkspaceNamePipelinesPipelineNameIndexingGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetPipelineIndexingApiV1WorkspacesWorkspaceNamePipelinesPipelineNameIndexingGetRequest(
-          req
-        );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/indexing",
-      req
-    );
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.GetPipelineIndexingApiV1WorkspacesWorkspaceNamePipelinesPipelineNameIndexingGetSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetPipelineIndexingApiV1WorkspacesWorkspaceNamePipelinesPipelineNameIndexingGetResponse =
-      new operations.GetPipelineIndexingApiV1WorkspacesWorkspaceNamePipelinesPipelineNameIndexingGetResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.pipelineIndexingStatusDetail = utils.objectToClass(
-            httpRes?.data,
-            shared.PipelineIndexingStatusDetail
-          );
-        }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Get Pipeline Yaml As Json
-   *
-   * @remarks
-   * Returns the pipeline in the JSON format.
-   */
-  async getJson(
-    req: operations.GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetRequest,
-    security: operations.GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetRequest(
-          req
-        );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/json",
-      req
-    );
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetResponse =
-      new operations.GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.responseGetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGet =
-            utils.objectToClass(httpRes?.data);
-        }
-        break;
-      case httpRes?.status == 404:
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Get Pipeline Index Metadata [private]
-   *
-   * @remarks
-   * This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
-   */
-  async getMetadata(
-    req: operations.GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGetRequest,
-    security: operations.GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGetRequest(
-          req
-        );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/meta",
-      req
-    );
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGetSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGetResponse =
-      new operations.GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGetResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.response200GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGet =
-            {};
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.response200GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGet =
-            utils.objectToClass(
-              httpRes?.data,
-              shared.PipelineIndexMetadataProperty,
-              resFieldDepth
+    /**
+     * Create Pipeline
+     *
+     * @remarks
+     * Creates a pipeline YAML file.
+     */
+    async create(
+        req: operations.CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostRequest,
+        security: operations.CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostRequest(
+                req
             );
         }
-        break;
-      case [404, 412].includes(httpRes?.status):
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Get Pipeline Metadata Field Values [private]
-   *
-   * @remarks
-   * This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
-   */
-  async getMetadataFieldValues(
-    req: operations.GetPipelineMetadataFieldValuesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaFieldNameGetRequest,
-    security: operations.GetPipelineMetadataFieldValuesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaFieldNameGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetPipelineMetadataFieldValuesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaFieldNameGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetPipelineMetadataFieldValuesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaFieldNameGetRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines",
+            req
         );
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostSecurity(
+                    security
+                );
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "post",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostResponse =
+            new operations.CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case [200, 201].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.pipelineName = utils.objectToClass(httpRes?.data, shared.PipelineName);
+                }
+                break;
+            case [400, 409, 424].includes(httpRes?.status):
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/meta/{field_name}",
-      req
-    );
+    /**
+     * Delete Pipeline
+     *
+     * @remarks
+     * Deletes a pipeline from deepset Cloud.
+     */
+    async delete(
+        req: operations.DeletePipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeleteRequest,
+        security: operations.DeletePipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeleteSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeletePipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeleteResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.DeletePipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeleteRequest(
+                    req
+                );
+        }
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.GetPipelineMetadataFieldValuesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaFieldNameGetSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetPipelineMetadataFieldValuesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaFieldNameGetResponse =
-      new operations.GetPipelineMetadataFieldValuesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaFieldNameGetResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.DeletePipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeleteSecurity(
+                    security
+                );
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.pipelineFieldSearchResult = utils.objectToClass(
-            httpRes?.data,
-            shared.PipelineFieldSearchResult
-          );
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case [400, 404, 412].includes(httpRes?.status):
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+
+        const res: operations.DeletePipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeleteResponse =
+            new operations.DeletePipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeleteResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.deletePipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDelete200ApplicationJSONAny =
+                        httpRes?.data;
+                }
+                break;
+            case httpRes?.status == 404:
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Deploy Pipeline
+     *
+     * @remarks
+     * Deploys a pipeline in deepset Cloud.
+     */
+    async deploy(
+        req: operations.DeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeployPostRequest,
+        security: operations.DeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeployPostSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeployPostResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.DeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeployPostRequest(
+                    req
+                );
+        }
 
-  /**
-   * Get Pipeline Min Max Aggregation Metadata [private]
-   *
-   * @remarks
-   * This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
-   */
-  async getMinMaxAggregationMetadata(
-    req: operations.GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetRequest,
-    security: operations.GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/deploy",
+            req
         );
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.DeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeployPostSecurity(
+                    security
+                );
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.DeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeployPostResponse =
+            new operations.DeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDeployPostResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.pipelineIndexing = utils.objectToClass(
+                        httpRes?.data,
+                        shared.PipelineIndexing
+                    );
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/meta/{meta_field}/aggregation",
-      req
-    );
+    /**
+     * Get Pipeline
+     *
+     * @remarks
+     * Returns a pipeline.
+     */
+    async get(
+        req: operations.GetPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameGetRequest,
+        security: operations.GetPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.GetPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameGetRequest(
+                    req
+                );
+        }
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetResponse =
-      new operations.GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.GetPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameGetSecurity(
+                    security
+                );
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.pipelineMetadataAggregation = utils.objectToClass(
-            httpRes?.data,
-            shared.PipelineMetadataAggregation
-          );
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case [404, 412].includes(httpRes?.status):
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+
+        const res: operations.GetPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameGetResponse =
+            new operations.GetPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameGetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.pipelineIndexing = utils.objectToClass(
+                        httpRes?.data,
+                        shared.PipelineIndexing
+                    );
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Get Pipeline Feedback
+     *
+     * @remarks
+     * Returns the feedback in JSON or CSV format.
+     */
+    async getFeedback(
+        req: operations.GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetRequest,
+        security: operations.GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetRequest(
+                    req
+                );
+        }
 
-  /**
-   * Get Pipeline Stats
-   *
-   * @remarks
-   * Returns a pipeline.
-   */
-  async getStats(
-    req: operations.GetPipelineStatsApiV1WorkspacesWorkspaceNamePipelinesPipelineNameStatsGetRequest,
-    security: operations.GetPipelineStatsApiV1WorkspacesWorkspaceNamePipelinesPipelineNameStatsGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetPipelineStatsApiV1WorkspacesWorkspaceNamePipelinesPipelineNameStatsGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetPipelineStatsApiV1WorkspacesWorkspaceNamePipelinesPipelineNameStatsGetRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/feedback",
+            req
         );
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetSecurity(
+                    security
+                );
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetResponse =
+            new operations.GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.response200GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGet =
+                        httpRes?.data;
+                }
+                break;
+            case [404, 406].includes(httpRes?.status):
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/stats",
-      req
-    );
+    /**
+     * Get Pipeline Files
+     *
+     * @remarks
+     * Returns IDs of all files with a specific status.
+     */
+    async getFiles(
+        req: operations.GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetRequest,
+        security: operations.GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetRequest(
+                    req
+                );
+        }
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.GetPipelineStatsApiV1WorkspacesWorkspaceNamePipelinesPipelineNameStatsGetSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/files",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetPipelineStatsApiV1WorkspacesWorkspaceNamePipelinesPipelineNameStatsGetResponse =
-      new operations.GetPipelineStatsApiV1WorkspacesWorkspaceNamePipelinesPipelineNameStatsGetResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetSecurity(
+                    security
+                );
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.pipelineStatistics = utils.objectToClass(
-            httpRes?.data,
-            shared.PipelineStatistics
-          );
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+
+        const res: operations.GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetResponse =
+            new operations.GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.getPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGet200ApplicationJSONUuidStrings =
+                        utils.objectToClass(httpRes?.data);
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Get Pipeline Indexing
+     *
+     * @remarks
+     * Returns the indexing information for a pipeline.
+     */
+    async getIndexing(
+        req: operations.GetPipelineIndexingApiV1WorkspacesWorkspaceNamePipelinesPipelineNameIndexingGetRequest,
+        security: operations.GetPipelineIndexingApiV1WorkspacesWorkspaceNamePipelinesPipelineNameIndexingGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetPipelineIndexingApiV1WorkspacesWorkspaceNamePipelinesPipelineNameIndexingGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.GetPipelineIndexingApiV1WorkspacesWorkspaceNamePipelinesPipelineNameIndexingGetRequest(
+                    req
+                );
+        }
 
-  /**
-   * Get Pipeline Yaml
-   *
-   * @remarks
-   * Displays the pipeline as a YAML.
-   */
-  async getYaml(
-    req: operations.GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetRequest,
-    security: operations.GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/indexing",
+            req
         );
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.GetPipelineIndexingApiV1WorkspacesWorkspaceNamePipelinesPipelineNameIndexingGetSecurity(
+                    security
+                );
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetPipelineIndexingApiV1WorkspacesWorkspaceNamePipelinesPipelineNameIndexingGetResponse =
+            new operations.GetPipelineIndexingApiV1WorkspacesWorkspaceNamePipelinesPipelineNameIndexingGetResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.pipelineIndexingStatusDetail = utils.objectToClass(
+                        httpRes?.data,
+                        shared.PipelineIndexingStatusDetail
+                    );
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/yaml",
-      req
-    );
+    /**
+     * Get Pipeline Yaml As Json
+     *
+     * @remarks
+     * Returns the pipeline in the JSON format.
+     */
+    async getJson(
+        req: operations.GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetRequest,
+        security: operations.GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetRequest(
+                    req
+                );
+        }
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/json",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetResponse =
-      new operations.GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetSecurity(
+                    security
+                );
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.pipelineYaml = utils.objectToClass(
-            httpRes?.data,
-            shared.PipelineYaml
-          );
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 404:
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+
+        const res: operations.GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetResponse =
+            new operations.GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.responseGetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGet =
+                        utils.objectToClass(httpRes?.data);
+                }
+                break;
+            case httpRes?.status == 404:
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Get Pipeline Index Metadata [private]
+     *
+     * @remarks
+     * This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
+     */
+    async getMetadata(
+        req: operations.GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGetRequest,
+        security: operations.GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGetRequest(
+                    req
+                );
+        }
 
-  /**
-   * List Pipelines
-   *
-   * @remarks
-   * Lists all the pipelines in the workspace.
-   */
-  async list(
-    req: operations.ListPipelinesApiV1WorkspacesWorkspaceNamePipelinesGetRequest,
-    security: operations.ListPipelinesApiV1WorkspacesWorkspaceNamePipelinesGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.ListPipelinesApiV1WorkspacesWorkspaceNamePipelinesGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.ListPipelinesApiV1WorkspacesWorkspaceNamePipelinesGetRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/meta",
+            req
         );
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGetSecurity(
+                    security
+                );
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGetResponse =
+            new operations.GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGetResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.response200GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGet =
+                        {};
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.response200GetPipelineIndexMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaGet =
+                        utils.objectToClass(
+                            httpRes?.data,
+                            shared.PipelineIndexMetadataProperty,
+                            resFieldDepth
+                        );
+                }
+                break;
+            case [404, 412].includes(httpRes?.status):
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines",
-      req
-    );
+    /**
+     * Get Pipeline Metadata Field Values [private]
+     *
+     * @remarks
+     * This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
+     */
+    async getMetadataFieldValues(
+        req: operations.GetPipelineMetadataFieldValuesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaFieldNameGetRequest,
+        security: operations.GetPipelineMetadataFieldValuesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaFieldNameGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetPipelineMetadataFieldValuesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaFieldNameGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.GetPipelineMetadataFieldValuesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaFieldNameGetRequest(
+                    req
+                );
+        }
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.ListPipelinesApiV1WorkspacesWorkspaceNamePipelinesGetSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/meta/{field_name}",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.ListPipelinesApiV1WorkspacesWorkspaceNamePipelinesGetResponse =
-      new operations.ListPipelinesApiV1WorkspacesWorkspaceNamePipelinesGetResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.GetPipelineMetadataFieldValuesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaFieldNameGetSecurity(
+                    security
+                );
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.pipelinePagination = utils.objectToClass(
-            httpRes?.data,
-            shared.PipelinePagination
-          );
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+
+        const res: operations.GetPipelineMetadataFieldValuesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaFieldNameGetResponse =
+            new operations.GetPipelineMetadataFieldValuesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaFieldNameGetResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.pipelineFieldSearchResult = utils.objectToClass(
+                        httpRes?.data,
+                        shared.PipelineFieldSearchResult
+                    );
+                }
+                break;
+            case [400, 404, 412].includes(httpRes?.status):
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Get Pipeline Min Max Aggregation Metadata [private]
+     *
+     * @remarks
+     * This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
+     */
+    async getMinMaxAggregationMetadata(
+        req: operations.GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetRequest,
+        security: operations.GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetRequest(
+                    req
+                );
+        }
 
-  /**
-   * Search
-   *
-   * @remarks
-   * Run a search using a pipeline.
-   */
-  async search(
-    req: operations.SearchApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchPostRequest,
-    security: operations.SearchApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchPostSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.SearchApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchPostResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.SearchApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchPostRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/meta/{meta_field}/aggregation",
+            req
         );
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetSecurity(
+                    security
+                );
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetResponse =
+            new operations.GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.pipelineMetadataAggregation = utils.objectToClass(
+                        httpRes?.data,
+                        shared.PipelineMetadataAggregation
+                    );
+                }
+                break;
+            case [404, 412].includes(httpRes?.status):
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/search",
-      req
-    );
+    /**
+     * Get Pipeline Stats
+     *
+     * @remarks
+     * Returns a pipeline.
+     */
+    async getStats(
+        req: operations.GetPipelineStatsApiV1WorkspacesWorkspaceNamePipelinesPipelineNameStatsGetRequest,
+        security: operations.GetPipelineStatsApiV1WorkspacesWorkspaceNamePipelinesPipelineNameStatsGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetPipelineStatsApiV1WorkspacesWorkspaceNamePipelinesPipelineNameStatsGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.GetPipelineStatsApiV1WorkspacesWorkspaceNamePipelinesPipelineNameStatsGetRequest(
+                    req
+                );
+        }
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "pipelineQuery",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.SearchApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchPostSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/stats",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.SearchApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchPostResponse =
-      new operations.SearchApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchPostResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.GetPipelineStatsApiV1WorkspacesWorkspaceNamePipelinesPipelineNameStatsGetSecurity(
+                    security
+                );
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.searchResult = utils.objectToClass(
-            httpRes?.data,
-            shared.SearchResult
-          );
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case [404, 409, 591].includes(httpRes?.status):
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+
+        const res: operations.GetPipelineStatsApiV1WorkspacesWorkspaceNamePipelinesPipelineNameStatsGetResponse =
+            new operations.GetPipelineStatsApiV1WorkspacesWorkspaceNamePipelinesPipelineNameStatsGetResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.pipelineStatistics = utils.objectToClass(
+                        httpRes?.data,
+                        shared.PipelineStatistics
+                    );
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Get Pipeline Yaml
+     *
+     * @remarks
+     * Displays the pipeline as a YAML.
+     */
+    async getYaml(
+        req: operations.GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetRequest,
+        security: operations.GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetRequest(
+                    req
+                );
+        }
 
-  /**
-   * Pipeline Search History [private]
-   *
-   * @remarks
-   * Returns the search history which includes information such as the query, the answer, the pipeline used, and more. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
-   */
-  async searchHistory(
-    req: operations.PipelineSearchHistoryApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchHistoryGetRequest,
-    security: operations.PipelineSearchHistoryApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchHistoryGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PipelineSearchHistoryApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchHistoryGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.PipelineSearchHistoryApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchHistoryGetRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/yaml",
+            req
         );
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetSecurity(
+                    security
+                );
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetResponse =
+            new operations.GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.pipelineYaml = utils.objectToClass(httpRes?.data, shared.PipelineYaml);
+                }
+                break;
+            case httpRes?.status == 404:
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/search_history",
-      req
-    );
+    /**
+     * List Pipelines
+     *
+     * @remarks
+     * Lists all the pipelines in the workspace.
+     */
+    async list(
+        req: operations.ListPipelinesApiV1WorkspacesWorkspaceNamePipelinesGetRequest,
+        security: operations.ListPipelinesApiV1WorkspacesWorkspaceNamePipelinesGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.ListPipelinesApiV1WorkspacesWorkspaceNamePipelinesGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.ListPipelinesApiV1WorkspacesWorkspaceNamePipelinesGetRequest(req);
+        }
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.PipelineSearchHistoryApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchHistoryGetSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PipelineSearchHistoryApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchHistoryGetResponse =
-      new operations.PipelineSearchHistoryApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchHistoryGetResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.ListPipelinesApiV1WorkspacesWorkspaceNamePipelinesGetSecurity(
+                security
+            );
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.searchHistoryPagination = utils.objectToClass(
-            httpRes?.data,
-            shared.SearchHistoryPagination
-          );
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+
+        const res: operations.ListPipelinesApiV1WorkspacesWorkspaceNamePipelinesGetResponse =
+            new operations.ListPipelinesApiV1WorkspacesWorkspaceNamePipelinesGetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.pipelinePagination = utils.objectToClass(
+                        httpRes?.data,
+                        shared.PipelinePagination
+                    );
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Search
+     *
+     * @remarks
+     * Run a search using a pipeline.
+     */
+    async search(
+        req: operations.SearchApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchPostRequest,
+        security: operations.SearchApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchPostSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.SearchApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchPostResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.SearchApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchPostRequest(
+                    req
+                );
+        }
 
-  /**
-   * Set Default Pipeline
-   *
-   * @remarks
-   * Sets a pipeline as the default pipeline for search.
-   */
-  async setDefault(
-    req: operations.SetDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPostRequest,
-    security: operations.SetDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPostSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.SetDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPostResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.SetDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPostRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/search",
+            req
         );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "pipelineQuery", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.SearchApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchPostSecurity(
+                    security
+                );
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.SearchApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchPostResponse =
+            new operations.SearchApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchPostResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.searchResult = utils.objectToClass(httpRes?.data, shared.SearchResult);
+                }
+                break;
+            case [404, 409, 591].includes(httpRes?.status):
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/default",
-      req
-    );
+    /**
+     * Pipeline Search History [private]
+     *
+     * @remarks
+     * Returns the search history which includes information such as the query, the answer, the pipeline used, and more. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
+     */
+    async searchHistory(
+        req: operations.PipelineSearchHistoryApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchHistoryGetRequest,
+        security: operations.PipelineSearchHistoryApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchHistoryGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PipelineSearchHistoryApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchHistoryGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.PipelineSearchHistoryApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchHistoryGetRequest(
+                    req
+                );
+        }
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.SetDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPostSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/search_history",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.SetDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPostResponse =
-      new operations.SetDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPostResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.PipelineSearchHistoryApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchHistoryGetSecurity(
+                    security
+                );
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.setDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPost200ApplicationJSONAny =
-            httpRes?.data;
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+
+        const res: operations.PipelineSearchHistoryApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchHistoryGetResponse =
+            new operations.PipelineSearchHistoryApiV1WorkspacesWorkspaceNamePipelinesPipelineNameSearchHistoryGetResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.searchHistoryPagination = utils.objectToClass(
+                        httpRes?.data,
+                        shared.SearchHistoryPagination
+                    );
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Set Default Pipeline
+     *
+     * @remarks
+     * Sets a pipeline as the default pipeline for search.
+     */
+    async setDefault(
+        req: operations.SetDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPostRequest,
+        security: operations.SetDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPostSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.SetDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPostResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.SetDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPostRequest(
+                    req
+                );
+        }
 
-  /**
-   * Undeploy Pipeline
-   *
-   * @remarks
-   * Undeploys a pipeline in deepset Cloud.
-   */
-  async undeploy(
-    req: operations.UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostRequest,
-    security: operations.UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/default",
+            req
         );
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.SetDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPostSecurity(
+                    security
+                );
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.SetDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPostResponse =
+            new operations.SetDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPostResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.setDefaultPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameDefaultPost200ApplicationJSONAny =
+                        httpRes?.data;
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/undeploy",
-      req
-    );
+    /**
+     * Undeploy Pipeline
+     *
+     * @remarks
+     * Undeploys a pipeline in deepset Cloud.
+     */
+    async undeploy(
+        req: operations.UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostRequest,
+        security: operations.UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostRequest(
+                    req
+                );
+        }
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/undeploy",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostResponse =
-      new operations.UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostSecurity(
+                    security
+                );
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.pipelineIndexing = utils.objectToClass(
-            httpRes?.data,
-            shared.PipelineIndexing
-          );
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+
+        const res: operations.UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostResponse =
+            new operations.UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.pipelineIndexing = utils.objectToClass(
+                        httpRes?.data,
+                        shared.PipelineIndexing
+                    );
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Update Pipeline Yaml
+     *
+     * @remarks
+     * Updates the pipeline YAML file.
+     */
+    async updateYaml(
+        req: operations.UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutRequest,
+        security: operations.UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutRequest(
+                    req
+                );
+        }
 
-  /**
-   * Update Pipeline Yaml
-   *
-   * @remarks
-   * Updates the pipeline YAML file.
-   */
-  async updateYaml(
-    req: operations.UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutRequest,
-    security: operations.UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/yaml",
+            req
         );
-    }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/pipelines/{pipeline_name}/yaml",
-      req
-    );
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "put",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutResponse =
-      new operations.UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutSecurity(
+                    security
+                );
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.pipelineName = utils.objectToClass(
-            httpRes?.data,
-            shared.PipelineName
-          );
-        }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
-    }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
 
-    return res;
-  }
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "put",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutResponse =
+            new operations.UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.pipelineName = utils.objectToClass(httpRes?.data, shared.PipelineName);
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

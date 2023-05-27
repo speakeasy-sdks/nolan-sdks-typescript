@@ -6,7 +6,7 @@
  * An enumeration.
  */
 export enum ServerType {
-  CpuServer = "cpu-server",
-  GpuServer = "gpu-server",
-  Unknown = "unknown",
+    CpuServer = "cpu-server",
+    GpuServer = "gpu-server",
+    Unknown = "unknown",
 }

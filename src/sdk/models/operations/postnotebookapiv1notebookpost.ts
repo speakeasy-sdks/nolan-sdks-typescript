@@ -7,44 +7,42 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class PostNotebookApiV1NotebookPostSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class PostNotebookApiV1NotebookPostRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  requestBody?: Record<string, any>;
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    requestBody?: Record<string, any>;
 
-  /**
-   * A unique identifier of a pipeline. You can obtain it from the List Pipelines endpoint.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=pipeline_id",
-  })
-  pipelineId?: string;
+    /**
+     * A unique identifier of a pipeline. You can obtain it from the List Pipelines endpoint.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=pipeline_id" })
+    pipelineId?: string;
 }
 
 export class PostNotebookApiV1NotebookPostResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  notebook?: shared.Notebook;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    notebook?: shared.Notebook;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

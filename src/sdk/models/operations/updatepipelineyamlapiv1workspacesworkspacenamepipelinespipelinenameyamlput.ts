@@ -7,46 +7,42 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=pipeline_name",
-  })
-  pipelineName: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=pipeline_name" })
+    pipelineName: string;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class UpdatePipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlPutResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  pipelineName?: shared.PipelineName;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    pipelineName?: shared.PipelineName;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

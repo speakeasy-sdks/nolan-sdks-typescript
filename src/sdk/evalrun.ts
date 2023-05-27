@@ -8,1010 +8,931 @@ import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 export class EvalRun {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
+    }
 
-  /**
-   * Create Eval Run
-   *
-   * @remarks
-   * Creates an evaluation run for pipeline experiments in deepset Cloud.
-   */
-  async createEvalRun(
-    req: operations.CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostRequest,
-    security: operations.CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostRequest(
-          req
+    /**
+     * Create Eval Run
+     *
+     * @remarks
+     * Creates an evaluation run for pipeline experiments in deepset Cloud.
+     */
+    async createEvalRun(
+        req: operations.CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostRequest,
+        security: operations.CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/eval_runs",
+            req
         );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "evalRunPost", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostSecurity(
+                security
+            );
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostResponse =
+            new operations.CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.evalRunCreateResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.EvalRunCreateResponse
+                    );
+                }
+                break;
+            case [400, 404].includes(httpRes?.status):
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/eval_runs",
-      req
-    );
+    /**
+     * Create Tag [private]
+     *
+     * @remarks
+     * Creates a tag for your evaluation run. Tags can help you order and find your evaluation runs later. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
+     */
+    async createTag(
+        req: operations.CreateTagApiV1WorkspacesWorkspaceNameTagsPostRequest,
+        security: operations.CreateTagApiV1WorkspacesWorkspaceNameTagsPostSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.CreateTagApiV1WorkspacesWorkspaceNameTagsPostResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.CreateTagApiV1WorkspacesWorkspaceNameTagsPostRequest(req);
+        }
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "evalRunPost",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/tags",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostResponse =
-      new operations.CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.evalRunCreateResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.EvalRunCreateResponse
-          );
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.CreateTagApiV1WorkspacesWorkspaceNameTagsPostSecurity(
+                security
+            );
         }
-        break;
-      case [400, 404].includes(httpRes?.status):
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
+
+        const res: operations.CreateTagApiV1WorkspacesWorkspaceNameTagsPostResponse =
+            new operations.CreateTagApiV1WorkspacesWorkspaceNameTagsPostResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.createTagResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.CreateTagResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Delete Eval Run
+     *
+     * @remarks
+     * Removes an evaluation run from deepset Cloud.
+     */
+    async delete(
+        req: operations.DeleteEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameDeleteRequest,
+        security: operations.DeleteEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameDeleteSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameDeleteResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.DeleteEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameDeleteRequest(
+                    req
+                );
+        }
 
-  /**
-   * Create Tag [private]
-   *
-   * @remarks
-   * Creates a tag for your evaluation run. Tags can help you order and find your evaluation runs later. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
-   */
-  async createTag(
-    req: operations.CreateTagApiV1WorkspacesWorkspaceNameTagsPostRequest,
-    security: operations.CreateTagApiV1WorkspacesWorkspaceNameTagsPostSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.CreateTagApiV1WorkspacesWorkspaceNameTagsPostResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.CreateTagApiV1WorkspacesWorkspaceNameTagsPostRequest(
-        req
-      );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/tags",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "requestBody",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.CreateTagApiV1WorkspacesWorkspaceNameTagsPostSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/eval_runs/{eval_run_name}",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.CreateTagApiV1WorkspacesWorkspaceNameTagsPostResponse =
-      new operations.CreateTagApiV1WorkspacesWorkspaceNameTagsPostResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.createTagResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.CreateTagResponse
-          );
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.DeleteEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameDeleteSecurity(
+                    security
+                );
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
+
+        const res: operations.DeleteEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameDeleteResponse =
+            new operations.DeleteEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameDeleteResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Delete Tag [private]
+     *
+     * @remarks
+     * Removes a tag from the workspace. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
+     */
+    async deleteTag(
+        req: operations.DeleteTagApiV1WorkspacesWorkspaceNameTagsTagNameDeleteRequest,
+        security: operations.DeleteTagApiV1WorkspacesWorkspaceNameTagsTagNameDeleteSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteTagApiV1WorkspacesWorkspaceNameTagsTagNameDeleteResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.DeleteTagApiV1WorkspacesWorkspaceNameTagsTagNameDeleteRequest(req);
+        }
 
-  /**
-   * Delete Eval Run
-   *
-   * @remarks
-   * Removes an evaluation run from deepset Cloud.
-   */
-  async delete(
-    req: operations.DeleteEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameDeleteRequest,
-    security: operations.DeleteEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameDeleteSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameDeleteResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.DeleteEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameDeleteRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/tags/{tag_name}",
+            req
         );
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.DeleteTagApiV1WorkspacesWorkspaceNameTagsTagNameDeleteSecurity(
+                    security
+                );
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.DeleteTagApiV1WorkspacesWorkspaceNameTagsTagNameDeleteResponse =
+            new operations.DeleteTagApiV1WorkspacesWorkspaceNameTagsTagNameDeleteResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/eval_runs/{eval_run_name}",
-      req
-    );
+    /**
+     * Get Eval Run
+     *
+     * @remarks
+     * Returns the evaluation run you indicate.
+     */
+    async get(
+        req: operations.GetEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameGetRequest,
+        security: operations.GetEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.GetEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameGetRequest(
+                    req
+                );
+        }
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.DeleteEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameDeleteSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/eval_runs/{eval_run_name}",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameDeleteResponse =
-      new operations.DeleteEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameDeleteResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.GetEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameGetSecurity(
+                    security
+                );
         }
-      );
-    switch (true) {
-      case httpRes?.status == 204:
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
+
+        const res: operations.GetEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameGetResponse =
+            new operations.GetEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameGetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.singleEvalRunResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.SingleEvalRunResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Get Node Eval Predictions
+     *
+     * @remarks
+     * Returns the predicted answers for the pipeline nodes as a JSON or a CSV file
+     */
+    async getNodeEvalPredictions(
+        req: operations.GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetRequest,
+        security: operations.GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetRequest(
+                    req
+                );
+        }
 
-  /**
-   * Delete Tag [private]
-   *
-   * @remarks
-   * Removes a tag from the workspace. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
-   */
-  async deleteTag(
-    req: operations.DeleteTagApiV1WorkspacesWorkspaceNameTagsTagNameDeleteRequest,
-    security: operations.DeleteTagApiV1WorkspacesWorkspaceNameTagsTagNameDeleteSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteTagApiV1WorkspacesWorkspaceNameTagsTagNameDeleteResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.DeleteTagApiV1WorkspacesWorkspaceNameTagsTagNameDeleteRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/eval_runs/{eval_run_name}/nodes/{node_name}/predictions",
+            req
         );
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetSecurity(
+                    security
+                );
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetResponse =
+            new operations.GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.response200GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGet =
+                        httpRes?.data;
+                }
+                break;
+            case [404, 412].includes(httpRes?.status):
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/tags/{tag_name}",
-      req
-    );
+    /**
+     * Get Eval Runs
+     *
+     * @remarks
+     * Returns all the evaluation runs created in deepset Cloud.
+     */
+    async list(
+        req: operations.ListEvalRunsRequest,
+        security: operations.ListEvalRunsSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.ListEvalRunsResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.ListEvalRunsRequest(req);
+        }
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.DeleteTagApiV1WorkspacesWorkspaceNameTagsTagNameDeleteSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/eval_runs",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteTagApiV1WorkspacesWorkspaceNameTagsTagNameDeleteResponse =
-      new operations.DeleteTagApiV1WorkspacesWorkspaceNameTagsTagNameDeleteResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.ListEvalRunsSecurity(security);
         }
-      );
-    switch (true) {
-      case httpRes?.status == 204:
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
+
+        const res: operations.ListEvalRunsResponse = new operations.ListEvalRunsResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.evalRunsResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.EvalRunsResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Get Tags [private]
+     *
+     * @remarks
+     * Lists all the tags in the workspace you choose. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
+     */
+    async listTags(
+        req: operations.GetTagsApiV1WorkspacesWorkspaceNameTagsGetRequest,
+        security: operations.GetTagsApiV1WorkspacesWorkspaceNameTagsGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetTagsApiV1WorkspacesWorkspaceNameTagsGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetTagsApiV1WorkspacesWorkspaceNameTagsGetRequest(req);
+        }
 
-  /**
-   * Get Eval Run
-   *
-   * @remarks
-   * Returns the evaluation run you indicate.
-   */
-  async get(
-    req: operations.GetEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameGetRequest,
-    security: operations.GetEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameGetRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/tags",
+            req
         );
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.GetTagsApiV1WorkspacesWorkspaceNameTagsGetSecurity(security);
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetTagsApiV1WorkspacesWorkspaceNameTagsGetResponse =
+            new operations.GetTagsApiV1WorkspacesWorkspaceNameTagsGetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.getTags = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.getTags = utils.objectToClass(
+                        httpRes?.data,
+                        shared.TagWithMeta,
+                        resFieldDepth
+                    );
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/eval_runs/{eval_run_name}",
-      req
-    );
+    /**
+     * Start Eval Run
+     *
+     * @remarks
+     * Starts a draft evaluation run.
+     */
+    async start(
+        req: operations.StartEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameStartPostRequest,
+        security: operations.StartEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameStartPostSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.StartEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameStartPostResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.StartEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameStartPostRequest(
+                    req
+                );
+        }
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.GetEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameGetSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/eval_runs/{eval_run_name}/start",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameGetResponse =
-      new operations.GetEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameGetResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.StartEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameStartPostSecurity(
+                    security
+                );
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.singleEvalRunResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.SingleEvalRunResponse
-          );
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+
+        const res: operations.StartEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameStartPostResponse =
+            new operations.StartEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameStartPostResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Edit Eval Run
+     *
+     * @remarks
+     * Updates these properties of an evaluation run: name, tags, pipeline, file corpus, and evaluation set.
+     */
+    async update(
+        req: operations.EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchRequest,
+        security: operations.EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchRequest(
+                    req
+                );
+        }
 
-  /**
-   * Get Node Eval Predictions
-   *
-   * @remarks
-   * Returns the predicted answers for the pipeline nodes as a JSON or a CSV file
-   */
-  async getNodeEvalPredictions(
-    req: operations.GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetRequest,
-    security: operations.GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/eval_runs/{eval_run_name}",
+            req
         );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "evalRunPatch", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchSecurity(
+                    security
+                );
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "patch",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchResponse =
+            new operations.EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.evalRunCreateResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.EvalRunCreateResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/eval_runs/{eval_run_name}/nodes/{node_name}/predictions",
-      req
-    );
+    /**
+     * Update Tag [private]
+     *
+     * @remarks
+     * Changes the name of the tag you choose. Type the new tag name in the `name` field of the BODY PARAMS section. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
+     */
+    async updateTag(
+        req: operations.UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchRequest,
+        security: operations.UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchRequest(req);
+        }
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/tags/{tag_name}",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetResponse =
-      new operations.GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.response200GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGet =
-            httpRes?.data;
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchSecurity(
+                security
+            );
         }
-        break;
-      case [404, 412].includes(httpRes?.status):
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "patch",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Get Eval Runs
-   *
-   * @remarks
-   * Returns all the evaluation runs created in deepset Cloud.
-   */
-  async list(
-    req: operations.ListEvalRunsRequest,
-    security: operations.ListEvalRunsSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.ListEvalRunsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.ListEvalRunsRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/eval_runs",
-      req
-    );
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security = new operations.ListEvalRunsSecurity(security);
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.ListEvalRunsResponse =
-      new operations.ListEvalRunsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.evalRunsResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.EvalRunsResponse
-          );
+        const res: operations.UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchResponse =
+            new operations.UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
+
+        return res;
     }
-
-    return res;
-  }
-
-  /**
-   * Get Tags [private]
-   *
-   * @remarks
-   * Lists all the tags in the workspace you choose. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
-   */
-  async listTags(
-    req: operations.GetTagsApiV1WorkspacesWorkspaceNameTagsGetRequest,
-    security: operations.GetTagsApiV1WorkspacesWorkspaceNameTagsGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetTagsApiV1WorkspacesWorkspaceNameTagsGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetTagsApiV1WorkspacesWorkspaceNameTagsGetRequest(
-        req
-      );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/tags",
-      req
-    );
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.GetTagsApiV1WorkspacesWorkspaceNameTagsGetSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetTagsApiV1WorkspacesWorkspaceNameTagsGetResponse =
-      new operations.GetTagsApiV1WorkspacesWorkspaceNameTagsGetResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.getTags = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.getTags = utils.objectToClass(
-            httpRes?.data,
-            shared.TagWithMeta,
-            resFieldDepth
-          );
-        }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Start Eval Run
-   *
-   * @remarks
-   * Starts a draft evaluation run.
-   */
-  async start(
-    req: operations.StartEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameStartPostRequest,
-    security: operations.StartEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameStartPostSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.StartEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameStartPostResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.StartEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameStartPostRequest(
-          req
-        );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/eval_runs/{eval_run_name}/start",
-      req
-    );
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.StartEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameStartPostSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.StartEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameStartPostResponse =
-      new operations.StartEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameStartPostResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        }
-      );
-    switch (true) {
-      case httpRes?.status == 204:
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Edit Eval Run
-   *
-   * @remarks
-   * Updates these properties of an evaluation run: name, tags, pipeline, file corpus, and evaluation set.
-   */
-  async update(
-    req: operations.EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchRequest,
-    security: operations.EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchRequest(
-          req
-        );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/eval_runs/{eval_run_name}",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "evalRunPatch",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "patch",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchResponse =
-      new operations.EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.evalRunCreateResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.EvalRunCreateResponse
-          );
-        }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Update Tag [private]
-   *
-   * @remarks
-   * Changes the name of the tag you choose. Type the new tag name in the `name` field of the BODY PARAMS section. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
-   */
-  async updateTag(
-    req: operations.UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchRequest,
-    security: operations.UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchRequest(
-          req
-        );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/tags/{tag_name}",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "requestBody",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "patch",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchResponse =
-      new operations.UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        }
-      );
-    switch (true) {
-      case httpRes?.status == 204:
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
 }

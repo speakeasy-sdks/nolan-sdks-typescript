@@ -9,52 +9,52 @@ import { Expose, Transform, Type } from "class-transformer";
  * The status of the ingestion process for this file.
  */
 export class SessionDetailFileIngestionStatus extends SpeakeasyBase {
-  /**
-   * The number of files that failed to be ingested.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "failed_files" })
-  failedFiles?: number;
+    /**
+     * The number of files that failed to be ingested.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "failed_files" })
+    failedFiles?: number;
 
-  /**
-   * The number of files that were successfully ingested.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "finished_files" })
-  finishedFiles?: number;
+    /**
+     * The number of files that were successfully ingested.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "finished_files" })
+    finishedFiles?: number;
 }
 
 /**
  * Your upload sessions.
  */
 export class SessionDetail extends SpeakeasyBase {
-  /**
-   * The URL to the documentation of the session.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "documentation_url" })
-  documentationUrl?: string;
+    /**
+     * The URL to the documentation of the session.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "documentation_url" })
+    documentationUrl?: string;
 
-  /**
-   * The time when the session expires.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "expires_at" })
-  @Transform(({ value }) => new Date(value), { toClassOnly: true })
-  expiresAt: Date;
+    /**
+     * The time when the session expires.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "expires_at" })
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    expiresAt: Date;
 
-  /**
-   * The status of the ingestion process for this file.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "ingestion_status" })
-  @Type(() => SessionDetailFileIngestionStatus)
-  ingestionStatus: SessionDetailFileIngestionStatus;
+    /**
+     * The status of the ingestion process for this file.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "ingestion_status" })
+    @Type(() => SessionDetailFileIngestionStatus)
+    ingestionStatus: SessionDetailFileIngestionStatus;
 
-  /**
-   * Unique identifier of a session.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "session_id" })
-  sessionId: string;
+    /**
+     * Unique identifier of a session.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "session_id" })
+    sessionId: string;
 }

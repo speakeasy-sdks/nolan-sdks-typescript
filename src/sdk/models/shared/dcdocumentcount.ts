@@ -9,7 +9,7 @@ import { Expose } from "class-transformer";
  * Successful Response
  */
 export class DCDocumentCount extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "count" })
-  count: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "count" })
+    count: number;
 }

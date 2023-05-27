@@ -9,10 +9,10 @@ import { Expose } from "class-transformer";
  * Successful Response
  */
 export class SearchSessionPostResponse extends SpeakeasyBase {
-  /**
-   * The ID of the search session.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "search_session_id" })
-  searchSessionId: string;
+    /**
+     * The ID of the search session.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "search_session_id" })
+    searchSessionId: string;
 }

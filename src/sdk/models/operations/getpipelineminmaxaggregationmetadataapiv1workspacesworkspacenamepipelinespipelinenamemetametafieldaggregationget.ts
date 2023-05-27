@@ -7,57 +7,51 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetRequest extends SpeakeasyBase {
-  /**
-   * The name of the metadata field to get the min and max values for.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=meta_field",
-  })
-  metaField: string;
+    /**
+     * The name of the metadata field to get the min and max values for.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=meta_field" })
+    metaField: string;
 
-  /**
-   * The name of the pipeline whose files you want to display.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=pipeline_name",
-  })
-  pipelineName: string;
+    /**
+     * The name of the pipeline whose files you want to display.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=pipeline_name" })
+    pipelineName: string;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class GetPipelineMinMaxAggregationMetadataApiV1WorkspacesWorkspaceNamePipelinesPipelineNameMetaMetaFieldAggregationGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  /**
-   * Min and max value aggregation of the meta_field
-   */
-  @SpeakeasyMetadata()
-  pipelineMetadataAggregation?: shared.PipelineMetadataAggregation;
+    /**
+     * Min and max value aggregation of the meta_field
+     */
+    @SpeakeasyMetadata()
+    pipelineMetadataAggregation?: shared.PipelineMetadataAggregation;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

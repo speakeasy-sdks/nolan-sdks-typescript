@@ -10,18 +10,18 @@ import { Expose, Type } from "class-transformer";
  * Returns the search results.
  */
 export class SearchResult extends SpeakeasyBase {
-  /**
-   * The search query
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "query_id" })
-  queryId?: string;
+    /**
+     * The search query
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "query_id" })
+    queryId?: string;
 
-  /**
-   * List of search results.
-   */
-  @SpeakeasyMetadata({ elemType: DeepsetCloudQueryResponse })
-  @Expose({ name: "results" })
-  @Type(() => DeepsetCloudQueryResponse)
-  results: DeepsetCloudQueryResponse[];
+    /**
+     * List of search results.
+     */
+    @SpeakeasyMetadata({ elemType: DeepsetCloudQueryResponse })
+    @Expose({ name: "results" })
+    @Type(() => DeepsetCloudQueryResponse)
+    results: DeepsetCloudQueryResponse[];
 }

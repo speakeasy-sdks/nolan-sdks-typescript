@@ -7,57 +7,51 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetDocumentApiV1WorkspacesWorkspaceNameIndexesIndexNameDocumentsDocumentIdGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class GetDocumentApiV1WorkspacesWorkspaceNameIndexesIndexNameDocumentsDocumentIdGetRequest extends SpeakeasyBase {
-  /**
-   * The identifier of the document. To obtain the ID, you can run the Get All Documents endpoint.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=document_id",
-  })
-  documentId: string;
+    /**
+     * The identifier of the document. To obtain the ID, you can run the Get All Documents endpoint.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=document_id" })
+    documentId: string;
 
-  /**
-   * The name of the pipeline used to process the documents.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=index_name",
-  })
-  indexName: string;
+    /**
+     * The name of the pipeline used to process the documents.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=index_name" })
+    indexName: string;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class GetDocumentApiV1WorkspacesWorkspaceNameIndexesIndexNameDocumentsDocumentIdGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  deepsetCloudDocument?: shared.DeepsetCloudDocument;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    deepsetCloudDocument?: shared.DeepsetCloudDocument;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

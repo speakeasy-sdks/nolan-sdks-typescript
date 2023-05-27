@@ -9,17 +9,17 @@ import { Expose } from "class-transformer";
  * Min and max value aggregation of the meta_field
  */
 export class PipelineMetadataAggregation extends SpeakeasyBase {
-  /**
-   * The maximum value of the metadata field.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "max" })
-  max?: any;
+    /**
+     * The maximum value of the metadata field.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "max" })
+    max?: any;
 
-  /**
-   * The minimum value of the metadata field.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "min" })
-  min?: any;
+    /**
+     * The minimum value of the metadata field.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "min" })
+    min?: any;
 }

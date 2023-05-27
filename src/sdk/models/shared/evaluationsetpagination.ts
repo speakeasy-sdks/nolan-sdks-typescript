@@ -10,16 +10,16 @@ import { Expose, Type } from "class-transformer";
  * Successful Response
  */
 export class EvaluationSetPagination extends SpeakeasyBase {
-  @SpeakeasyMetadata({ elemType: EvaluationSetWithStatus })
-  @Expose({ name: "data" })
-  @Type(() => EvaluationSetWithStatus)
-  data: EvaluationSetWithStatus[];
+    @SpeakeasyMetadata({ elemType: EvaluationSetWithStatus })
+    @Expose({ name: "data" })
+    @Type(() => EvaluationSetWithStatus)
+    data: EvaluationSetWithStatus[];
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "has_more" })
-  hasMore: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "has_more" })
+    hasMore: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "total" })
-  total: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "total" })
+    total: number;
 }

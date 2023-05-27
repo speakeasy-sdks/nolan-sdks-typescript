@@ -5,14 +5,14 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 
 export class BodyImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostFile extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "multipart_form, name=File" })
-  file: string;
+    @SpeakeasyMetadata({ data: "multipart_form, name=File" })
+    file: string;
 
-  @SpeakeasyMetadata({ data: "multipart_form, content=true" })
-  content: Uint8Array;
+    @SpeakeasyMetadata({ data: "multipart_form, content=true" })
+    content: Uint8Array;
 }
 
 export class BodyImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPost extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "multipart_form, file=true" })
-  file: BodyImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostFile;
+    @SpeakeasyMetadata({ data: "multipart_form, file=true" })
+    file: BodyImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostFile;
 }

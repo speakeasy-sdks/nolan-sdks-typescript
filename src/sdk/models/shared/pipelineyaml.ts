@@ -9,10 +9,10 @@ import { Expose } from "class-transformer";
  * Returns the pipeline as YAML.
  */
 export class PipelineYaml extends SpeakeasyBase {
-  /**
-   * YAML string of a pipeline
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "yaml" })
-  yaml: string;
+    /**
+     * YAML string of a pipeline
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "yaml" })
+    yaml: string;
 }

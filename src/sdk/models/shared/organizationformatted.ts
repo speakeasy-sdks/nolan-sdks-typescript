@@ -7,33 +7,33 @@ import { EntityRole } from "./entityrole";
 import { Expose, Type } from "class-transformer";
 
 export class OrganizationFormatted extends SpeakeasyBase {
-  /**
-   * Unique name of an organization
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * Unique name of an organization
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 
-  /**
-   * Unique identifier of an organization
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "organization_id" })
-  organizationId: string;
+    /**
+     * Unique identifier of an organization
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "organization_id" })
+    organizationId: string;
 
-  /**
-   * Pricing plan of an organization, between 0 and 3
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "pricing_plan" })
-  pricingPlan?: number;
+    /**
+     * Pricing plan of an organization, between 0 and 3
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "pricing_plan" })
+    pricingPlan?: number;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "role" })
-  role: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "role" })
+    role: string;
 
-  @SpeakeasyMetadata({ elemType: EntityRole })
-  @Expose({ name: "workspaces" })
-  @Type(() => EntityRole)
-  workspaces: EntityRole[];
+    @SpeakeasyMetadata({ elemType: EntityRole })
+    @Expose({ name: "workspaces" })
+    @Type(() => EntityRole)
+    workspaces: EntityRole[];
 }

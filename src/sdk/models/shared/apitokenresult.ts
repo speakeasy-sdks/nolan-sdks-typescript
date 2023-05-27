@@ -9,10 +9,10 @@ import { Expose } from "class-transformer";
  * Successful Response
  */
 export class APITokenResult extends SpeakeasyBase {
-  /**
-   * API token with the prefix `api_`. This token inherits all permissions of users and acts on behalf of users.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "api_token" })
-  apiToken: string;
+    /**
+     * API token with the prefix `api_`. This token inherits all permissions of users and acts on behalf of users.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "api_token" })
+    apiToken: string;
 }

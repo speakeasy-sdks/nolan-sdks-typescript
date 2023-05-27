@@ -7,66 +7,60 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class ListUsersApiV1UsersGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class ListUsersApiV1UsersGetRequest extends SpeakeasyBase {
-  /**
-   * Enter an ID if you want to see all entries after this ID.
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=after" })
-  after?: string;
+    /**
+     * Enter an ID if you want to see all entries after this ID.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=after" })
+    after?: string;
 
-  /**
-   * Enter an ID if you want to see all entries before this ID.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=before",
-  })
-  before?: string;
+    /**
+     * Enter an ID if you want to see all entries before this ID.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=before" })
+    before?: string;
 
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=include_deleted",
-  })
-  includeDeleted?: boolean;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=include_deleted" })
+    includeDeleted?: boolean;
 
-  /**
-   * How many entries do you want to display? Leaving this field empty keeps the default and max 10 results are returned.
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
-  limit?: number;
+    /**
+     * How many entries do you want to display? Leaving this field empty keeps the default and max 10 results are returned.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
+    limit?: number;
 
-  /**
-   * Which page do you want to see? Type the number.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=page_number",
-  })
-  pageNumber?: number;
+    /**
+     * Which page do you want to see? Type the number.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=page_number" })
+    pageNumber?: number;
 }
 
 export class ListUsersApiV1UsersGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  userPagination?: shared.UserPagination;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    userPagination?: shared.UserPagination;
 }

@@ -9,63 +9,63 @@ import { Expose } from "class-transformer";
  * This node returns 'Answer' objects, not 'Document' objects.
  */
 export enum AnswerNodeEvalRunMetricNodeType {
-  AnswerNode = "answer_node",
+    AnswerNode = "answer_node",
 }
 
 export class AnswerNodeEvalRunMetric extends SpeakeasyBase {
-  /**
-   * The number of exact matches when the node is evaluated in the integrated mode. For more information, see [Experiments and Metrics](https://docs.cloud.deepset.ai/docs/experiments-and-metrics).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "integrated_exact_match" })
-  integratedExactMatch?: number;
+    /**
+     * The number of exact matches when the node is evaluated in the integrated mode. For more information, see [Experiments and Metrics](https://docs.cloud.deepset.ai/docs/experiments-and-metrics).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "integrated_exact_match" })
+    integratedExactMatch?: number;
 
-  /**
-   * The F1 score of the node when the node is evaluated in the integrated mode. For more information, see [Experiments and Metrics](https://docs.cloud.deepset.ai/docs/experiments-and-metrics).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "integrated_f1" })
-  integratedF1?: number;
+    /**
+     * The F1 score of the node when the node is evaluated in the integrated mode. For more information, see [Experiments and Metrics](https://docs.cloud.deepset.ai/docs/experiments-and-metrics).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "integrated_f1" })
+    integratedF1?: number;
 
-  /**
-   * The SAS score of the node when the node is evaluated in the integrated mode. For more information, see [Experiments and Metrics](https://docs.cloud.deepset.ai/docs/experiments-and-metrics).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "integrated_sas" })
-  integratedSas?: number;
+    /**
+     * The SAS score of the node when the node is evaluated in the integrated mode. For more information, see [Experiments and Metrics](https://docs.cloud.deepset.ai/docs/experiments-and-metrics).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "integrated_sas" })
+    integratedSas?: number;
 
-  /**
-   * The number of exact matches when a node is evaluated in the isolated mode. For more information, see [Experiments and Metrics](https://docs.cloud.deepset.ai/docs/experiments-and-metrics).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "isolated_exact_match" })
-  isolatedExactMatch?: number;
+    /**
+     * The number of exact matches when a node is evaluated in the isolated mode. For more information, see [Experiments and Metrics](https://docs.cloud.deepset.ai/docs/experiments-and-metrics).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "isolated_exact_match" })
+    isolatedExactMatch?: number;
 
-  /**
-   * The F1 score of the node when the node is evaluated in the isolated mode. For more information, see [Experiments and Metrics](https://docs.cloud.deepset.ai/docs/experiments-and-metrics).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "isolated_f1" })
-  isolatedF1?: number;
+    /**
+     * The F1 score of the node when the node is evaluated in the isolated mode. For more information, see [Experiments and Metrics](https://docs.cloud.deepset.ai/docs/experiments-and-metrics).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "isolated_f1" })
+    isolatedF1?: number;
 
-  /**
-   * The SAS score of the node when the node is evaluated in the isolated mode. For more information, see [Experiments and Metrics](https://docs.cloud.deepset.ai/docs/experiments-and-metrics).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "isolated_sas" })
-  isolatedSas?: number;
+    /**
+     * The SAS score of the node when the node is evaluated in the isolated mode. For more information, see [Experiments and Metrics](https://docs.cloud.deepset.ai/docs/experiments-and-metrics).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "isolated_sas" })
+    isolatedSas?: number;
 
-  /**
-   * The name of the evaluated pipeline node.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "node_name" })
-  nodeName: string;
+    /**
+     * The name of the evaluated pipeline node.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "node_name" })
+    nodeName: string;
 
-  /**
-   * This node returns 'Answer' objects, not 'Document' objects.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "node_type" })
-  nodeType: AnswerNodeEvalRunMetricNodeType;
+    /**
+     * This node returns 'Answer' objects, not 'Document' objects.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "node_type" })
+    nodeType: AnswerNodeEvalRunMetricNodeType;
 }

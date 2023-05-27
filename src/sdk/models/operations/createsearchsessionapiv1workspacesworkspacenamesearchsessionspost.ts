@@ -7,41 +7,39 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class CreateSearchSessionApiV1WorkspacesWorkspaceNameSearchSessionsPostSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class CreateSearchSessionApiV1WorkspacesWorkspaceNameSearchSessionsPostRequest extends SpeakeasyBase {
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class CreateSearchSessionApiV1WorkspacesWorkspaceNameSearchSessionsPostResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  searchSessionPostResponse?: shared.SearchSessionPostResponse;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    searchSessionPostResponse?: shared.SearchSessionPostResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

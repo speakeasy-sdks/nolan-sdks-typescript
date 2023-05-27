@@ -6,19 +6,19 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class ModelMeta extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "pipeline_tag" })
-  pipelineTag?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "pipeline_tag" })
+    pipelineTag?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "private" })
-  private: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "private" })
+    private: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "provider" })
-  provider: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "provider" })
+    provider: string;
 }

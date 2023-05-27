@@ -7,49 +7,45 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostRequest extends SpeakeasyBase {
-  /**
-   * The name of the pipeline that you want to use for undeploy.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=pipeline_name",
-  })
-  pipelineName: string;
+    /**
+     * The name of the pipeline that you want to use for undeploy.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=pipeline_name" })
+    pipelineName: string;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class UndeployPipelineApiV1WorkspacesWorkspaceNamePipelinesPipelineNameUndeployPostResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  pipelineIndexing?: shared.PipelineIndexing;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    pipelineIndexing?: shared.PipelineIndexing;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

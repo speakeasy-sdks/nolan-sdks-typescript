@@ -6,31 +6,31 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class EvalRunPatch extends SpeakeasyBase {
-  /**
-   * Add a comment to replace the previous one. To keep a history of comments, copy the previous comment here and then append your new comment to it.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "comment" })
-  comment?: string;
+    /**
+     * Add a comment to replace the previous one. To keep a history of comments, copy the previous comment here and then append your new comment to it.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "comment" })
+    comment?: string;
 
-  /**
-   * Which evaluation set do you want to use? Type its name here.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "evaluation_set_name" })
-  evaluationSetName?: string;
+    /**
+     * Which evaluation set do you want to use? Type its name here.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "evaluation_set_name" })
+    evaluationSetName?: string;
 
-  /**
-   * Which pipeline do you want to use for this evaluation run?
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "pipeline_name" })
-  pipelineName?: string;
+    /**
+     * Which pipeline do you want to use for this evaluation run?
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "pipeline_name" })
+    pipelineName?: string;
 
-  /**
-   * Add new tags for this evaluation run. The new tags overwrite the previous ones.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "tags" })
-  tags?: string[];
+    /**
+     * Add new tags for this evaluation run. The new tags overwrite the previous ones.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "tags" })
+    tags?: string[];
 }

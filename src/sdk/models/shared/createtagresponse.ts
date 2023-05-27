@@ -10,8 +10,8 @@ import { Expose, Type } from "class-transformer";
  * Successful Response
  */
 export class CreateTagResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "data" })
-  @Type(() => CreateTagID)
-  data: CreateTagID;
+    @SpeakeasyMetadata()
+    @Expose({ name: "data" })
+    @Type(() => CreateTagID)
+    data: CreateTagID;
 }

@@ -7,52 +7,48 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class CountDocumentsStreamApiV1WorkspacesWorkspaceNameIndexesIndexNameDocumentsCountPostSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class CountDocumentsStreamApiV1WorkspacesWorkspaceNameIndexesIndexNameDocumentsCountPostRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  countDocumentsParams: shared.CountDocumentsParams;
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    countDocumentsParams: shared.CountDocumentsParams;
 
-  /**
-   * The name of the pipeline.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=index_name",
-  })
-  indexName: string;
+    /**
+     * The name of the pipeline.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=index_name" })
+    indexName: string;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class CountDocumentsStreamApiV1WorkspacesWorkspaceNameIndexesIndexNameDocumentsCountPostResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  dcDocumentCount?: shared.DCDocumentCount;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    dcDocumentCount?: shared.DCDocumentCount;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

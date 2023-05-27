@@ -7,94 +7,84 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 /**
  * An enumeration.
  */
 export enum GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetIngestionStatusFileIngestionStatusEnum {
-  Pending = "PENDING",
-  Failed = "FAILED",
-  Finished = "FINISHED",
+    Pending = "PENDING",
+    Failed = "FAILED",
+    Finished = "FINISHED",
 }
 
 export class GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetRequest extends SpeakeasyBase {
-  /**
-   * Enter an ID if you want to see all entries after this ID.
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=after" })
-  after?: string;
+    /**
+     * Enter an ID if you want to see all entries after this ID.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=after" })
+    after?: string;
 
-  /**
-   * Enter an ID if you want to see all entries before this ID.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=before",
-  })
-  before?: string;
+    /**
+     * Enter an ID if you want to see all entries before this ID.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=before" })
+    before?: string;
 
-  /**
-   * Use this option to filter for files that are still being ingested or that were already ingested.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=ingestion_status",
-  })
-  ingestionStatus?: GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetIngestionStatusFileIngestionStatusEnum;
+    /**
+     * Use this option to filter for files that are still being ingested or that were already ingested.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=ingestion_status" })
+    ingestionStatus?: GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetIngestionStatusFileIngestionStatusEnum;
 
-  /**
-   * How many entries do you want to display? Leaving this field empty keeps the default and max 10 results are returned.
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
-  limit?: number;
+    /**
+     * How many entries do you want to display? Leaving this field empty keeps the default and max 10 results are returned.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
+    limit?: number;
 
-  /**
-   * Which page do you want to see? Type the number.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=page_number",
-  })
-  pageNumber?: number;
+    /**
+     * Which page do you want to see? Type the number.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=page_number" })
+    pageNumber?: number;
 
-  /**
-   * The ID of the session.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=session_id",
-  })
-  sessionId: string;
+    /**
+     * The ID of the session.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=session_id" })
+    sessionId: string;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  /**
-   * Returns a list of files registered to the session.
-   */
-  @SpeakeasyMetadata()
-  paginatedSessionFile?: shared.PaginatedSessionFile;
+    /**
+     * Returns a list of files registered to the session.
+     */
+    @SpeakeasyMetadata()
+    paginatedSessionFile?: shared.PaginatedSessionFile;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

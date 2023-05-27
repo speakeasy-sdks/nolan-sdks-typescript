@@ -7,46 +7,42 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetFileApiV1WorkspacesWorkspaceNameFilesFileIdGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class GetFileApiV1WorkspacesWorkspaceNameFilesFileIdGetRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=file_id",
-  })
-  fileId: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=file_id" })
+    fileId: string;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class GetFileApiV1WorkspacesWorkspaceNameFilesFileIdGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  getFileApiV1WorkspacesWorkspaceNameFilesFileIdGet200ApplicationJSONAny?: any;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    getFileApiV1WorkspacesWorkspaceNameFilesFileIdGet200ApplicationJSONAny?: any;
 }

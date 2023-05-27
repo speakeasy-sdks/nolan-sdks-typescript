@@ -10,16 +10,16 @@ import { Expose, Type } from "class-transformer";
  * Successful Response
  */
 export class DocumentStore extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "indexing" })
-  @Type(() => PipelineIndexingStatus)
-  indexing: PipelineIndexingStatus;
+    @SpeakeasyMetadata()
+    @Expose({ name: "indexing" })
+    @Type(() => PipelineIndexingStatus)
+    indexing: PipelineIndexingStatus;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "return_embedding" })
-  returnEmbedding: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "return_embedding" })
+    returnEmbedding: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "similarity" })
-  similarity: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "similarity" })
+    similarity: string;
 }

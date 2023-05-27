@@ -7,25 +7,25 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class ReadUsersMeApiV1MeGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class ReadUsersMeApiV1MeGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  user?: shared.User;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    user?: shared.User;
 }

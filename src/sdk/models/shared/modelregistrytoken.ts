@@ -9,31 +9,31 @@ import { Expose } from "class-transformer";
  * Successful Response
  */
 export class ModelRegistryToken extends SpeakeasyBase {
-  /**
-   * Signals whether the token is invalid.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "invalid" })
-  invalid: boolean;
+    /**
+     * Signals whether the token is invalid.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "invalid" })
+    invalid: boolean;
 
-  /**
-   * Unique identifier of the model registry token
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "model_registry_token_id" })
-  modelRegistryTokenId: string;
+    /**
+     * Unique identifier of the model registry token
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "model_registry_token_id" })
+    modelRegistryTokenId: string;
 
-  /**
-   * Model provider, for example huggingface
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "provider" })
-  provider: string;
+    /**
+     * Model provider, for example huggingface
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "provider" })
+    provider: string;
 
-  /**
-   * Model provider domain, for example huggingface.co
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "provider_domain" })
-  providerDomain: string;
+    /**
+     * Model provider domain, for example huggingface.co
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "provider_domain" })
+    providerDomain: string;
 }

@@ -10,179 +10,179 @@ import { Expose, Transform, Type } from "class-transformer";
  * An enumeration.
  */
 export enum DocumentEvalNodePredictionEvaluationMode {
-  Isolated = "ISOLATED",
-  Integrated = "INTEGRATED",
+    Isolated = "ISOLATED",
+    Integrated = "INTEGRATED",
 }
 
 /**
  * This node returns document objects during the prediction.
  */
 export enum DocumentEvalNodePredictionPredictionType {
-  Document = "document",
+    Document = "document",
 }
 
 export class DocumentEvalNodePrediction extends SpeakeasyBase {
-  /**
-   * 'True' if the node returned the answer as specified in the evaluation set.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "answer_match" })
-  answerMatch: boolean;
+    /**
+     * 'True' if the node returned the answer as specified in the evaluation set.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "answer_match" })
+    answerMatch: boolean;
 
-  /**
-   * Context of the node's prediction.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "context" })
-  context?: string;
+    /**
+     * Context of the node's prediction.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "context" })
+    context?: string;
 
-  /**
-   * 'True' if the node returned the context and answer which was specified in the evaluation set.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "context_and_answer_match" })
-  contextAndAnswerMatch: boolean;
+    /**
+     * 'True' if the node returned the context and answer which was specified in the evaluation set.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "context_and_answer_match" })
+    contextAndAnswerMatch: boolean;
 
-  /**
-   * 'True' if the node returned the context as specified in the evaluation set.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "context_match" })
-  contextMatch: boolean;
+    /**
+     * 'True' if the node returned the context as specified in the evaluation set.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "context_match" })
+    contextMatch: boolean;
 
-  /**
-   * The maximum context similarity of all predictions for the given label.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "context_similarity" })
-  contextSimilarity: number;
+    /**
+     * The maximum context similarity of all predictions for the given label.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "context_similarity" })
+    contextSimilarity: number;
 
-  /**
-   * The date and time when the prediction was created.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_at" })
-  @Transform(({ value }) => new Date(value), { toClassOnly: true })
-  createdAt: Date;
+    /**
+     * The date and time when the prediction was created.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_at" })
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt: Date;
 
-  /**
-   * The ID of the predicted document.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "document_id" })
-  documentId?: string;
+    /**
+     * The ID of the predicted document.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "document_id" })
+    documentId?: string;
 
-  /**
-   * Whether the node was evaluated as part of the entire pipeline (integrated) or on its own (isolated).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "eval_mode" })
-  evalMode: DocumentEvalNodePredictionEvaluationMode;
+    /**
+     * Whether the node was evaluated as part of the entire pipeline (integrated) or on its own (isolated).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "eval_mode" })
+    evalMode: DocumentEvalNodePredictionEvaluationMode;
 
-  /**
-   * ID for the results of a node which this prediction belongs to.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "eval_node_result_id" })
-  evalNodeResultId: string;
+    /**
+     * ID for the results of a node which this prediction belongs to.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "eval_node_result_id" })
+    evalNodeResultId: string;
 
-  /**
-   * Filters which were used for the evaluation of the query.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "filters" })
-  filters?: Record<string, any>;
+    /**
+     * Filters which were used for the evaluation of the query.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "filters" })
+    filters?: Record<string, any>;
 
-  /**
-   * 'True' if the node returned the document and answer as specified in the evaluation set.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "gold_id_and_answer_match" })
-  goldIdAndAnswerMatch: boolean;
+    /**
+     * 'True' if the node returned the document and answer as specified in the evaluation set.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "gold_id_and_answer_match" })
+    goldIdAndAnswerMatch: boolean;
 
-  /**
-   * 'True' if the node returned the document, context, and answer as specified in the evaluation set.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "gold_id_and_context_and_answer_match" })
-  goldIdAndContextAndAnswerMatch: boolean;
+    /**
+     * 'True' if the node returned the document, context, and answer as specified in the evaluation set.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "gold_id_and_context_and_answer_match" })
+    goldIdAndContextAndAnswerMatch: boolean;
 
-  /**
-   * 'True' if the node returned the document and context as specified in the evaluation set.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "gold_id_and_context_match" })
-  goldIdAndContextMatch: boolean;
+    /**
+     * 'True' if the node returned the document and context as specified in the evaluation set.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "gold_id_and_context_match" })
+    goldIdAndContextMatch: boolean;
 
-  /**
-   * 'True' if the node returned the document as specified in the evaluation set.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "gold_id_match" })
-  goldIdMatch: boolean;
+    /**
+     * 'True' if the node returned the document as specified in the evaluation set.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "gold_id_match" })
+    goldIdMatch: boolean;
 
-  /**
-   * 'True' if the node returned the document or answer as specified in the evaluation set.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "gold_id_or_answer_match" })
-  goldIdOrAnswerMatch: boolean;
+    /**
+     * 'True' if the node returned the document or answer as specified in the evaluation set.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "gold_id_or_answer_match" })
+    goldIdOrAnswerMatch: boolean;
 
-  /**
-   * 'True' if the node returned the document or context as specified in the evaluation set.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "gold_id_or_context_match" })
-  goldIdOrContextMatch: boolean;
+    /**
+     * 'True' if the node returned the document or context as specified in the evaluation set.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "gold_id_or_context_match" })
+    goldIdOrContextMatch: boolean;
 
-  /**
-   * The index of this prediction for a particular query.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "index" })
-  index: number;
+    /**
+     * The index of this prediction for a particular query.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "index" })
+    index: number;
 
-  /**
-   * The labels associated with this prediction including label specific prediction data such as the f1 score for this specific label.
-   */
-  @SpeakeasyMetadata({ elemType: LabelWithPrediction })
-  @Expose({ name: "labels" })
-  @Type(() => LabelWithPrediction)
-  labels: LabelWithPrediction[];
+    /**
+     * The labels associated with this prediction including label specific prediction data such as the f1 score for this specific label.
+     */
+    @SpeakeasyMetadata({ elemType: LabelWithPrediction })
+    @Expose({ name: "labels" })
+    @Type(() => LabelWithPrediction)
+    labels: LabelWithPrediction[];
 
-  /**
-   * Unique identifier of this eval prediction.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "prediction_id" })
-  predictionId: string;
+    /**
+     * Unique identifier of this eval prediction.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "prediction_id" })
+    predictionId: string;
 
-  /**
-   * This node returns document objects during the prediction.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "prediction_type" })
-  predictionType: DocumentEvalNodePredictionPredictionType;
+    /**
+     * This node returns document objects during the prediction.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "prediction_type" })
+    predictionType: DocumentEvalNodePredictionPredictionType;
 
-  /**
-   * The text which was used to evaluate this particular node's query behavior.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "query" })
-  query: string;
+    /**
+     * The text which was used to evaluate this particular node's query behavior.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "query" })
+    query: string;
 
-  /**
-   * The rank of this prediction among the predictions of the node for the given query.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "rank" })
-  rank: number;
+    /**
+     * The rank of this prediction among the predictions of the node for the given query.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "rank" })
+    rank: number;
 
-  /**
-   * The date and time when the prediction was created.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "updated_at" })
-  @Transform(({ value }) => new Date(value), { toClassOnly: true })
-  updatedAt?: Date;
+    /**
+     * The date and time when the prediction was created.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "updated_at" })
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    updatedAt?: Date;
 }

@@ -7,44 +7,42 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  evalRunPost: shared.EvalRunPost;
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    evalRunPost: shared.EvalRunPost;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Your experiment was created.
-   */
-  @SpeakeasyMetadata()
-  evalRunCreateResponse?: shared.EvalRunCreateResponse;
+    /**
+     * Your experiment was created.
+     */
+    @SpeakeasyMetadata()
+    evalRunCreateResponse?: shared.EvalRunCreateResponse;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

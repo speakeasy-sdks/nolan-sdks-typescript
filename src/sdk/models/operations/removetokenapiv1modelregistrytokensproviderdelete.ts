@@ -7,50 +7,48 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class RemoveTokenApiV1ModelRegistryTokensProviderDeleteSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 /**
  * The provider of the model registry
  */
 export enum RemoveTokenApiV1ModelRegistryTokensProviderDeleteProviderModelProvider {
-  Huggingface = "huggingface",
-  Openai = "openai",
-  Cohere = "cohere",
+    Huggingface = "huggingface",
+    Openai = "openai",
+    Cohere = "cohere",
 }
 
 export class RemoveTokenApiV1ModelRegistryTokensProviderDeleteRequest extends SpeakeasyBase {
-  /**
-   * The provider of the model registry
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=provider",
-  })
-  provider: RemoveTokenApiV1ModelRegistryTokensProviderDeleteProviderModelProvider;
+    /**
+     * The provider of the model registry
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=provider" })
+    provider: RemoveTokenApiV1ModelRegistryTokensProviderDeleteProviderModelProvider;
 }
 
 export class RemoveTokenApiV1ModelRegistryTokensProviderDeleteResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  removeTokenApiV1ModelRegistryTokensProviderDelete202ApplicationJSONAny?: any;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    removeTokenApiV1ModelRegistryTokensProviderDelete202ApplicationJSONAny?: any;
 }

@@ -6,21 +6,21 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class CountDocumentsParams extends SpeakeasyBase {
-  /**
-   * Filters you can use to narrow down the search. For more information, see [metadata filtering](https://docs.haystack.deepset.ai/docs/metadata-filtering).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "filters" })
-  filters?: Record<string, any>;
+    /**
+     * Filters you can use to narrow down the search. For more information, see [metadata filtering](https://docs.haystack.deepset.ai/docs/metadata-filtering).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "filters" })
+    filters?: Record<string, any>;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "only_documents_without_embedding" })
-  onlyDocumentsWithoutEmbedding?: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "only_documents_without_embedding" })
+    onlyDocumentsWithoutEmbedding?: boolean;
 
-  /**
-   * Specifies if documents should be prefiltered in the document store instead of within the retriever.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "use_prefiltering" })
-  usePrefiltering?: boolean;
+    /**
+     * Specifies if documents should be prefiltered in the document store instead of within the retriever.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "use_prefiltering" })
+    usePrefiltering?: boolean;
 }

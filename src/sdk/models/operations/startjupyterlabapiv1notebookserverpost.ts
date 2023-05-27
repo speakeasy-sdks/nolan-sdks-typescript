@@ -7,31 +7,31 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class StartJupyterLabApiV1NotebookServerPostSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class StartJupyterLabApiV1NotebookServerPostResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  startJupyterLabApiV1NotebookServerPost200ApplicationJSONAny?: any;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    startJupyterLabApiV1NotebookServerPost200ApplicationJSONAny?: any;
 }

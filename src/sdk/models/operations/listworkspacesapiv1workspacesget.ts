@@ -7,25 +7,25 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class ListWorkspacesApiV1WorkspacesGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class ListWorkspacesApiV1WorkspacesGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata({ elemType: shared.Workspace })
-  workspaceList?: shared.Workspace[];
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata({ elemType: shared.Workspace })
+    workspaceList?: shared.Workspace[];
 }

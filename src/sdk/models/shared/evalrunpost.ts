@@ -6,45 +6,45 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class EvalRunPost extends SpeakeasyBase {
-  /**
-   * Type any additional information or comments as raw text.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "comment" })
-  comment?: string;
+    /**
+     * Type any additional information or comments as raw text.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "comment" })
+    comment?: string;
 
-  /**
-   * Turns the debug mode on for this evaluation run. The debug mode shows you what went wrong if the evaluation run fails.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "debug" })
-  debug: boolean;
+    /**
+     * Turns the debug mode on for this evaluation run. The debug mode shows you what went wrong if the evaluation run fails.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "debug" })
+    debug: boolean;
 
-  /**
-   * Which evaluation set do you want to use? Type its name here.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "evaluation_set_name" })
-  evaluationSetName: string;
+    /**
+     * Which evaluation set do you want to use? Type its name here.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "evaluation_set_name" })
+    evaluationSetName: string;
 
-  /**
-   * Give your evaluation run a unique name.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * Give your evaluation run a unique name.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 
-  /**
-   * Which pipeline do you want to use for this evaluation run?
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "pipeline_name" })
-  pipelineName: string;
+    /**
+     * Which pipeline do you want to use for this evaluation run?
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "pipeline_name" })
+    pipelineName: string;
 
-  /**
-   * Enter the tags for this evaluation run.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "tags" })
-  tags?: string[];
+    /**
+     * Enter the tags for this evaluation run.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "tags" })
+    tags?: string[];
 }

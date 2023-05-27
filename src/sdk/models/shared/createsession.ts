@@ -9,16 +9,16 @@ import { Expose } from "class-transformer";
  * An enumeration.
  */
 export enum CreateSessionFileWriteModeEnum {
-  Keep = "KEEP",
-  Overwrite = "OVERWRITE",
-  Fail = "FAIL",
+    Keep = "KEEP",
+    Overwrite = "OVERWRITE",
+    Fail = "FAIL",
 }
 
 export class CreateSession extends SpeakeasyBase {
-  /**
-   * Determines how to handle files that already exist. You can KEEP the existing file, OVERWRITE it, or FAIL to ingest if a file with the same name is already in your workspace.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "write_mode" })
-  writeMode?: CreateSessionFileWriteModeEnum;
+    /**
+     * Determines how to handle files that already exist. You can KEEP the existing file, OVERWRITE it, or FAIL to ingest if a file with the same name is already in your workspace.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "write_mode" })
+    writeMode?: CreateSessionFileWriteModeEnum;
 }

@@ -9,15 +9,15 @@ import { Expose } from "class-transformer";
  * Successful Response
  */
 export class EvalRunsResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "data" })
-  data: any;
+    @SpeakeasyMetadata()
+    @Expose({ name: "data" })
+    data: any;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "has_more" })
-  hasMore: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "has_more" })
+    hasMore: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "total" })
-  total: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "total" })
+    total: number;
 }

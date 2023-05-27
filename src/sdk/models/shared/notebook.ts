@@ -9,7 +9,7 @@ import { Expose } from "class-transformer";
  * Successful Response
  */
 export class Notebook extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "link" })
-  link: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "link" })
+    link: string;
 }

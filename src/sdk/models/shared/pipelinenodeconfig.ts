@@ -6,17 +6,17 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class PipelineNodeConfig extends SpeakeasyBase {
-  /**
-   * The configuration parameters of this pipeline component
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "params" })
-  params: Record<string, any>;
+    /**
+     * The configuration parameters of this pipeline component
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "params" })
+    params: Record<string, any>;
 
-  /**
-   * Python class name of the node.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "type" })
-  type: string;
+    /**
+     * Python class name of the node.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type: string;
 }

@@ -10,105 +10,105 @@ import { Expose, Transform, Type } from "class-transformer";
  * The user who created the pipeline.
  */
 export class PipelineIndexingOauthUser extends SpeakeasyBase {
-  /**
-   * Family name of a user
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "family_name" })
-  familyName: string;
+    /**
+     * Family name of a user
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "family_name" })
+    familyName: string;
 
-  /**
-   * Given name of a user
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "given_name" })
-  givenName: string;
+    /**
+     * Given name of a user
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "given_name" })
+    givenName: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "user_id" })
-  userId: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "user_id" })
+    userId: string;
 }
 
 /**
  * Successful Response
  */
 export class PipelineIndexing extends SpeakeasyBase {
-  /**
-   * Datetime object, specifies when the pipeline was created
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_at" })
-  @Transform(({ value }) => new Date(value), { toClassOnly: true })
-  createdAt: Date;
+    /**
+     * Datetime object, specifies when the pipeline was created
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_at" })
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt: Date;
 
-  /**
-   * The user who created the pipeline.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_by" })
-  @Type(() => PipelineIndexingOauthUser)
-  createdBy?: PipelineIndexingOauthUser;
+    /**
+     * The user who created the pipeline.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_by" })
+    @Type(() => PipelineIndexingOauthUser)
+    createdBy?: PipelineIndexingOauthUser;
 
-  /**
-   * Soft deletion of pipelines
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "deleted" })
-  deleted?: boolean;
+    /**
+     * Soft deletion of pipelines
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "deleted" })
+    deleted?: boolean;
 
-  /**
-   * Desired status of a pipeline. This string is either 'DEPLOYED' or  'UNDEPLOYED'.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "desired_status" })
-  desiredStatus: string;
+    /**
+     * Desired status of a pipeline. This string is either 'DEPLOYED' or  'UNDEPLOYED'.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "desired_status" })
+    desiredStatus: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "indexing" })
-  @Type(() => PipelineIndexingStatus)
-  indexing: PipelineIndexingStatus;
+    @SpeakeasyMetadata()
+    @Expose({ name: "indexing" })
+    @Type(() => PipelineIndexingStatus)
+    indexing: PipelineIndexingStatus;
 
-  /**
-   * Pipeline is set to default
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "is_default" })
-  isDefault: boolean;
+    /**
+     * Pipeline is set to default
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "is_default" })
+    isDefault: boolean;
 
-  /**
-   * Datetime object, specifies when the pipeline was edited
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "last_edited_at" })
-  @Transform(({ value }) => new Date(value), { toClassOnly: true })
-  lastEditedAt?: Date;
+    /**
+     * Datetime object, specifies when the pipeline was edited
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "last_edited_at" })
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    lastEditedAt?: Date;
 
-  /**
-   * The user who last edited the pipeline.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "last_edited_by" })
-  @Type(() => PipelineIndexingOauthUser)
-  lastEditedBy?: PipelineIndexingOauthUser;
+    /**
+     * The user who last edited the pipeline.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "last_edited_by" })
+    @Type(() => PipelineIndexingOauthUser)
+    lastEditedBy?: PipelineIndexingOauthUser;
 
-  /**
-   * Name of the pipeline
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * Name of the pipeline
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 
-  /**
-   * Unique identifier of a pipeline
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "pipeline_id" })
-  pipelineId: string;
+    /**
+     * Unique identifier of a pipeline
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "pipeline_id" })
+    pipelineId: string;
 
-  /**
-   * Status of a pipeline. This string can be: 'DEPLOYED', 'UNDEPLOYED', 'DEPLOYMENT_IN_PROGRESS', and the like
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "status" })
-  status: string;
+    /**
+     * Status of a pipeline. This string can be: 'DEPLOYED', 'UNDEPLOYED', 'DEPLOYMENT_IN_PROGRESS', and the like
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "status" })
+    status: string;
 }

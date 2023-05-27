@@ -6,25 +6,25 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 
 export class RemoveTokenDeprecatedApiV1ModelRegistryTokenDeleteSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class RemoveTokenDeprecatedApiV1ModelRegistryTokenDeleteResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  removeTokenDeprecatedApiV1ModelRegistryTokenDelete202ApplicationJSONAny?: any;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    removeTokenDeprecatedApiV1ModelRegistryTokenDelete202ApplicationJSONAny?: any;
 }

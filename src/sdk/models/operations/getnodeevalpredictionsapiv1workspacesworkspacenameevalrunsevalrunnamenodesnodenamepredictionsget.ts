@@ -7,135 +7,121 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 /**
  * The name of the entity you want to sort by.
  */
 export enum GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetFieldField {
-  Query = "query",
-  Index = "index",
-  Rank = "rank",
-  ContextSimilarity = "context_similarity",
-  F1ContextScope = "f1_context_scope",
-  F1DocumentIdScope = "f1_document_id_scope",
-  F1DocumentIdAndContextScope = "f1_document_id_and_context_scope",
-  Answer = "answer",
+    Query = "query",
+    Index = "index",
+    Rank = "rank",
+    ContextSimilarity = "context_similarity",
+    F1ContextScope = "f1_context_scope",
+    F1DocumentIdScope = "f1_document_id_scope",
+    F1DocumentIdAndContextScope = "f1_document_id_and_context_scope",
+    Answer = "answer",
 }
 
 /**
  * Choose how you want to sort the results.
  */
 export enum GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetOrderOrder {
-  Asc = "ASC",
-  Desc = "DESC",
+    Asc = "ASC",
+    Desc = "DESC",
 }
 
 export class GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetRequest extends SpeakeasyBase {
-  /**
-   * Enter an ID if you want to see all entries after this ID.
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=after" })
-  after?: string;
+    /**
+     * Enter an ID if you want to see all entries after this ID.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=after" })
+    after?: string;
 
-  /**
-   * Enter an ID if you want to see all entries before this ID.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=before",
-  })
-  before?: string;
+    /**
+     * Enter an ID if you want to see all entries before this ID.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=before" })
+    before?: string;
 
-  /**
-   * Which evaluation run do you want to see the metrics for? Type its name here.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=eval_run_name",
-  })
-  evalRunName: string;
+    /**
+     * Which evaluation run do you want to see the metrics for? Type its name here.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=eval_run_name" })
+    evalRunName: string;
 
-  /**
-   * The name of the entity you want to sort by.
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=field" })
-  field?: GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetFieldField;
+    /**
+     * The name of the entity you want to sort by.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=field" })
+    field?: GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetFieldField;
 
-  /**
-   * The OData filter you want to use to in your query. It supports exact match and `AND` operations. For example, to filter for a metadata `category:news`, here's what the URL could look like: 'url = "https://api.cloud.deepset.ai/api/v1/workspaces/production/files?limit=10&filter=category eq 'news'"'. OData filters only work with cursor-based pagination (leave the `page_number` field blank to enable it).To learn more about the OData filter syntax, see: [Querying Data](https://www.odata.org/getting-started/basic-tutorial/#queryData).
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=filter",
-  })
-  filter?: string;
+    /**
+     * The OData filter you want to use to in your query. It supports exact match and `AND` operations. For example, to filter for a metadata `category:news`, here's what the URL could look like: 'url = "https://api.cloud.deepset.ai/api/v1/workspaces/production/files?limit=10&filter=category eq 'news'"'. OData filters only work with cursor-based pagination (leave the `page_number` field blank to enable it).To learn more about the OData filter syntax, see: [Querying Data](https://www.odata.org/getting-started/basic-tutorial/#queryData).
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=filter" })
+    filter?: string;
 
-  /**
-   * How many entries do you want to display? Leaving this field empty keeps the default and max 10 results are returned.
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
-  limit?: number;
+    /**
+     * How many entries do you want to display? Leaving this field empty keeps the default and max 10 results are returned.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
+    limit?: number;
 
-  /**
-   * What's the name of the node whose results you want to see?
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=node_name",
-  })
-  nodeName: string;
+    /**
+     * What's the name of the node whose results you want to see?
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=node_name" })
+    nodeName: string;
 
-  /**
-   * Choose how you want to sort the results.
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=order" })
-  order?: GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetOrderOrder;
+    /**
+     * Choose how you want to sort the results.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=order" })
+    order?: GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetOrderOrder;
 
-  /**
-   * Which page do you want to see? Type the number.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=page_number",
-  })
-  pageNumber?: number;
+    /**
+     * Which page do you want to see? Type the number.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=page_number" })
+    pageNumber?: number;
 
-  /**
-   * Partial implementation of the OData $select operator. It currently only supports selecting fields from the root entity or a child entity. Selecting fields from children's children is not supported. If you use this parameter, the API answer is always a flat list of distinct JSON objects with the selected properties, for example, '[{"given_name": "user1", "user_id": "..."}, ...]' for 'select=created_by/given_name, created_by/user_id'. The results are ordered by the first selected attribute. To learn more about the OData filter syntax, see: [Querying Data](https://www.odata.org/getting-started/basic-tutorial/#queryData).
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=select",
-  })
-  select?: string;
+    /**
+     * Partial implementation of the OData $select operator. It currently only supports selecting fields from the root entity or a child entity. Selecting fields from children's children is not supported. If you use this parameter, the API answer is always a flat list of distinct JSON objects with the selected properties, for example, '[{"given_name": "user1", "user_id": "..."}, ...]' for 'select=created_by/given_name, created_by/user_id'. The results are ordered by the first selected attribute. To learn more about the OData filter syntax, see: [Querying Data](https://www.odata.org/getting-started/basic-tutorial/#queryData).
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=select" })
+    select?: string;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  /**
-   * These are the predicted answers for the node you chose. If you added 'text/csv' in the `accept` header, they're returned as a CSV file.
-   */
-  @SpeakeasyMetadata()
-  response200GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGet?: any;
+    /**
+     * These are the predicted answers for the node you chose. If you added 'text/csv' in the `accept` header, they're returned as a CSV file.
+     */
+    @SpeakeasyMetadata()
+    response200GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGet?: any;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

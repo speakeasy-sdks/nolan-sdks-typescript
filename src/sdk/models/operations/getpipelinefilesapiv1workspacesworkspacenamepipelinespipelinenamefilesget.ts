@@ -7,65 +7,59 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 /**
  * An enumeration.
  */
 export enum GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetStatusFileIndexingStatusQuery {
-  Failed = "FAILED",
-  IndexedNoDocuments = "INDEXED_NO_DOCUMENTS",
+    Failed = "FAILED",
+    IndexedNoDocuments = "INDEXED_NO_DOCUMENTS",
 }
 
 export class GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetRequest extends SpeakeasyBase {
-  /**
-   * The name of the pipeline whose files you want to display.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=pipeline_name",
-  })
-  pipelineName: string;
+    /**
+     * The name of the pipeline whose files you want to display.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=pipeline_name" })
+    pipelineName: string;
 
-  /**
-   * The status of the pipeline whose files you want to display.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=status",
-  })
-  status?: GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetStatusFileIndexingStatusQuery;
+    /**
+     * The status of the pipeline whose files you want to display.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=status" })
+    status?: GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetStatusFileIndexingStatusQuery;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class GetPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  getPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGet200ApplicationJSONUuidStrings?: string[];
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    getPipelineFilesApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFilesGet200ApplicationJSONUuidStrings?: string[];
 }

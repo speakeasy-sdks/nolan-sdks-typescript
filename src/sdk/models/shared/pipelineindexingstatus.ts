@@ -6,17 +6,17 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class PipelineIndexingStatus extends SpeakeasyBase {
-  /**
-   * Files that failed during indexing
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "failed_file_count" })
-  failedFileCount: number;
+    /**
+     * Files that failed during indexing
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "failed_file_count" })
+    failedFileCount: number;
 
-  /**
-   * The number of pending files to be indexed
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "pending_file_count" })
-  pendingFileCount: number;
+    /**
+     * The number of pending files to be indexed
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "pending_file_count" })
+    pendingFileCount: number;
 }

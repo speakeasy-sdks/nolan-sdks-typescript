@@ -7,41 +7,39 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class RemoveTokenApiV1TokenApiTokenIdDeleteSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class RemoveTokenApiV1TokenApiTokenIdDeleteRequest extends SpeakeasyBase {
-  /**
-   * A unique identifier of the API token that you want to remove. You can run the Get Tokens endpoint to check the IDs of the existing API tokens.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=api_token_id",
-  })
-  apiTokenId: string;
+    /**
+     * A unique identifier of the API token that you want to remove. You can run the Get Tokens endpoint to check the IDs of the existing API tokens.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=api_token_id" })
+    apiTokenId: string;
 }
 
 export class RemoveTokenApiV1TokenApiTokenIdDeleteResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  removeTokenApiV1TokenApiTokenIdDelete200ApplicationJSONAny?: any;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    removeTokenApiV1TokenApiTokenIdDelete200ApplicationJSONAny?: any;
 }

@@ -6,7 +6,7 @@
  * An enumeration.
  */
 export enum ServerState {
-  Starting = "STARTING",
-  Up = "UP",
-  Down = "DOWN",
+    Starting = "STARTING",
+    Up = "UP",
+    Down = "DOWN",
 }

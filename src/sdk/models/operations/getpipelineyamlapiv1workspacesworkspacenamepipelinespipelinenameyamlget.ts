@@ -7,49 +7,45 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetRequest extends SpeakeasyBase {
-  /**
-   * Specifies the name of the pipeline whose YAML you want to display.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=pipeline_name",
-  })
-  pipelineName: string;
+    /**
+     * Specifies the name of the pipeline whose YAML you want to display.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=pipeline_name" })
+    pipelineName: string;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  /**
-   * Returns the pipeline as YAML.
-   */
-  @SpeakeasyMetadata()
-  pipelineYaml?: shared.PipelineYaml;
+    /**
+     * Returns the pipeline as YAML.
+     */
+    @SpeakeasyMetadata()
+    pipelineYaml?: shared.PipelineYaml;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

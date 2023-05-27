@@ -10,16 +10,16 @@ import { Expose, Type } from "class-transformer";
  * Successful Response
  */
 export class UserPagination extends SpeakeasyBase {
-  @SpeakeasyMetadata({ elemType: User })
-  @Expose({ name: "data" })
-  @Type(() => User)
-  data: User[];
+    @SpeakeasyMetadata({ elemType: User })
+    @Expose({ name: "data" })
+    @Type(() => User)
+    data: User[];
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "has_more" })
-  hasMore: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "has_more" })
+    hasMore: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "total" })
-  total: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "total" })
+    total: number;
 }

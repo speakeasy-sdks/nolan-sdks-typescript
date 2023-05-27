@@ -10,16 +10,16 @@ import { Expose, Type } from "class-transformer";
  * Successful Response
  */
 export class TokenPagination extends SpeakeasyBase {
-  @SpeakeasyMetadata({ elemType: Token })
-  @Expose({ name: "data" })
-  @Type(() => Token)
-  data: Token[];
+    @SpeakeasyMetadata({ elemType: Token })
+    @Expose({ name: "data" })
+    @Type(() => Token)
+    data: Token[];
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "has_more" })
-  hasMore: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "has_more" })
+    hasMore: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "total" })
-  total: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "total" })
+    total: number;
 }

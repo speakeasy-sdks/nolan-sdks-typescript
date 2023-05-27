@@ -7,49 +7,45 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetSharedPrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesSharedPrototypeIdGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class GetSharedPrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesSharedPrototypeIdGetRequest extends SpeakeasyBase {
-  /**
-   * The ID of the shared prototype
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=shared_prototype_id",
-  })
-  sharedPrototypeId: string;
+    /**
+     * The ID of the shared prototype
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=shared_prototype_id" })
+    sharedPrototypeId: string;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class GetSharedPrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesSharedPrototypeIdGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  /**
-   * The requested prototype
-   */
-  @SpeakeasyMetadata()
-  sharedPrototype?: shared.SharedPrototype;
+    /**
+     * The requested prototype
+     */
+    @SpeakeasyMetadata()
+    sharedPrototype?: shared.SharedPrototype;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

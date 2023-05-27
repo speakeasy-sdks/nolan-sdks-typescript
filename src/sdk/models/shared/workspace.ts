@@ -9,38 +9,38 @@ import { Expose } from "class-transformer";
  * Successful Response
  */
 export class Workspace extends SpeakeasyBase {
-  /**
-   * Default idle timeout for pipelines. Pipelines will be marked as idle after this time. Reach out to support to increase this limit.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "default_idle_timeout_in_seconds" })
-  defaultIdleTimeoutInSeconds?: number;
+    /**
+     * Default idle timeout for pipelines. Pipelines will be marked as idle after this time. Reach out to support to increase this limit.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "default_idle_timeout_in_seconds" })
+    defaultIdleTimeoutInSeconds?: number;
 
-  /**
-   * Supported languages within a workspace.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "languages" })
-  languages?: Record<string, any>;
+    /**
+     * Supported languages within a workspace.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "languages" })
+    languages?: Record<string, any>;
 
-  /**
-   * Metadata for workspaces.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "metadata_fields" })
-  metadataFields?: Record<string, any>;
+    /**
+     * Metadata for workspaces.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "metadata_fields" })
+    metadataFields?: Record<string, any>;
 
-  /**
-   * How do you want to name your workspace? Type a name that's longer than 3 characters.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * How do you want to name your workspace? Type a name that's longer than 3 characters.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 
-  /**
-   * Unique identifier of a workspace.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "workspace_id" })
-  workspaceId: string;
+    /**
+     * Unique identifier of a workspace.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "workspace_id" })
+    workspaceId: string;
 }

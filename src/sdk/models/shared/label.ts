@@ -9,70 +9,70 @@ import { Expose } from "class-transformer";
  * An enumeration.
  */
 export enum LabelLabelStateAsStr {
-  MatchingNotStarted = "MATCHING_NOT_STARTED",
-  Matched = "MATCHED",
-  NoMatchFound = "NO_MATCH_FOUND",
-  CandidatesFound = "CANDIDATES_FOUND",
+    MatchingNotStarted = "MATCHING_NOT_STARTED",
+    Matched = "MATCHED",
+    NoMatchFound = "NO_MATCH_FOUND",
+    CandidatesFound = "CANDIDATES_FOUND",
 }
 
 export class Label extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "answer" })
-  answer?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "answer" })
+    answer?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "answer_end" })
-  answerEnd?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "answer_end" })
+    answerEnd?: number;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "answer_start" })
-  answerStart?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "answer_start" })
+    answerStart?: number;
 
-  /**
-   * A dictionary that holds the UUID as key and score as value for each candidate in the label to file matching.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "candidates" })
-  candidates?: Record<string, number>;
+    /**
+     * A dictionary that holds the UUID as key and score as value for each candidate in the label to file matching.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "candidates" })
+    candidates?: Record<string, number>;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "context" })
-  context?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "context" })
+    context?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "external_file_name" })
-  externalFileName?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "external_file_name" })
+    externalFileName?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "file_id" })
-  fileId?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "file_id" })
+    fileId?: string;
 
-  /**
-   * Filters you can use to narrow down the search. For more information, see [metadata filtering](https://docs.haystack.deepset.ai/docs/metadata-filtering).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "filters" })
-  filters?: Record<string, any>;
+    /**
+     * Filters you can use to narrow down the search. For more information, see [metadata filtering](https://docs.haystack.deepset.ai/docs/metadata-filtering).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "filters" })
+    filters?: Record<string, any>;
 
-  /**
-   * Unique identifier of a label
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "label_id" })
-  labelId: string;
+    /**
+     * Unique identifier of a label
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "label_id" })
+    labelId: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "meta" })
-  meta: Record<string, any>;
+    @SpeakeasyMetadata()
+    @Expose({ name: "meta" })
+    meta: Record<string, any>;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "query" })
-  query: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "query" })
+    query: string;
 
-  /**
-   * Represents the current state for matching a file.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "state" })
-  state: LabelLabelStateAsStr;
+    /**
+     * Represents the current state for matching a file.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "state" })
+    state: LabelLabelStateAsStr;
 }

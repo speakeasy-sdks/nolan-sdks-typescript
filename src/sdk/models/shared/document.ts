@@ -9,27 +9,27 @@ import { Expose, Type } from "class-transformer";
  * The metadata of this document.
  */
 export class DocumentDocumentMeta extends SpeakeasyBase {
-  /**
-   * The ID you can use to identify this document passage in the file.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "split_id" })
-  splitId: string;
+    /**
+     * The ID you can use to identify this document passage in the file.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "split_id" })
+    splitId: string;
 }
 
 export class Document extends SpeakeasyBase {
-  /**
-   * The metadata of this document.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "meta" })
-  @Type(() => DocumentDocumentMeta)
-  meta?: DocumentDocumentMeta;
+    /**
+     * The metadata of this document.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "meta" })
+    @Type(() => DocumentDocumentMeta)
+    meta?: DocumentDocumentMeta;
 
-  /**
-   * The contents of this document.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "text" })
-  text: string;
+    /**
+     * The contents of this document.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "text" })
+    text: string;
 }

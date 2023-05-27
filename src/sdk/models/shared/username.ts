@@ -6,17 +6,17 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class UserName extends SpeakeasyBase {
-  /**
-   * Family name of a user
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "family_name" })
-  familyName: string;
+    /**
+     * Family name of a user
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "family_name" })
+    familyName: string;
 
-  /**
-   * Given name of a user
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "given_name" })
-  givenName: string;
+    /**
+     * Given name of a user
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "given_name" })
+    givenName: string;
 }

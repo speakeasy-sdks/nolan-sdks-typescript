@@ -7,25 +7,25 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetJupyterLabApiV1NotebookServerGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class GetJupyterLabApiV1NotebookServerGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  server?: shared.Server;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    server?: shared.Server;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

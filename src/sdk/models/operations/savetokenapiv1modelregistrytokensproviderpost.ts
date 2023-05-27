@@ -7,53 +7,51 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class SaveTokenApiV1ModelRegistryTokensProviderPostSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 /**
  * The provider of the model registry
  */
 export enum SaveTokenApiV1ModelRegistryTokensProviderPostProviderModelProvider {
-  Huggingface = "huggingface",
-  Openai = "openai",
-  Cohere = "cohere",
+    Huggingface = "huggingface",
+    Openai = "openai",
+    Cohere = "cohere",
 }
 
 export class SaveTokenApiV1ModelRegistryTokensProviderPostRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  createModelRegistryToken: shared.CreateModelRegistryToken;
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    createModelRegistryToken: shared.CreateModelRegistryToken;
 
-  /**
-   * The provider of the model registry
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=provider",
-  })
-  provider: SaveTokenApiV1ModelRegistryTokensProviderPostProviderModelProvider;
+    /**
+     * The provider of the model registry
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=provider" })
+    provider: SaveTokenApiV1ModelRegistryTokensProviderPostProviderModelProvider;
 }
 
 export class SaveTokenApiV1ModelRegistryTokensProviderPostResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  saveTokenApiV1ModelRegistryTokensProviderPost201ApplicationJSONAny?: any;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    saveTokenApiV1ModelRegistryTokensProviderPost201ApplicationJSONAny?: any;
 }

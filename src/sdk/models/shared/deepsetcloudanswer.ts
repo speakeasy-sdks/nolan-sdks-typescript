@@ -10,99 +10,99 @@ import { Expose, Type } from "class-transformer";
  * Type of the answer.
  */
 export enum DeepsetCloudAnswerAnswerType {
-  Generative = "generative",
-  Extractive = "extractive",
-  Other = "other",
+    Generative = "generative",
+    Extractive = "extractive",
+    Other = "other",
 }
 
 export class DeepsetCloudAnswer extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "answer" })
-  answer: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "answer" })
+    answer: string;
 
-  /**
-   * Context of the answer.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "context" })
-  context?: any;
+    /**
+     * Context of the answer.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "context" })
+    context?: any;
 
-  /**
-   * ID of the document
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "document_id" })
-  documentId?: string;
+    /**
+     * ID of the document
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "document_id" })
+    documentId?: string;
 
-  /**
-   * IDs of the document
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "document_ids" })
-  documentIds?: string[];
+    /**
+     * IDs of the document
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "document_ids" })
+    documentIds?: string[];
 
-  /**
-   * Object containing the `file_id` and `name` of a file. This is used to associate a document with a file.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "file" })
-  file?: Record<string, any>;
+    /**
+     * Object containing the `file_id` and `name` of a file. This is used to associate a document with a file.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "file" })
+    file?: Record<string, any>;
 
-  /**
-   * List of object containing the `file_id` and `name` of a file. This is used to associate an answer with its source files.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "files" })
-  files?: Record<string, any>[];
+    /**
+     * List of object containing the `file_id` and `name` of a file. This is used to associate an answer with its source files.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "files" })
+    files?: Record<string, any>[];
 
-  /**
-   * The metadata of this document.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "meta" })
-  meta?: Record<string, any>;
+    /**
+     * The metadata of this document.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "meta" })
+    meta?: Record<string, any>;
 
-  /**
-   * Offsets of the answer in the context.
-   */
-  @SpeakeasyMetadata({ elemType: DeepsetCloudSpan })
-  @Expose({ name: "offsets_in_context" })
-  @Type(() => DeepsetCloudSpan)
-  offsetsInContext?: DeepsetCloudSpan[];
+    /**
+     * Offsets of the answer in the context.
+     */
+    @SpeakeasyMetadata({ elemType: DeepsetCloudSpan })
+    @Expose({ name: "offsets_in_context" })
+    @Type(() => DeepsetCloudSpan)
+    offsetsInContext?: DeepsetCloudSpan[];
 
-  /**
-   * Offsets of the answer in the document.
-   */
-  @SpeakeasyMetadata({ elemType: DeepsetCloudSpan })
-  @Expose({ name: "offsets_in_document" })
-  @Type(() => DeepsetCloudSpan)
-  offsetsInDocument?: DeepsetCloudSpan[];
+    /**
+     * Offsets of the answer in the document.
+     */
+    @SpeakeasyMetadata({ elemType: DeepsetCloudSpan })
+    @Expose({ name: "offsets_in_document" })
+    @Type(() => DeepsetCloudSpan)
+    offsetsInDocument?: DeepsetCloudSpan[];
 
-  /**
-   * The prompt that was used to generate the result.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "prompt" })
-  prompt?: string;
+    /**
+     * The prompt that was used to generate the result.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "prompt" })
+    prompt?: string;
 
-  /**
-   * Unique identifier of the result.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "result_id" })
-  resultId?: string;
+    /**
+     * Unique identifier of the result.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "result_id" })
+    resultId?: string;
 
-  /**
-   * Score of the answer.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "score" })
-  score?: number;
+    /**
+     * Score of the answer.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "score" })
+    score?: number;
 
-  /**
-   * Type of the answer.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "type" })
-  type: DeepsetCloudAnswerAnswerType;
+    /**
+     * Type of the answer.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type: DeepsetCloudAnswerAnswerType;
 }

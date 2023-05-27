@@ -6,11 +6,11 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform } from "class-transformer";
 
 export class CreateToken extends SpeakeasyBase {
-  /**
-   * Timestamp when the token should expire, for example '2022-05-12T12:25:09+02:00'
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "expires_at" })
-  @Transform(({ value }) => new Date(value), { toClassOnly: true })
-  expiresAt?: Date;
+    /**
+     * Timestamp when the token should expire, for example '2022-05-12T12:25:09+02:00'
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "expires_at" })
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    expiresAt?: Date;
 }

@@ -6,17 +6,17 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class DeepsetCloudSpan extends SpeakeasyBase {
-  /**
-   * End of the span.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "end" })
-  end: number;
+    /**
+     * End of the span.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "end" })
+    end: number;
 
-  /**
-   * Start of the span.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "start" })
-  start: number;
+    /**
+     * Start of the span.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "start" })
+    start: number;
 }

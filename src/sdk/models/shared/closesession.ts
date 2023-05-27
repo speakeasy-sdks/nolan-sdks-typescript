@@ -9,14 +9,14 @@ import { Expose } from "class-transformer";
  * An enumeration.
  */
 export enum CloseSessionSessionCloseStatusEnum {
-  Closed = "closed",
+    Closed = "closed",
 }
 
 export class CloseSession extends SpeakeasyBase {
-  /**
-   * Closes the session and starts the ingestion of the uploaded files.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "status" })
-  status?: CloseSessionSessionCloseStatusEnum;
+    /**
+     * Closes the session and starts the ingestion of the uploaded files.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "status" })
+    status?: CloseSessionSessionCloseStatusEnum;
 }

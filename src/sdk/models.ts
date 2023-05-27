@@ -8,104 +8,101 @@ import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 export class Models {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
-
-  /**
-   * Get Model [private]
-   *
-   * @remarks
-   * Returns a list of models available for the specified node_type. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
-   */
-  async list(
-    req: operations.ListModelApiV1ModelGetRequest,
-    security: operations.ListModelApiV1ModelGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.ListModelApiV1ModelGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.ListModelApiV1ModelGetRequest(req);
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/api/v1/model";
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security = new operations.ListModelApiV1ModelGetSecurity(security);
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.ListModelApiV1ModelGetResponse =
-      new operations.ListModelApiV1ModelGetResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.modelMetas = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.modelMetas = utils.objectToClass(
-            httpRes?.data,
-            shared.ModelMeta,
-            resFieldDepth
-          );
+    /**
+     * Get Model [private]
+     *
+     * @remarks
+     * Returns a list of models available for the specified node_type. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
+     */
+    async list(
+        req: operations.ListModelApiV1ModelGetRequest,
+        security: operations.ListModelApiV1ModelGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.ListModelApiV1ModelGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.ListModelApiV1ModelGetRequest(req);
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
-    }
 
-    return res;
-  }
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/api/v1/model";
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.ListModelApiV1ModelGetSecurity(security);
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.ListModelApiV1ModelGetResponse =
+            new operations.ListModelApiV1ModelGetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.modelMetas = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.modelMetas = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ModelMeta,
+                        resFieldDepth
+                    );
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

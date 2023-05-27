@@ -6,10 +6,10 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class PipelineIndexMetadataProperty extends SpeakeasyBase {
-  /**
-   * The associated data type of the metadata field such as 'keyword', 'long', 'float', or 'date'.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "type" })
-  type: string;
+    /**
+     * The associated data type of the metadata field such as 'keyword', 'long', 'float', or 'date'.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type: string;
 }

@@ -9,86 +9,86 @@ import { Expose, Transform, Type } from "class-transformer";
  * The user who created the evaluation set.
  */
 export class EvaluationSetWithStatusOauthUser extends SpeakeasyBase {
-  /**
-   * Family name of a user
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "family_name" })
-  familyName: string;
+    /**
+     * Family name of a user
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "family_name" })
+    familyName: string;
 
-  /**
-   * Given name of a user
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "given_name" })
-  givenName: string;
+    /**
+     * Given name of a user
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "given_name" })
+    givenName: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "user_id" })
-  userId: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "user_id" })
+    userId: string;
 }
 
 /**
  * An enumeration.
  */
 export enum EvaluationSetWithStatusEvaluationSetStatusAsStr {
-  Received = "RECEIVED",
-  LabelExtractionStarted = "LABEL_EXTRACTION_STARTED",
-  ContextMatchingStarted = "CONTEXT_MATCHING_STARTED",
-  Finished = "FINISHED",
-  Failed = "FAILED",
-  InvalidFormat = "INVALID_FORMAT",
+    Received = "RECEIVED",
+    LabelExtractionStarted = "LABEL_EXTRACTION_STARTED",
+    ContextMatchingStarted = "CONTEXT_MATCHING_STARTED",
+    Finished = "FINISHED",
+    Failed = "FAILED",
+    InvalidFormat = "INVALID_FORMAT",
 }
 
 export class EvaluationSetWithStatus extends SpeakeasyBase {
-  /**
-   * Datetime object, specifies when the evaluation set was created
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_at" })
-  @Transform(({ value }) => new Date(value), { toClassOnly: true })
-  createdAt: Date;
+    /**
+     * Datetime object, specifies when the evaluation set was created
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_at" })
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt: Date;
 
-  /**
-   * The user who created the evaluation set.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_by" })
-  @Type(() => EvaluationSetWithStatusOauthUser)
-  createdBy?: EvaluationSetWithStatusOauthUser;
+    /**
+     * The user who created the evaluation set.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_by" })
+    @Type(() => EvaluationSetWithStatusOauthUser)
+    createdBy?: EvaluationSetWithStatusOauthUser;
 
-  /**
-   * Unique identifier of an evaluation set
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "evaluation_set_id" })
-  evaluationSetId: string;
+    /**
+     * Unique identifier of an evaluation set
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "evaluation_set_id" })
+    evaluationSetId: string;
 
-  /**
-   * The number of labels that were not matched
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "matched_labels" })
-  matchedLabels: number;
+    /**
+     * The number of labels that were not matched
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "matched_labels" })
+    matchedLabels: number;
 
-  /**
-   * Name of the evaluation set. By default, the name of the csv or Squad2 file.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * Name of the evaluation set. By default, the name of the csv or Squad2 file.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 
-  /**
-   * Shows you what is currently happening to the evaluation set.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "status" })
-  status: EvaluationSetWithStatusEvaluationSetStatusAsStr;
+    /**
+     * Shows you what is currently happening to the evaluation set.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "status" })
+    status: EvaluationSetWithStatusEvaluationSetStatusAsStr;
 
-  /**
-   * The total number of uploaded labels
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "total_labels" })
-  totalLabels: number;
+    /**
+     * The total number of uploaded labels
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "total_labels" })
+    totalLabels: number;
 }

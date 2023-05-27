@@ -9,69 +9,69 @@ import { Expose } from "class-transformer";
  * Type of the content.
  */
 export enum DeepsetCloudDocumentContentType {
-  Text = "text",
-  Table = "table",
-  Image = "image",
-  Audio = "audio",
+    Text = "text",
+    Table = "table",
+    Image = "image",
+    Audio = "audio",
 }
 
 /**
  * Successful Response
  */
 export class DeepsetCloudDocument extends SpeakeasyBase {
-  /**
-   * Content of the document.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "content" })
-  content?: any;
+    /**
+     * Content of the document.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "content" })
+    content?: any;
 
-  /**
-   * Type of the content.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "content_type" })
-  contentType: DeepsetCloudDocumentContentType;
+    /**
+     * Type of the content.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "content_type" })
+    contentType: DeepsetCloudDocumentContentType;
 
-  /**
-   * Embedding of the document.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "embedding" })
-  embedding?: number[];
+    /**
+     * Embedding of the document.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "embedding" })
+    embedding?: number[];
 
-  /**
-   * Object containing the `file_id` and `name` of a file. This is used to associate a document with a file.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "file" })
-  file?: Record<string, any>;
+    /**
+     * Object containing the `file_id` and `name` of a file. This is used to associate a document with a file.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "file" })
+    file?: Record<string, any>;
 
-  /**
-   * ID of the document.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id: string;
+    /**
+     * ID of the document.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id: string;
 
-  /**
-   * The metadata of this document.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "meta" })
-  meta: Record<string, any>;
+    /**
+     * The metadata of this document.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "meta" })
+    meta: Record<string, any>;
 
-  /**
-   * Unique identifier of the result.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "result_id" })
-  resultId?: string;
+    /**
+     * Unique identifier of the result.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "result_id" })
+    resultId?: string;
 
-  /**
-   * Shows the relevance score of the prediction.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "score" })
-  score?: number;
+    /**
+     * Shows the relevance score of the prediction.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "score" })
+    score?: number;
 }

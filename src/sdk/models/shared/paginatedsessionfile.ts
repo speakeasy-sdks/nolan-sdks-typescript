@@ -10,22 +10,22 @@ import { Expose, Type } from "class-transformer";
  * Returns a list of files registered to the session.
  */
 export class PaginatedSessionFile extends SpeakeasyBase {
-  @SpeakeasyMetadata({ elemType: SessionFile })
-  @Expose({ name: "data" })
-  @Type(() => SessionFile)
-  data: SessionFile[];
+    @SpeakeasyMetadata({ elemType: SessionFile })
+    @Expose({ name: "data" })
+    @Type(() => SessionFile)
+    data: SessionFile[];
 
-  /**
-   * Whether the session has more files.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "has_more" })
-  hasMore: boolean;
+    /**
+     * Whether the session has more files.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "has_more" })
+    hasMore: boolean;
 
-  /**
-   * The total number of files in the session.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "total" })
-  total: number;
+    /**
+     * The total number of files in the session.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "total" })
+    total: number;
 }

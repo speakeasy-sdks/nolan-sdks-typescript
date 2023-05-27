@@ -9,17 +9,17 @@ import { Expose } from "class-transformer";
  * Created a shared link for an existing external user
  */
 export class ExternalUserInformation extends SpeakeasyBase {
-  /**
-   * Unique ID of the external user.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "user_id" })
-  userId: string;
+    /**
+     * Unique ID of the external user.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "user_id" })
+    userId: string;
 
-  /**
-   * A JSON web token you can use to grant access to a set of API endpoints for this specific user.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "user_token" })
-  userToken: string;
+    /**
+     * A JSON web token you can use to grant access to a set of API endpoints for this specific user.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "user_token" })
+    userToken: string;
 }

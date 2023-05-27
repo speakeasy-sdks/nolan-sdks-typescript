@@ -8,58 +8,54 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 /**
  * The parameters of the tag you want to update.
  */
 export class UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchUpdateTag extends SpeakeasyBase {
-  /**
-   * The name of the tag.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * The name of the tag.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 }
 
 export class UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  requestBody: UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchUpdateTag;
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    requestBody: UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchUpdateTag;
 
-  /**
-   * Which tag do you want to update? Type its name here.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=tag_name",
-  })
-  tagName: string;
+    /**
+     * Which tag do you want to update? Type its name here.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=tag_name" })
+    tagName: string;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

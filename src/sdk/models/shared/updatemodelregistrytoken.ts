@@ -6,10 +6,10 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class UpdateModelRegistryToken extends SpeakeasyBase {
-  /**
-   * The new Hugging Face token.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "token" })
-  token: string;
+    /**
+     * The new Hugging Face token.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "token" })
+    token: string;
 }

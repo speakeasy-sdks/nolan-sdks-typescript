@@ -8,563 +8,537 @@ import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 export class EvaluationSet {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
+    }
 
-  /**
-   * Delete Evaluation Set
-   *
-   * @remarks
-   * Deletes an evaluation set from the workspace.
-   */
-  async delete(
-    req: operations.DeleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDeleteRequest,
-    security: operations.DeleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDeleteSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDeleteResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.DeleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDeleteRequest(
-          req
+    /**
+     * Delete Evaluation Set
+     *
+     * @remarks
+     * Deletes an evaluation set from the workspace.
+     */
+    async delete(
+        req: operations.DeleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDeleteRequest,
+        security: operations.DeleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDeleteSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDeleteResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.DeleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDeleteRequest(
+                    req
+                );
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/evaluation_sets/{evaluation_set_name}",
+            req
         );
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.DeleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDeleteSecurity(
+                    security
+                );
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.DeleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDeleteResponse =
+            new operations.DeleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDeleteResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.deleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDelete200ApplicationJSONAny =
+                        httpRes?.data;
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/evaluation_sets/{evaluation_set_name}",
-      req
-    );
+    /**
+     * Get Evaluation Set
+     *
+     * @remarks
+     * Returns the contents of the evaluation set.
+     */
+    async get(
+        req: operations.GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetRequest,
+        security: operations.GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetRequest(
+                    req
+                );
+        }
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.DeleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDeleteSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/evaluation_sets/{evaluation_set_name}",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDeleteResponse =
-      new operations.DeleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDeleteResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetSecurity(
+                    security
+                );
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.deleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDelete200ApplicationJSONAny =
-            httpRes?.data;
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+
+        const res: operations.GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetResponse =
+            new operations.GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.labelList = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.labelList = utils.objectToClass(httpRes?.data, shared.Label, resFieldDepth);
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Get Evaluation Set Csv File
+     *
+     * @remarks
+     * Fetches the evaluation set as a CSV file.
+     */
+    async getCsv(
+        req: operations.GetEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGetRequest,
+        security: operations.GetEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.GetEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGetRequest(
+                    req
+                );
+        }
 
-  /**
-   * Get Evaluation Set
-   *
-   * @remarks
-   * Returns the contents of the evaluation set.
-   */
-  async get(
-    req: operations.GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetRequest,
-    security: operations.GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/evaluation_sets/{evaluation_set_name}/csv",
+            req
         );
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.GetEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGetSecurity(
+                    security
+                );
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0.7, text/csv;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGetResponse =
+            new operations.GetEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGetResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.getEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGet200ApplicationJSONAny =
+                        httpRes?.data;
+                }
+                if (utils.matchContentType(contentType, `text/csv`)) {
+                    const resBody: string = JSON.stringify(httpRes?.data, null, 0);
+                    const out: Uint8Array = new Uint8Array(resBody.length);
+                    for (let i = 0; i < resBody.length; i++) out[i] = resBody.charCodeAt(i);
+                    res.body = out;
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/evaluation_sets/{evaluation_set_name}",
-      req
-    );
+    /**
+     * Import Evaluation Set
+     *
+     * @remarks
+     * Imports an evaluation set into deepset Cloud.
+     */
+    async importEvaluationSet(
+        req: operations.ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostRequest,
+        security: operations.ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostRequest(
+                    req
+                );
+        }
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/evaluation_sets/import",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetResponse =
-      new operations.GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "bodyImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPost",
+                "multipart"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.labelList = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.labelList = utils.objectToClass(
-            httpRes?.data,
-            shared.Label,
-            resFieldDepth
-          );
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostSecurity(
+                    security
+                );
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
+
+        const res: operations.ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostResponse =
+            new operations.ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.evaluationSetImport = utils.objectToClass(
+                        httpRes?.data,
+                        shared.EvaluationSetImport
+                    );
+                }
+                break;
+            case [400, 409, 415].includes(httpRes?.status):
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Get Evaluation Sets
+     *
+     * @remarks
+     * Displays all evaluation sets and their properties.
+     */
+    async list(
+        req: operations.ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetRequest,
+        security: operations.ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetRequest(
+                    req
+                );
+        }
 
-  /**
-   * Get Evaluation Set Csv File
-   *
-   * @remarks
-   * Fetches the evaluation set as a CSV file.
-   */
-  async getCsv(
-    req: operations.GetEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGetRequest,
-    security: operations.GetEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGetRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/evaluation_sets",
+            req
         );
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetSecurity(
+                    security
+                );
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetResponse =
+            new operations.ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.evaluationSetPagination = utils.objectToClass(
+                        httpRes?.data,
+                        shared.EvaluationSetPagination
+                    );
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/evaluation_sets/{evaluation_set_name}/csv",
-      req
-    );
+    /**
+     * Retrigger Label Matching
+     *
+     * @remarks
+     * Retrigger matching labels from an evaluation set to the files in your workspace.
+     */
+    async retrigger(
+        req: operations.RetriggerLabelMatchingApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameLabelMatchingPostRequest,
+        security: operations.RetriggerLabelMatchingApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameLabelMatchingPostSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RetriggerLabelMatchingApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameLabelMatchingPostResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.RetriggerLabelMatchingApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameLabelMatchingPostRequest(
+                    req
+                );
+        }
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.GetEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGetSecurity(
-          security
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/api/v1/workspaces/{workspace_name}/evaluation_sets/{evaluation_set_name}/label-matching",
+            req
         );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
 
-    const headers = { ...config?.headers };
-    headers["Accept"] =
-      "application/json;q=1, application/json;q=0.7, text/csv;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGetResponse =
-      new operations.GetEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGetResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security =
+                new operations.RetriggerLabelMatchingApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameLabelMatchingPostSecurity(
+                    security
+                );
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.getEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGet200ApplicationJSONAny =
-            httpRes?.data;
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        if (utils.matchContentType(contentType, `text/csv`)) {
-          const resBody: string = JSON.stringify(httpRes?.data, null, 0);
-          const out: Uint8Array = new Uint8Array(resBody.length);
-          for (let i = 0; i < resBody.length; i++)
-            out[i] = resBody.charCodeAt(i);
-          res.body = out;
+
+        const res: operations.RetriggerLabelMatchingApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameLabelMatchingPostResponse =
+            new operations.RetriggerLabelMatchingApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameLabelMatchingPostResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case [204, 400, 404, 409].includes(httpRes?.status):
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
+
+        return res;
     }
-
-    return res;
-  }
-
-  /**
-   * Import Evaluation Set
-   *
-   * @remarks
-   * Imports an evaluation set into deepset Cloud.
-   */
-  async importEvaluationSet(
-    req: operations.ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostRequest,
-    security: operations.ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostRequest(
-          req
-        );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/evaluation_sets/import",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "bodyImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPost",
-        "multipart"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostResponse =
-      new operations.ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.evaluationSetImport = utils.objectToClass(
-            httpRes?.data,
-            shared.EvaluationSetImport
-          );
-        }
-        break;
-      case [400, 409, 415].includes(httpRes?.status):
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Get Evaluation Sets
-   *
-   * @remarks
-   * Displays all evaluation sets and their properties.
-   */
-  async list(
-    req: operations.ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetRequest,
-    security: operations.ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetRequest(
-          req
-        );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/evaluation_sets",
-      req
-    );
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetResponse =
-      new operations.ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.evaluationSetPagination = utils.objectToClass(
-            httpRes?.data,
-            shared.EvaluationSetPagination
-          );
-        }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Retrigger Label Matching
-   *
-   * @remarks
-   * Retrigger matching labels from an evaluation set to the files in your workspace.
-   */
-  async retrigger(
-    req: operations.RetriggerLabelMatchingApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameLabelMatchingPostRequest,
-    security: operations.RetriggerLabelMatchingApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameLabelMatchingPostSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.RetriggerLabelMatchingApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameLabelMatchingPostResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.RetriggerLabelMatchingApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameLabelMatchingPostRequest(
-          req
-        );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/workspaces/{workspace_name}/evaluation_sets/{evaluation_set_name}/label-matching",
-      req
-    );
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.RetriggerLabelMatchingApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameLabelMatchingPostSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.RetriggerLabelMatchingApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameLabelMatchingPostResponse =
-      new operations.RetriggerLabelMatchingApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameLabelMatchingPostResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        }
-      );
-    switch (true) {
-      case [204, 400, 404, 409].includes(httpRes?.status):
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
 }

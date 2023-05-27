@@ -10,51 +10,51 @@ import { Expose, Type } from "class-transformer";
  * Successful Response
  */
 export class User extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "deleted" })
-  deleted: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "deleted" })
+    deleted: boolean;
 
-  /**
-   * Email of a user
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "email" })
-  email: string;
+    /**
+     * Email of a user
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "email" })
+    email: string;
 
-  /**
-   * Family name of a user
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "family_name" })
-  familyName: string;
+    /**
+     * Family name of a user
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "family_name" })
+    familyName: string;
 
-  /**
-   * Given name of a user
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "given_name" })
-  givenName: string;
+    /**
+     * Given name of a user
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "given_name" })
+    givenName: string;
 
-  /**
-   * Oauth ID from auth0
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "oauth_id" })
-  oauthId?: string;
+    /**
+     * Oauth ID from auth0
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "oauth_id" })
+    oauthId?: string;
 
-  /**
-   * Oauth provider from auth0. For example: 'auth0', 'google-auth', 'github', and the like.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "oauth_provider" })
-  oauthProvider: string;
+    /**
+     * Oauth provider from auth0. For example: 'auth0', 'google-auth', 'github', and the like.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "oauth_provider" })
+    oauthProvider: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "organization" })
-  @Type(() => OrganizationFormatted)
-  organization: OrganizationFormatted;
+    @SpeakeasyMetadata()
+    @Expose({ name: "organization" })
+    @Type(() => OrganizationFormatted)
+    organization: OrganizationFormatted;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "user_id" })
-  userId: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "user_id" })
+    userId: string;
 }

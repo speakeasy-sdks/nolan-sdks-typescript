@@ -6,31 +6,31 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class TagWithMeta extends SpeakeasyBase {
-  /**
-   * Indicates if there are experiments that use this tag.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "is_used_by_experiments" })
-  isUsedByExperiments: boolean;
+    /**
+     * Indicates if there are experiments that use this tag.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "is_used_by_experiments" })
+    isUsedByExperiments: boolean;
 
-  /**
-   * Indicates if there are feedback items that use this tag.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "is_used_by_feedback" })
-  isUsedByFeedback: boolean;
+    /**
+     * Indicates if there are feedback items that use this tag.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "is_used_by_feedback" })
+    isUsedByFeedback: boolean;
 
-  /**
-   * Name of the tag
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * Name of the tag
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 
-  /**
-   * Unique identifier of the tag
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "tag_id" })
-  tagId: string;
+    /**
+     * Unique identifier of the tag
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "tag_id" })
+    tagId: string;
 }

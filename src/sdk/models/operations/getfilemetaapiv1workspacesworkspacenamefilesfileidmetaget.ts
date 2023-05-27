@@ -7,49 +7,42 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class GetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGetRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=file_id",
-  })
-  fileId: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=file_id" })
+    fileId: string;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class GetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  responseGetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGet?: Record<
-    string,
-    any
-  >;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    responseGetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGet?: Record<string, any>;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

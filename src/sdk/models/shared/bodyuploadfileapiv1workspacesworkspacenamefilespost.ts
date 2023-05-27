@@ -5,29 +5,29 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 
 export class BodyUploadFileApiV1WorkspacesWorkspaceNameFilesPostFile extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "multipart_form, name=File" })
-  file: string;
+    @SpeakeasyMetadata({ data: "multipart_form, name=File" })
+    file: string;
 
-  @SpeakeasyMetadata({ data: "multipart_form, content=true" })
-  content: Uint8Array;
+    @SpeakeasyMetadata({ data: "multipart_form, content=true" })
+    content: Uint8Array;
 }
 
 export class BodyUploadFileApiV1WorkspacesWorkspaceNameFilesPost extends SpeakeasyBase {
-  /**
-   * Choose the file that you want to upload.
-   */
-  @SpeakeasyMetadata({ data: "multipart_form, file=true" })
-  file?: BodyUploadFileApiV1WorkspacesWorkspaceNameFilesPostFile;
+    /**
+     * Choose the file that you want to upload.
+     */
+    @SpeakeasyMetadata({ data: "multipart_form, file=true" })
+    file?: BodyUploadFileApiV1WorkspacesWorkspaceNameFilesPostFile;
 
-  /**
-   * Add a list of metadata fields in the "key":"value" format. During search, you can use these metadata as filters.
-   */
-  @SpeakeasyMetadata({ data: "multipart_form, name=meta" })
-  meta?: string;
+    /**
+     * Add a list of metadata fields in the "key":"value" format. During search, you can use these metadata as filters.
+     */
+    @SpeakeasyMetadata({ data: "multipart_form, name=meta" })
+    meta?: string;
 
-  /**
-   * Instead of uploading a file, you can paste the file contents here to create a text file.
-   */
-  @SpeakeasyMetadata({ data: "multipart_form, name=text" })
-  text?: string;
+    /**
+     * Instead of uploading a file, you can paste the file contents here to create a text file.
+     */
+    @SpeakeasyMetadata({ data: "multipart_form, name=text" })
+    text?: string;
 }

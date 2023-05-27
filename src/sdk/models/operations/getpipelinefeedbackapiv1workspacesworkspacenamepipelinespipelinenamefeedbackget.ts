@@ -7,124 +7,112 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 /**
  * The name of the field you want to sort by.
  */
 export enum GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetFieldField {
-  CreatedAt = "created_at",
-  SearchResultRank = "search_result/rank",
-  SearchResultScore = "search_result/score",
-  SearchResultSearchCreatedAt = "search_result/search/created_at",
-  SearchResultSearchQuery = "search_result/search/query",
+    CreatedAt = "created_at",
+    SearchResultRank = "search_result/rank",
+    SearchResultScore = "search_result/score",
+    SearchResultSearchCreatedAt = "search_result/search/created_at",
+    SearchResultSearchQuery = "search_result/search/query",
 }
 
 /**
  * Choose how you want to sort the results.
  */
 export enum GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetOrderOrder {
-  Asc = "ASC",
-  Desc = "DESC",
+    Asc = "ASC",
+    Desc = "DESC",
 }
 
 export class GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetRequest extends SpeakeasyBase {
-  /**
-   * Enter an ID if you want to see all entries after this ID.
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=after" })
-  after?: string;
+    /**
+     * Enter an ID if you want to see all entries after this ID.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=after" })
+    after?: string;
 
-  /**
-   * Enter an ID if you want to see all entries before this ID.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=before",
-  })
-  before?: string;
+    /**
+     * Enter an ID if you want to see all entries before this ID.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=before" })
+    before?: string;
 
-  /**
-   * The name of the field you want to sort by.
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=field" })
-  field?: GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetFieldField;
+    /**
+     * The name of the field you want to sort by.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=field" })
+    field?: GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetFieldField;
 
-  /**
-   * The OData filter you want to use to in your query. It supports exact match and `AND` operations. For example, to filter for a metadata `category:news`, here's what the URL could look like: 'url = "https://api.cloud.deepset.ai/api/v1/workspaces/production/files?limit=10&filter=category eq 'news'"'. OData filters only work with cursor-based pagination (leave the `page_number` field blank to enable it).To learn more about the OData filter syntax, see: [Querying Data](https://www.odata.org/getting-started/basic-tutorial/#queryData).
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=filter",
-  })
-  filter?: string;
+    /**
+     * The OData filter you want to use to in your query. It supports exact match and `AND` operations. For example, to filter for a metadata `category:news`, here's what the URL could look like: 'url = "https://api.cloud.deepset.ai/api/v1/workspaces/production/files?limit=10&filter=category eq 'news'"'. OData filters only work with cursor-based pagination (leave the `page_number` field blank to enable it).To learn more about the OData filter syntax, see: [Querying Data](https://www.odata.org/getting-started/basic-tutorial/#queryData).
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=filter" })
+    filter?: string;
 
-  /**
-   * How many entries do you want to display? Leaving this field empty keeps the default and max 10 results are returned.
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
-  limit?: number;
+    /**
+     * How many entries do you want to display? Leaving this field empty keeps the default and max 10 results are returned.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
+    limit?: number;
 
-  /**
-   * Choose how you want to sort the results.
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=order" })
-  order?: GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetOrderOrder;
+    /**
+     * Choose how you want to sort the results.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=order" })
+    order?: GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetOrderOrder;
 
-  /**
-   * Which page do you want to see? Type the number.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=page_number",
-  })
-  pageNumber?: number;
+    /**
+     * Which page do you want to see? Type the number.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=page_number" })
+    pageNumber?: number;
 
-  /**
-   * The name of the pipeline whose files you want to display.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=pipeline_name",
-  })
-  pipelineName: string;
+    /**
+     * The name of the pipeline whose files you want to display.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=pipeline_name" })
+    pipelineName: string;
 
-  /**
-   * Partial implementation of the OData $select operator. It currently only supports selecting fields from the root entity or a child entity. Selecting fields from children's children is not supported. If you use this parameter, the API answer is always a flat list of distinct JSON objects with the selected properties, for example, '[{"given_name": "user1", "user_id": "..."}, ...]' for 'select=created_by/given_name, created_by/user_id'. The results are ordered by the first selected attribute. To learn more about the OData filter syntax, see: [Querying Data](https://www.odata.org/getting-started/basic-tutorial/#queryData).
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=select",
-  })
-  select?: string;
+    /**
+     * Partial implementation of the OData $select operator. It currently only supports selecting fields from the root entity or a child entity. Selecting fields from children's children is not supported. If you use this parameter, the API answer is always a flat list of distinct JSON objects with the selected properties, for example, '[{"given_name": "user1", "user_id": "..."}, ...]' for 'select=created_by/given_name, created_by/user_id'. The results are ordered by the first selected attribute. To learn more about the OData filter syntax, see: [Querying Data](https://www.odata.org/getting-started/basic-tutorial/#queryData).
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=select" })
+    select?: string;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  /**
-   * The CSV file with the collected feedback
-   */
-  @SpeakeasyMetadata()
-  response200GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGet?: any;
+    /**
+     * The CSV file with the collected feedback
+     */
+    @SpeakeasyMetadata()
+    response200GetPipelineFeedbackApiV1WorkspacesWorkspaceNamePipelinesPipelineNameFeedbackGet?: any;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

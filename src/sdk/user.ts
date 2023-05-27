@@ -8,406 +8,364 @@ import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 export class User {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
-
-  /**
-   * Delete User [private]
-   *
-   * @remarks
-   * Deletes a user from deepset Cloud. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
-   */
-  async delete(
-    req: operations.DeleteUserApiV1UsersUserIdDeleteRequest,
-    security: operations.DeleteUserApiV1UsersUserIdDeleteSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteUserApiV1UsersUserIdDeleteResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteUserApiV1UsersUserIdDeleteRequest(req);
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/users/{user_id}",
-      req
-    );
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security = new operations.DeleteUserApiV1UsersUserIdDeleteSecurity(
-        security
-      );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteUserApiV1UsersUserIdDeleteResponse =
-      new operations.DeleteUserApiV1UsersUserIdDeleteResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.deleteUserApiV1UsersUserIdDelete200ApplicationJSONAny =
-            httpRes?.data;
+    /**
+     * Delete User [private]
+     *
+     * @remarks
+     * Deletes a user from deepset Cloud. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
+     */
+    async delete(
+        req: operations.DeleteUserApiV1UsersUserIdDeleteRequest,
+        security: operations.DeleteUserApiV1UsersUserIdDeleteSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteUserApiV1UsersUserIdDeleteResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.DeleteUserApiV1UsersUserIdDeleteRequest(req);
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/api/v1/users/{user_id}", req);
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.DeleteUserApiV1UsersUserIdDeleteSecurity(security);
         }
-        break;
-    }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
 
-    return res;
-  }
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-  /**
-   * Get User [private]
-   *
-   * @remarks
-   * Retrieves the properties of the user object. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
-   */
-  async get(
-    req: operations.GetUserApiV1UsersUserIdGetRequest,
-    security: operations.GetUserApiV1UsersUserIdGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetUserApiV1UsersUserIdGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetUserApiV1UsersUserIdGetRequest(req);
-    }
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/users/{user_id}",
-      req
-    );
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security = new operations.GetUserApiV1UsersUserIdGetSecurity(security);
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetUserApiV1UsersUserIdGetResponse =
-      new operations.GetUserApiV1UsersUserIdGetResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.user = utils.objectToClass(httpRes?.data, shared.User);
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+
+        const res: operations.DeleteUserApiV1UsersUserIdDeleteResponse =
+            new operations.DeleteUserApiV1UsersUserIdDeleteResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.deleteUserApiV1UsersUserIdDelete200ApplicationJSONAny = httpRes?.data;
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * Get Users [private]
-   *
-   * @remarks
-   * Retrieves the properties of all the user objects in your organization. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
-   */
-  async list(
-    req: operations.ListUsersApiV1UsersGetRequest,
-    security: operations.ListUsersApiV1UsersGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.ListUsersApiV1UsersGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.ListUsersApiV1UsersGetRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/api/v1/users";
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security = new operations.ListUsersApiV1UsersGetSecurity(security);
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.ListUsersApiV1UsersGetResponse =
-      new operations.ListUsersApiV1UsersGetResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.userPagination = utils.objectToClass(
-            httpRes?.data,
-            shared.UserPagination
-          );
+    /**
+     * Get User [private]
+     *
+     * @remarks
+     * Retrieves the properties of the user object. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
+     */
+    async get(
+        req: operations.GetUserApiV1UsersUserIdGetRequest,
+        security: operations.GetUserApiV1UsersUserIdGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetUserApiV1UsersUserIdGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetUserApiV1UsersUserIdGetRequest(req);
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/api/v1/users/{user_id}", req);
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.GetUserApiV1UsersUserIdGetSecurity(security);
         }
-        break;
-    }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
 
-    return res;
-  }
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-  /**
-   * Read Users Me [private]
-   *
-   * @remarks
-   * Retrieves the properties of the user object. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
-   */
-  async me(
-    security: operations.ReadUsersMeApiV1MeGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.ReadUsersMeApiV1MeGetResponse> {
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/api/v1/me";
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security = new operations.ReadUsersMeApiV1MeGetSecurity(security);
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.ReadUsersMeApiV1MeGetResponse =
-      new operations.ReadUsersMeApiV1MeGetResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.user = utils.objectToClass(httpRes?.data, shared.User);
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Update User Permission [private]
-   *
-   * @remarks
-   * Updates user permissions. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
-   */
-  async updatePermission(
-    req: operations.UpdateUserPermissionApiV1UsersUserIdPatchRequest,
-    security: operations.UpdateUserPermissionApiV1UsersUserIdPatchSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.UpdateUserPermissionApiV1UsersUserIdPatchResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.UpdateUserPermissionApiV1UsersUserIdPatchRequest(
-        req
-      );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/users/{user_id}",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "requestBody",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security =
-        new operations.UpdateUserPermissionApiV1UsersUserIdPatchSecurity(
-          security
-        );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "patch",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.UpdateUserPermissionApiV1UsersUserIdPatchResponse =
-      new operations.UpdateUserPermissionApiV1UsersUserIdPatchResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 204:
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+        const res: operations.GetUserApiV1UsersUserIdGetResponse =
+            new operations.GetUserApiV1UsersUserIdGetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.user = utils.objectToClass(httpRes?.data, shared.User);
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Get Users [private]
+     *
+     * @remarks
+     * Retrieves the properties of all the user objects in your organization. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
+     */
+    async list(
+        req: operations.ListUsersApiV1UsersGetRequest,
+        security: operations.ListUsersApiV1UsersGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.ListUsersApiV1UsersGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.ListUsersApiV1UsersGetRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/api/v1/users";
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.ListUsersApiV1UsersGetSecurity(security);
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.ListUsersApiV1UsersGetResponse =
+            new operations.ListUsersApiV1UsersGetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.userPagination = utils.objectToClass(httpRes?.data, shared.UserPagination);
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Read Users Me [private]
+     *
+     * @remarks
+     * Retrieves the properties of the user object. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
+     */
+    async me(
+        security: operations.ReadUsersMeApiV1MeGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.ReadUsersMeApiV1MeGetResponse> {
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/api/v1/me";
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.ReadUsersMeApiV1MeGetSecurity(security);
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.ReadUsersMeApiV1MeGetResponse =
+            new operations.ReadUsersMeApiV1MeGetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.user = utils.objectToClass(httpRes?.data, shared.User);
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Update User Permission [private]
+     *
+     * @remarks
+     * Updates user permissions. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
+     */
+    async updatePermission(
+        req: operations.UpdateUserPermissionApiV1UsersUserIdPatchRequest,
+        security: operations.UpdateUserPermissionApiV1UsersUserIdPatchSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.UpdateUserPermissionApiV1UsersUserIdPatchResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.UpdateUserPermissionApiV1UsersUserIdPatchRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/api/v1/users/{user_id}", req);
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.UpdateUserPermissionApiV1UsersUserIdPatchSecurity(security);
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "patch",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.UpdateUserPermissionApiV1UsersUserIdPatchResponse =
+            new operations.UpdateUserPermissionApiV1UsersUserIdPatchResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

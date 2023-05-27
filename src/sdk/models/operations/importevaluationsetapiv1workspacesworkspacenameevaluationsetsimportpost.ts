@@ -7,44 +7,42 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=multipart/form-data" })
-  bodyImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPost: shared.BodyImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPost;
+    @SpeakeasyMetadata({ data: "request, media_type=multipart/form-data" })
+    bodyImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPost: shared.BodyImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPost;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Returns the name of the imported evaluation set.
-   */
-  @SpeakeasyMetadata()
-  evaluationSetImport?: shared.EvaluationSetImport;
+    /**
+     * Returns the name of the imported evaluation set.
+     */
+    @SpeakeasyMetadata()
+    evaluationSetImport?: shared.EvaluationSetImport;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

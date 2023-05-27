@@ -9,38 +9,38 @@ import { Expose } from "class-transformer";
  * Successful Response
  */
 export class PipelineIndexingStatusDetail extends SpeakeasyBase {
-  /**
-   * Files that failed during indexing
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "failed_file_count" })
-  failedFileCount: number;
+    /**
+     * Files that failed during indexing
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "failed_file_count" })
+    failedFileCount: number;
 
-  /**
-   * Files that were successfully indexed.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "indexed_file_count" })
-  indexedFileCount: number;
+    /**
+     * Files that were successfully indexed.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "indexed_file_count" })
+    indexedFileCount: number;
 
-  /**
-   * Number of files that were indexed but did not create documents.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "indexed_no_documents_file_count" })
-  indexedNoDocumentsFileCount: number;
+    /**
+     * Number of files that were indexed but did not create documents.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "indexed_no_documents_file_count" })
+    indexedNoDocumentsFileCount: number;
 
-  /**
-   * The number of pending files to be indexed
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "pending_file_count" })
-  pendingFileCount: number;
+    /**
+     * The number of pending files to be indexed
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "pending_file_count" })
+    pendingFileCount: number;
 
-  /**
-   * The total number of files assigned to a pipeline.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "total_file_count" })
-  totalFileCount: number;
+    /**
+     * The total number of files assigned to a pipeline.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "total_file_count" })
+    totalFileCount: number;
 }

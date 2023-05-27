@@ -10,22 +10,22 @@ import { Expose, Type } from "class-transformer";
  * Your upload sessions.
  */
 export class PaginatedSession extends SpeakeasyBase {
-  @SpeakeasyMetadata({ elemType: Session })
-  @Expose({ name: "data" })
-  @Type(() => Session)
-  data: Session[];
+    @SpeakeasyMetadata({ elemType: Session })
+    @Expose({ name: "data" })
+    @Type(() => Session)
+    data: Session[];
 
-  /**
-   * Whether the session has more files.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "has_more" })
-  hasMore: boolean;
+    /**
+     * Whether the session has more files.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "has_more" })
+    hasMore: boolean;
 
-  /**
-   * The total number of files in the session.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "total" })
-  total: number;
+    /**
+     * The total number of files in the session.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "total" })
+    total: number;
 }

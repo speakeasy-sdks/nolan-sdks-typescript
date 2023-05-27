@@ -7,49 +7,45 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostRequest extends SpeakeasyBase {
-  /**
-   * Validates the pipeline without actually storing it.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=dry_run",
-  })
-  dryRun?: boolean;
+    /**
+     * Validates the pipeline without actually storing it.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=dry_run" })
+    dryRun?: boolean;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class CreatePipelineApiV1WorkspacesWorkspaceNamePipelinesPostResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  /**
-   * Your pipeline was created.
-   */
-  @SpeakeasyMetadata()
-  pipelineName?: shared.PipelineName;
+    /**
+     * Your pipeline was created.
+     */
+    @SpeakeasyMetadata()
+    pipelineName?: shared.PipelineName;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

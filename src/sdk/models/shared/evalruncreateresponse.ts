@@ -10,8 +10,8 @@ import { Expose, Type } from "class-transformer";
  * Your experiment was created.
  */
 export class EvalRunCreateResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "data" })
-  @Type(() => EvalRunName)
-  data: EvalRunName;
+    @SpeakeasyMetadata()
+    @Expose({ name: "data" })
+    @Type(() => EvalRunName)
+    data: EvalRunName;
 }

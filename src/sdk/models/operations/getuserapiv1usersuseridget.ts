@@ -7,41 +7,39 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetUserApiV1UsersUserIdGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class GetUserApiV1UsersUserIdGetRequest extends SpeakeasyBase {
-  /**
-   * A unique identifier of the user. You can obtain it by running the Get Users endpoint.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=user_id",
-  })
-  userId: string;
+    /**
+     * A unique identifier of the user. You can obtain it by running the Get Users endpoint.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=user_id" })
+    userId: string;
 }
 
 export class GetUserApiV1UsersUserIdGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  user?: shared.User;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    user?: shared.User;
 }

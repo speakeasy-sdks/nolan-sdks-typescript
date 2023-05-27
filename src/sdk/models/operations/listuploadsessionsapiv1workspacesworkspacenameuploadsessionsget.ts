@@ -7,77 +7,69 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class ListUploadSessionsApiV1WorkspacesWorkspaceNameUploadSessionsGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class ListUploadSessionsApiV1WorkspacesWorkspaceNameUploadSessionsGetRequest extends SpeakeasyBase {
-  /**
-   * Enter an ID if you want to see all entries after this ID.
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=after" })
-  after?: string;
+    /**
+     * Enter an ID if you want to see all entries after this ID.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=after" })
+    after?: string;
 
-  /**
-   * Enter an ID if you want to see all entries before this ID.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=before",
-  })
-  before?: string;
+    /**
+     * Enter an ID if you want to see all entries before this ID.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=before" })
+    before?: string;
 
-  /**
-   * Specifies if the session is expired.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=is_expired",
-  })
-  isExpired?: boolean;
+    /**
+     * Specifies if the session is expired.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=is_expired" })
+    isExpired?: boolean;
 
-  /**
-   * How many entries do you want to display? Leaving this field empty keeps the default and max 10 results are returned.
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
-  limit?: number;
+    /**
+     * How many entries do you want to display? Leaving this field empty keeps the default and max 10 results are returned.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
+    limit?: number;
 
-  /**
-   * Which page do you want to see? Type the number.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=page_number",
-  })
-  pageNumber?: number;
+    /**
+     * Which page do you want to see? Type the number.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=page_number" })
+    pageNumber?: number;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class ListUploadSessionsApiV1WorkspacesWorkspaceNameUploadSessionsGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  /**
-   * Your upload sessions.
-   */
-  @SpeakeasyMetadata()
-  paginatedSession?: shared.PaginatedSession;
+    /**
+     * Your upload sessions.
+     */
+    @SpeakeasyMetadata()
+    paginatedSession?: shared.PaginatedSession;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

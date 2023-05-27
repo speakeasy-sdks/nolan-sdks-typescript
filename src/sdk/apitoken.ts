@@ -8,270 +8,247 @@ import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 export class ApiToken {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
-
-  /**
-   * Create Token
-   *
-   * @remarks
-   * Creates the API key that you can use to connect deepset Cloud to your application.
-   */
-  async createToken(
-    req: shared.CreateToken,
-    security: operations.CreateTokenApiV1TokenPostSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.CreateTokenApiV1TokenPostResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new shared.CreateToken(req);
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/api/v1/token";
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "request",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security = new operations.CreateTokenApiV1TokenPostSecurity(security);
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.CreateTokenApiV1TokenPostResponse =
-      new operations.CreateTokenApiV1TokenPostResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.apiTokenResult = utils.objectToClass(
-            httpRes?.data,
-            shared.APITokenResult
-          );
+    /**
+     * Create Token
+     *
+     * @remarks
+     * Creates the API key that you can use to connect deepset Cloud to your application.
+     */
+    async createToken(
+        req: shared.CreateToken,
+        security: operations.CreateTokenApiV1TokenPostSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.CreateTokenApiV1TokenPostResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new shared.CreateToken(req);
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/api/v1/token";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Get Tokens [private]
-   *
-   * @remarks
-   * Returns all API keys present in deepset Cloud together with their properties. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
-   */
-  async list(
-    req: operations.ListTokensApiV1TokenGetRequest,
-    security: operations.ListTokensApiV1TokenGetSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.ListTokensApiV1TokenGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.ListTokensApiV1TokenGetRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/api/v1/token";
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security = new operations.ListTokensApiV1TokenGetSecurity(security);
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.ListTokensApiV1TokenGetResponse =
-      new operations.ListTokensApiV1TokenGetResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.tokenPagination = utils.objectToClass(
-            httpRes?.data,
-            shared.TokenPagination
-          );
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.CreateTokenApiV1TokenPostSecurity(security);
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Remove Token [private]
-   *
-   * @remarks
-   * Deletes the API key. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
-   */
-  async remove(
-    req: operations.RemoveTokenApiV1TokenApiTokenIdDeleteRequest,
-    security: operations.RemoveTokenApiV1TokenApiTokenIdDeleteSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.RemoveTokenApiV1TokenApiTokenIdDeleteResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.RemoveTokenApiV1TokenApiTokenIdDeleteRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/api/v1/token/{api_token_id}",
-      req
-    );
-
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security = new operations.RemoveTokenApiV1TokenApiTokenIdDeleteSecurity(
-        security
-      );
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.RemoveTokenApiV1TokenApiTokenIdDeleteResponse =
-      new operations.RemoveTokenApiV1TokenApiTokenIdDeleteResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.removeTokenApiV1TokenApiTokenIdDelete200ApplicationJSONAny =
-            httpRes?.data;
+        const res: operations.CreateTokenApiV1TokenPostResponse =
+            new operations.CreateTokenApiV1TokenPostResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.apiTokenResult = utils.objectToClass(httpRes?.data, shared.APITokenResult);
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
         }
-        break;
-      case httpRes?.status == 422:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpValidationError = utils.objectToClass(
-            httpRes?.data,
-            shared.HTTPValidationError
-          );
-        }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Get Tokens [private]
+     *
+     * @remarks
+     * Returns all API keys present in deepset Cloud together with their properties. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
+     */
+    async list(
+        req: operations.ListTokensApiV1TokenGetRequest,
+        security: operations.ListTokensApiV1TokenGetSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.ListTokensApiV1TokenGetResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.ListTokensApiV1TokenGetRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/api/v1/token";
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.ListTokensApiV1TokenGetSecurity(security);
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.ListTokensApiV1TokenGetResponse =
+            new operations.ListTokensApiV1TokenGetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.tokenPagination = utils.objectToClass(
+                        httpRes?.data,
+                        shared.TokenPagination
+                    );
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Remove Token [private]
+     *
+     * @remarks
+     * Deletes the API key. This is an endpoint we use internally. This means it can change anytime so bear this in mind if you want to use it.
+     */
+    async remove(
+        req: operations.RemoveTokenApiV1TokenApiTokenIdDeleteRequest,
+        security: operations.RemoveTokenApiV1TokenApiTokenIdDeleteSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RemoveTokenApiV1TokenApiTokenIdDeleteResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.RemoveTokenApiV1TokenApiTokenIdDeleteRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/api/v1/token/{api_token_id}", req);
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.RemoveTokenApiV1TokenApiTokenIdDeleteSecurity(security);
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RemoveTokenApiV1TokenApiTokenIdDeleteResponse =
+            new operations.RemoveTokenApiV1TokenApiTokenIdDeleteResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.removeTokenApiV1TokenApiTokenIdDelete200ApplicationJSONAny = httpRes?.data;
+                }
+                break;
+            case httpRes?.status == 422:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpValidationError = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HTTPValidationError
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

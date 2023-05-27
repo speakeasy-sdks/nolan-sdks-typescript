@@ -6,10 +6,10 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class CreateTagID extends SpeakeasyBase {
-  /**
-   * Unique ID of the tag.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "tag_id" })
-  tagId: string;
+    /**
+     * Unique ID of the tag.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "tag_id" })
+    tagId: string;
 }

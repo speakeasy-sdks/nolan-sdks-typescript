@@ -10,75 +10,75 @@ import { Expose, Transform, Type } from "class-transformer";
  * Successful Response
  */
 export class SharedPrototype extends SpeakeasyBase {
-  /**
-   * Unique ID of the user who created the shared prototype.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_by_id" })
-  createdById: string;
+    /**
+     * Unique ID of the user who created the shared prototype.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_by_id" })
+    createdById: string;
 
-  /**
-   * Explain how you expect the users to use this pipeline. Users who visit the shared prototype will see this text. For more information on how to set the right expectations regarding your pipeline, see [Guidelines for Onboarding Your Users](https://docs.cloud.deepset.ai/docs/guidelines-for-onboarding-your-users).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "description" })
-  description?: string;
+    /**
+     * Explain how you expect the users to use this pipeline. Users who visit the shared prototype will see this text. For more information on how to set the right expectations regarding your pipeline, see [Guidelines for Onboarding Your Users](https://docs.cloud.deepset.ai/docs/guidelines-for-onboarding-your-users).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "description" })
+    description?: string;
 
-  /**
-   * The date after which the generated link will expire and become invalid. The expiration date must be within 60 days from the current date.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "expiration_date" })
-  @Transform(({ value }) => new Date(value), { toClassOnly: true })
-  expirationDate: Date;
+    /**
+     * The date after which the generated link will expire and become invalid. The expiration date must be within 60 days from the current date.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "expiration_date" })
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    expirationDate: Date;
 
-  /**
-   * If a prototype is revoked, it's no longer accessible with the link.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "is_revoked" })
-  isRevoked: boolean;
+    /**
+     * If a prototype is revoked, it's no longer accessible with the link.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "is_revoked" })
+    isRevoked: boolean;
 
-  /**
-   * The generated link to the shared pipelines.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "link" })
-  link: string;
+    /**
+     * The generated link to the shared pipelines.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "link" })
+    link: string;
 
-  /**
-   * Type the names of the pipelines you want to share.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "pipeline_names" })
-  pipelineNames: string[];
+    /**
+     * Type the names of the pipelines you want to share.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "pipeline_names" })
+    pipelineNames: string[];
 
-  /**
-   * The names of the pipelines which this prototype shares.
-   */
-  @SpeakeasyMetadata({ elemType: PipelineName })
-  @Expose({ name: "shared_pipelines" })
-  @Type(() => PipelineName)
-  sharedPipelines: PipelineName[];
+    /**
+     * The names of the pipelines which this prototype shares.
+     */
+    @SpeakeasyMetadata({ elemType: PipelineName })
+    @Expose({ name: "shared_pipelines" })
+    @Type(() => PipelineName)
+    sharedPipelines: PipelineName[];
 
-  /**
-   * Unique ID of the shared prototype.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "shared_prototype_id" })
-  sharedPrototypeId: string;
+    /**
+     * Unique ID of the shared prototype.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "shared_prototype_id" })
+    sharedPrototypeId: string;
 
-  /**
-   * Select `True` if you want your users to be able to see the files.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "show_files" })
-  showFiles?: boolean;
+    /**
+     * Select `True` if you want your users to be able to see the files.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "show_files" })
+    showFiles?: boolean;
 
-  /**
-   * Select `True` if you want your users to be able to filter the documents by metadata.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "show_metadata_filters" })
-  showMetadataFilters?: boolean;
+    /**
+     * Select `True` if you want your users to be able to filter the documents by metadata.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "show_metadata_filters" })
+    showMetadataFilters?: boolean;
 }

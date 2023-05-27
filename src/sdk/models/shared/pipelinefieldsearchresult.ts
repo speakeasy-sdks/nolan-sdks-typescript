@@ -9,24 +9,24 @@ import { Expose } from "class-transformer";
  * Metadata for the pipeline's index.
  */
 export class PipelineFieldSearchResult extends SpeakeasyBase {
-  /**
-   * A list of fields that you searched for.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "data" })
-  data: string[];
+    /**
+     * A list of fields that you searched for.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "data" })
+    data: string[];
 
-  /**
-   * Whether the paginated result has more results.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "has_more" })
-  hasMore: boolean;
+    /**
+     * Whether the paginated result has more results.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "has_more" })
+    hasMore: boolean;
 
-  /**
-   * The total number of results matching your query.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "total" })
-  total: number;
+    /**
+     * The total number of results matching your query.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "total" })
+    total: number;
 }

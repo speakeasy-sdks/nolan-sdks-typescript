@@ -10,16 +10,16 @@ import { Expose, Type } from "class-transformer";
  * Successful Response
  */
 export class SearchHistoryPagination extends SpeakeasyBase {
-  @SpeakeasyMetadata({ elemType: SearchHistory })
-  @Expose({ name: "data" })
-  @Type(() => SearchHistory)
-  data: SearchHistory[];
+    @SpeakeasyMetadata({ elemType: SearchHistory })
+    @Expose({ name: "data" })
+    @Type(() => SearchHistory)
+    data: SearchHistory[];
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "has_more" })
-  hasMore: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "has_more" })
+    hasMore: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "total" })
-  total?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "total" })
+    total?: number;
 }

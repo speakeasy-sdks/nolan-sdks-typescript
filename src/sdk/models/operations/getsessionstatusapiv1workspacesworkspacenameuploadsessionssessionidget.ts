@@ -7,49 +7,45 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetSessionStatusApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class GetSessionStatusApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdGetRequest extends SpeakeasyBase {
-  /**
-   * The ID of the session.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=session_id",
-  })
-  sessionId: string;
+    /**
+     * The ID of the session.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=session_id" })
+    sessionId: string;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class GetSessionStatusApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  /**
-   * Your upload sessions.
-   */
-  @SpeakeasyMetadata()
-  sessionDetail?: shared.SessionDetail;
+    /**
+     * Your upload sessions.
+     */
+    @SpeakeasyMetadata()
+    sessionDetail?: shared.SessionDetail;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

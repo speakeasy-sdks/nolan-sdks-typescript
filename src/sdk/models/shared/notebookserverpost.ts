@@ -9,16 +9,16 @@ import { Expose } from "class-transformer";
  * An enumeration.
  */
 export enum NotebookServerPostServerType {
-  CpuServer = "cpu-server",
-  GpuServer = "gpu-server",
-  Unknown = "unknown",
+    CpuServer = "cpu-server",
+    GpuServer = "gpu-server",
+    Unknown = "unknown",
 }
 
 export class NotebookServerPost extends SpeakeasyBase {
-  /**
-   * Use 'gpu-server' to start a GPU instance, use 'cpu-server' to start a CPU instance.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "server_type" })
-  serverType?: NotebookServerPostServerType;
+    /**
+     * Use 'gpu-server' to start a GPU instance, use 'cpu-server' to start a CPU instance.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "server_type" })
+    serverType?: NotebookServerPostServerType;
 }

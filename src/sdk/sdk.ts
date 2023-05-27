@@ -30,194 +30,193 @@ export const ServerList = ["https://api.cloud.deepset.ai"] as const;
  * The available configuration options for the SDK
  */
 export type SDKProps = {
-  /**
-   * Allows overriding the default axios client used by the SDK
-   */
-  defaultClient?: AxiosInstance;
-  /**
-   * Allows overriding the default server URL used by the SDK
-   */
-  serverURL?: string;
+    /**
+     * Allows overriding the default axios client used by the SDK
+     */
+    defaultClient?: AxiosInstance;
+    /**
+     * Allows overriding the default server URL used by the SDK
+     */
+    serverURL?: string;
 };
 
 /**
  * deepset Cloud API description
  */
 export class Deepset {
-  public apiToken: ApiToken;
-  public documentStore: DocumentStore;
-  public evalRun: EvalRun;
-  public evaluationSet: EvaluationSet;
-  public file: File;
-  public health: Health;
-  public modelRegistryToken: ModelRegistryToken;
-  public models: Models;
-  public notebook: Notebook;
-  public organization: Organization;
-  public pipeline: Pipeline;
-  public searchSession: SearchSession;
-  public sharedPrototype: SharedPrototype;
-  public uploadSession: UploadSession;
-  public user: User;
-  public workspace: Workspace;
+    public apiToken: ApiToken;
+    public documentStore: DocumentStore;
+    public evalRun: EvalRun;
+    public evaluationSet: EvaluationSet;
+    public file: File;
+    public health: Health;
+    public modelRegistryToken: ModelRegistryToken;
+    public models: Models;
+    public notebook: Notebook;
+    public organization: Organization;
+    public pipeline: Pipeline;
+    public searchSession: SearchSession;
+    public sharedPrototype: SharedPrototype;
+    public uploadSession: UploadSession;
+    public user: User;
+    public workspace: Workspace;
 
-  public _defaultClient: AxiosInstance;
-  public _securityClient: AxiosInstance;
-  public _serverURL: string;
-  private _language = "typescript";
-  private _sdkVersion = "1.6.0";
-  private _genVersion = "2.32.2";
-  private _globals: any;
+    public _defaultClient: AxiosInstance;
+    public _securityClient: AxiosInstance;
+    public _serverURL: string;
+    private _language = "typescript";
+    private _sdkVersion = "1.6.1";
+    private _genVersion = "2.32.7";
+    private _globals: any;
 
-  constructor(props?: SDKProps) {
-    this._serverURL = props?.serverURL ?? ServerList[0];
+    constructor(props?: SDKProps) {
+        this._serverURL = props?.serverURL ?? ServerList[0];
 
-    this._defaultClient =
-      props?.defaultClient ?? axios.create({ baseURL: this._serverURL });
-    this._securityClient = this._defaultClient;
+        this._defaultClient = props?.defaultClient ?? axios.create({ baseURL: this._serverURL });
+        this._securityClient = this._defaultClient;
 
-    this.apiToken = new ApiToken(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.apiToken = new ApiToken(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.documentStore = new DocumentStore(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.documentStore = new DocumentStore(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.evalRun = new EvalRun(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.evalRun = new EvalRun(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.evaluationSet = new EvaluationSet(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.evaluationSet = new EvaluationSet(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.file = new File(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.file = new File(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.health = new Health(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.health = new Health(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.modelRegistryToken = new ModelRegistryToken(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.modelRegistryToken = new ModelRegistryToken(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.models = new Models(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.models = new Models(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.notebook = new Notebook(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.notebook = new Notebook(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.organization = new Organization(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.organization = new Organization(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.pipeline = new Pipeline(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.pipeline = new Pipeline(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.searchSession = new SearchSession(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.searchSession = new SearchSession(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.sharedPrototype = new SharedPrototype(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.sharedPrototype = new SharedPrototype(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.uploadSession = new UploadSession(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.uploadSession = new UploadSession(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.user = new User(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.user = new User(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.workspace = new Workspace(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
-  }
+        this.workspace = new Workspace(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
+    }
 }

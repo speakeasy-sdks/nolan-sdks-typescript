@@ -9,48 +9,48 @@ import { Expose } from "class-transformer";
  * An enumeration.
  */
 export enum SessionFileFileIngestionStatusEnum {
-  Pending = "PENDING",
-  Failed = "FAILED",
-  Finished = "FINISHED",
+    Pending = "PENDING",
+    Failed = "FAILED",
+    Finished = "FINISHED",
 }
 
 /**
  * An enumeration.
  */
 export enum SessionFileFileIngestionStatusReasonEnum {
-  EmptyFile = "EMPTY_FILE",
-  FileNotFound = "FILE_NOT_FOUND",
-  FailedToParseMeta = "FAILED_TO_PARSE_META",
-  FileAlreadyExists = "FILE_ALREADY_EXISTS",
-  UnknownError = "UNKNOWN_ERROR",
+    EmptyFile = "EMPTY_FILE",
+    FileNotFound = "FILE_NOT_FOUND",
+    FailedToParseMeta = "FAILED_TO_PARSE_META",
+    FileAlreadyExists = "FILE_ALREADY_EXISTS",
+    UnknownError = "UNKNOWN_ERROR",
 }
 
 export class SessionFile extends SpeakeasyBase {
-  /**
-   * The ID of the ingested file.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "file_ingestion_id" })
-  fileIngestionId?: string;
+    /**
+     * The ID of the ingested file.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "file_ingestion_id" })
+    fileIngestionId?: string;
 
-  /**
-   * The ingestion status of the ingested file.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "ingestion_status" })
-  ingestionStatus: SessionFileFileIngestionStatusEnum;
+    /**
+     * The ingestion status of the ingested file.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "ingestion_status" })
+    ingestionStatus: SessionFileFileIngestionStatusEnum;
 
-  /**
-   * The ingestion status message that explains the ingestion status. This is only available for files that failed to ingest.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "ingestion_status_reason" })
-  ingestionStatusReason?: SessionFileFileIngestionStatusReasonEnum;
+    /**
+     * The ingestion status message that explains the ingestion status. This is only available for files that failed to ingest.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "ingestion_status_reason" })
+    ingestionStatusReason?: SessionFileFileIngestionStatusReasonEnum;
 
-  /**
-   * The name of the ingested file.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * The name of the ingested file.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 }

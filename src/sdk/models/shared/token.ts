@@ -7,23 +7,23 @@ import { UserName } from "./username";
 import { Expose, Transform, Type } from "class-transformer";
 
 export class Token extends SpeakeasyBase {
-  /**
-   * Unique identifier of the API token.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "api_token_id" })
-  apiTokenId: string;
+    /**
+     * Unique identifier of the API token.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "api_token_id" })
+    apiTokenId: string;
 
-  /**
-   * Timestamp when the token should expire, for example '2022-05-12T12:25:09+02:00'
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "expires_at" })
-  @Transform(({ value }) => new Date(value), { toClassOnly: true })
-  expiresAt: Date;
+    /**
+     * Timestamp when the token should expire, for example '2022-05-12T12:25:09+02:00'
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "expires_at" })
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    expiresAt: Date;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "user" })
-  @Type(() => UserName)
-  user: UserName;
+    @SpeakeasyMetadata()
+    @Expose({ name: "user" })
+    @Type(() => UserName)
+    user: UserName;
 }

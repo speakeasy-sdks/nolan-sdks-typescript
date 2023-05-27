@@ -8,50 +8,48 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class UpdateUserPermissionApiV1UsersUserIdPatchSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 /**
  * Specify the new role for the user.
  */
 export class UpdateUserPermissionApiV1UsersUserIdPatchUserRole extends SpeakeasyBase {
-  /**
-   * An enumeration.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "role" })
-  role: shared.RolesToDB;
+    /**
+     * An enumeration.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "role" })
+    role: shared.RolesToDB;
 }
 
 export class UpdateUserPermissionApiV1UsersUserIdPatchRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  requestBody: UpdateUserPermissionApiV1UsersUserIdPatchUserRole;
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    requestBody: UpdateUserPermissionApiV1UsersUserIdPatchUserRole;
 
-  /**
-   * A unique identifier of the user. You can obtain it by running the Get Users endpoint.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=user_id",
-  })
-  userId: string;
+    /**
+     * A unique identifier of the user. You can obtain it by running the Get Users endpoint.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=user_id" })
+    userId: string;
 }
 
 export class UpdateUserPermissionApiV1UsersUserIdPatchResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

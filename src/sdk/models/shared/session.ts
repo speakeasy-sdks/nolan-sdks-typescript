@@ -9,70 +9,70 @@ import { Expose, Transform, Type } from "class-transformer";
  * The user who created the session.
  */
 export class SessionOauthUser extends SpeakeasyBase {
-  /**
-   * Family name of a user
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "family_name" })
-  familyName: string;
+    /**
+     * Family name of a user
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "family_name" })
+    familyName: string;
 
-  /**
-   * Given name of a user
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "given_name" })
-  givenName: string;
+    /**
+     * Given name of a user
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "given_name" })
+    givenName: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "user_id" })
-  userId: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "user_id" })
+    userId: string;
 }
 
 /**
  * An enumeration.
  */
 export enum SessionFileWriteModeEnum {
-  Keep = "KEEP",
-  Overwrite = "OVERWRITE",
-  Fail = "FAIL",
+    Keep = "KEEP",
+    Overwrite = "OVERWRITE",
+    Fail = "FAIL",
 }
 
 export class Session extends SpeakeasyBase {
-  /**
-   * The time when the session was created.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_at" })
-  @Transform(({ value }) => new Date(value), { toClassOnly: true })
-  createdAt: Date;
+    /**
+     * The time when the session was created.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_at" })
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt: Date;
 
-  /**
-   * The user who created the session.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_by" })
-  @Type(() => SessionOauthUser)
-  createdBy: SessionOauthUser;
+    /**
+     * The user who created the session.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_by" })
+    @Type(() => SessionOauthUser)
+    createdBy: SessionOauthUser;
 
-  /**
-   * The time when the session expires.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "expires_at" })
-  @Transform(({ value }) => new Date(value), { toClassOnly: true })
-  expiresAt?: Date;
+    /**
+     * The time when the session expires.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "expires_at" })
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    expiresAt?: Date;
 
-  /**
-   * Unique identifier of a session.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "session_id" })
-  sessionId?: string;
+    /**
+     * Unique identifier of a session.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "session_id" })
+    sessionId?: string;
 
-  /**
-   * Determines how to handle files that already exist. You can KEEP the existing file, OVERWRITE it, or FAIL to ingest if a file with the same name is already in your workspace.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "write_mode" })
-  writeMode?: SessionFileWriteModeEnum;
+    /**
+     * Determines how to handle files that already exist. You can KEEP the existing file, OVERWRITE it, or FAIL to ingest if a file with the same name is already in your workspace.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "write_mode" })
+    writeMode?: SessionFileWriteModeEnum;
 }

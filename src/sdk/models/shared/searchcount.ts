@@ -6,17 +6,17 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class SearchCount extends SpeakeasyBase {
-  /**
-   * Number of queries that were sent.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "count" })
-  count: number;
+    /**
+     * Number of queries that were sent.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "count" })
+    count: number;
 
-  /**
-   * Date of the counted search queries.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "date" })
-  date: string;
+    /**
+     * Date of the counted search queries.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "date" })
+    date: string;
 }

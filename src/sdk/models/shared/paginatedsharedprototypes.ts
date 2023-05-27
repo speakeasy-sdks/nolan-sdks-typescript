@@ -10,25 +10,25 @@ import { Expose, Type } from "class-transformer";
  * Successful Response
  */
 export class PaginatedSharedPrototypes extends SpeakeasyBase {
-  /**
-   * A list of matching shared prototypes.
-   */
-  @SpeakeasyMetadata({ elemType: SharedPrototype })
-  @Expose({ name: "data" })
-  @Type(() => SharedPrototype)
-  data: SharedPrototype[];
+    /**
+     * A list of matching shared prototypes.
+     */
+    @SpeakeasyMetadata({ elemType: SharedPrototype })
+    @Expose({ name: "data" })
+    @Type(() => SharedPrototype)
+    data: SharedPrototype[];
 
-  /**
-   * Whether the paginated result has more results.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "has_more" })
-  hasMore: boolean;
+    /**
+     * Whether the paginated result has more results.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "has_more" })
+    hasMore: boolean;
 
-  /**
-   * The total number of results matching your query.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "total" })
-  total: number;
+    /**
+     * The total number of results matching your query.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "total" })
+    total: number;
 }

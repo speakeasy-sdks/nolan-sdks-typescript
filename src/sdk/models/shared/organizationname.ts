@@ -9,10 +9,10 @@ import { Expose } from "class-transformer";
  * Successful Response
  */
 export class OrganizationName extends SpeakeasyBase {
-  /**
-   * Unique name of an organization
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * Unique name of an organization
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 }

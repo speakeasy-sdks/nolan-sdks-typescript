@@ -7,52 +7,48 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  evalRunPatch: shared.EvalRunPatch;
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    evalRunPatch: shared.EvalRunPatch;
 
-  /**
-   * Which evaluation run do you want to update? Type its name here.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=eval_run_name",
-  })
-  evalRunName: string;
+    /**
+     * Which evaluation run do you want to update? Type its name here.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=eval_run_name" })
+    evalRunName: string;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata()
-  evalRunCreateResponse?: shared.EvalRunCreateResponse;
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata()
+    evalRunCreateResponse?: shared.EvalRunCreateResponse;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

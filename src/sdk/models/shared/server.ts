@@ -11,17 +11,17 @@ import { Expose } from "class-transformer";
  * Successful Response
  */
 export class Server extends SpeakeasyBase {
-  /**
-   * An enumeration.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "server_type" })
-  serverType: ServerType;
+    /**
+     * An enumeration.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "server_type" })
+    serverType: ServerType;
 
-  /**
-   * An enumeration.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "state" })
-  state: ServerState;
+    /**
+     * An enumeration.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "state" })
+    state: ServerState;
 }

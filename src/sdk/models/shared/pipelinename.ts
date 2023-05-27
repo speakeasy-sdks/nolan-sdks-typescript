@@ -9,10 +9,10 @@ import { Expose } from "class-transformer";
  * Your pipeline was created.
  */
 export class PipelineName extends SpeakeasyBase {
-  /**
-   * Name of the pipeline
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * Name of the pipeline
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 }

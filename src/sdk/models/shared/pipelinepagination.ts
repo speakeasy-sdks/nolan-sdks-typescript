@@ -10,16 +10,16 @@ import { Expose, Type } from "class-transformer";
  * Successful Response
  */
 export class PipelinePagination extends SpeakeasyBase {
-  @SpeakeasyMetadata({ elemType: PipelineIndexing })
-  @Expose({ name: "data" })
-  @Type(() => PipelineIndexing)
-  data: PipelineIndexing[];
+    @SpeakeasyMetadata({ elemType: PipelineIndexing })
+    @Expose({ name: "data" })
+    @Type(() => PipelineIndexing)
+    data: PipelineIndexing[];
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "has_more" })
-  hasMore: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "has_more" })
+    hasMore: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "total" })
-  total: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "total" })
+    total: number;
 }

@@ -7,49 +7,45 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class ListModelApiV1ModelGetSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class ListModelApiV1ModelGetRequest extends SpeakeasyBase {
-  /**
-   * Author from Hugging Face. The author of the model 'deepset/minilm-uncased-squad2' is 'deepset'.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=author",
-  })
-  author?: string;
+    /**
+     * Author from Hugging Face. The author of the model 'deepset/minilm-uncased-squad2' is 'deepset'.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=author" })
+    author?: string;
 
-  /**
-   * Type of the node. E.g. 'PromptNode'
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=node_type",
-  })
-  nodeType?: string;
+    /**
+     * Type of the node. E.g. 'PromptNode'
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=node_type" })
+    nodeType?: string;
 }
 
 export class ListModelApiV1ModelGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  /**
-   * Successful Response
-   */
-  @SpeakeasyMetadata({ elemType: shared.ModelMeta })
-  modelMetas?: shared.ModelMeta[];
+    /**
+     * Successful Response
+     */
+    @SpeakeasyMetadata({ elemType: shared.ModelMeta })
+    modelMetas?: shared.ModelMeta[];
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

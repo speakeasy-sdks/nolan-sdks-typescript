@@ -10,8 +10,8 @@ import { Expose, Type } from "class-transformer";
  * Validation Error
  */
 export class HTTPValidationError extends SpeakeasyBase {
-  @SpeakeasyMetadata({ elemType: ValidationError })
-  @Expose({ name: "detail" })
-  @Type(() => ValidationError)
-  detail?: ValidationError[];
+    @SpeakeasyMetadata({ elemType: ValidationError })
+    @Expose({ name: "detail" })
+    @Type(() => ValidationError)
+    detail?: ValidationError[];
 }

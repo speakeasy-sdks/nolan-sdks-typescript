@@ -7,52 +7,48 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class EditSharedPrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesSharedPrototypeIdPatchSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  httpBearer: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    httpBearer: string;
 }
 
 export class EditSharedPrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesSharedPrototypeIdPatchRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  patchSharedPrototype: shared.PatchSharedPrototype;
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    patchSharedPrototype: shared.PatchSharedPrototype;
 
-  /**
-   * The ID of the shared prototype
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=shared_prototype_id",
-  })
-  sharedPrototypeId: string;
+    /**
+     * The ID of the shared prototype
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=shared_prototype_id" })
+    sharedPrototypeId: string;
 
-  /**
-   * Type the name of the workspace.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=workspace_name",
-  })
-  workspaceName: string;
+    /**
+     * Type the name of the workspace.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workspace_name" })
+    workspaceName: string;
 }
 
 export class EditSharedPrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesSharedPrototypeIdPatchResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Validation Error
-   */
-  @SpeakeasyMetadata()
-  httpValidationError?: shared.HTTPValidationError;
+    /**
+     * Validation Error
+     */
+    @SpeakeasyMetadata()
+    httpValidationError?: shared.HTTPValidationError;
 
-  /**
-   * The prototype was successfully updated with the new values
-   */
-  @SpeakeasyMetadata()
-  sharedPrototype?: shared.SharedPrototype;
+    /**
+     * The prototype was successfully updated with the new values
+     */
+    @SpeakeasyMetadata()
+    sharedPrototype?: shared.SharedPrototype;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

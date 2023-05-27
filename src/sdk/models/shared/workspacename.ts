@@ -6,10 +6,10 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class WorkspaceName extends SpeakeasyBase {
-  /**
-   * How do you want to name your workspace? Type a name that's longer than 3 characters.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * How do you want to name your workspace? Type a name that's longer than 3 characters.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 }
