@@ -16,6 +16,7 @@ src/sdk/user.ts
 src/sdk/workspace.ts
 src/sdk/sdk.ts
 .eslintrc.yml
+.gitignore
 jest.config.js
 package-lock.json
 package.json
