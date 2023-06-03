@@ -2,14 +2,14 @@ configVersion: 1.0.0
 management:
   docChecksum: 59d9973f47f7b2750219542b6c7b3f12
   docVersion: 1.0.0
-  speakeasyVersion: 1.40.3
-  generationVersion: 2.34.7
+  speakeasyVersion: 1.43.0
+  generationVersion: 2.35.3
 generation:
   sdkClassName: deepset
   singleTagPerOp: false
   telemetryEnabled: false
 typescript:
-  version: 1.7.1
+  version: 1.8.0
   author: nolan-sdks
   maxMethodParams: 0
   packageName: ds-test
