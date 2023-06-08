@@ -27,7 +27,7 @@ sdk.evaluationSet.delete({
   evaluationSetName: "dolor",
   workspaceName: "qui",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: DeleteEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameDeleteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -54,7 +54,7 @@ sdk.evaluationSet.get({
   evaluationSetName: "ipsum",
   workspaceName: "hic",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: GetEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -80,7 +80,7 @@ sdk.evaluationSet.getCsv({
   evaluationSetName: "excepturi",
   workspaceName: "cum",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: GetEvaluationSetCsvFileApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameCsvGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -109,7 +109,7 @@ sdk.evaluationSet.importEvaluationSet({
   },
   workspaceName: "reiciendis",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: ImportEvaluationSetApiV1WorkspacesWorkspaceNameEvaluationSetsImportPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -138,7 +138,7 @@ sdk.evaluationSet.list({
   pageNumber: 253941,
   workspaceName: "enim",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: ListEvaluationSetsApiV1WorkspacesWorkspaceNameEvaluationSetsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -164,7 +164,7 @@ sdk.evaluationSet.retrigger({
   evaluationSetName: "dolorem",
   workspaceName: "sapiente",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: RetriggerLabelMatchingApiV1WorkspacesWorkspaceNameEvaluationSetsEvaluationSetNameLabelMatchingPostResponse) => {
   if (res.statusCode == 200) {
     // handle response

@@ -35,7 +35,7 @@ sdk.evalRun.list({
   select: "aspernatur",
   workspaceName: "perferendis",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: ListEvalRunsResponse) => {
   if (res.statusCode == 200) {
     // handle response

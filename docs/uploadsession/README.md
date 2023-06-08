@@ -29,7 +29,7 @@ sdk.uploadSession.close({
   sessionId: "ad4f9efc-1b45-412c-9032-648dc2f61519",
   workspaceName: "provident",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: CloseSessionApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdPutResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -56,7 +56,7 @@ sdk.uploadSession.create({
   },
   workspaceName: "soluta",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: CreateUploadSessionApiV1WorkspacesWorkspaceNameUploadSessionsPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -89,7 +89,7 @@ sdk.uploadSession.getFiles({
   sessionId: "9a1adeaa-b585-41d6-8645-b08b61891baa",
   workspaceName: "voluptatem",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -113,7 +113,7 @@ sdk.uploadSession.getStatus({
   sessionId: "fe1ade00-8e6f-48c5-b350-d8cdb5a34181",
   workspaceName: "tempora",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: GetSessionStatusApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -142,7 +142,7 @@ sdk.uploadSession.list({
   pageNumber: 514054,
   workspaceName: "incidunt",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: ListUploadSessionsApiV1WorkspacesWorkspaceNameUploadSessionsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response

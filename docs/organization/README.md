@@ -18,7 +18,7 @@ import { GetOrganizationApiV1OrganizationGetResponse } from "ds-test/dist/sdk/mo
 const sdk = new Deepset();
 
 sdk.organization.get({
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: GetOrganizationApiV1OrganizationGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -48,7 +48,7 @@ sdk.organization.invite({
   },
   organizationId: "eligendi",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: InviteUserToOrganizationApiV1OrganizationOrganizationIdInvitationPostResponse) => {
   if (res.statusCode == 200) {
     // handle response

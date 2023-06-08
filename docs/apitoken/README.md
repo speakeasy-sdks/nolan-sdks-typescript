@@ -21,7 +21,7 @@ const sdk = new Deepset();
 sdk.apiToken.createToken({
   expiresAt: new Date("2022-05-20T13:30:46.463Z"),
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: CreateTokenApiV1TokenPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -47,7 +47,7 @@ sdk.apiToken.list({
   limit: 13571,
   pageNumber: 97101,
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: ListTokensApiV1TokenGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -70,7 +70,7 @@ const sdk = new Deepset();
 sdk.apiToken.remove({
   apiTokenId: "9da1ffe7-8f09-47b0-874f-15471b5e6e13",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: RemoveTokenApiV1TokenApiTokenIdDeleteResponse) => {
   if (res.statusCode == 200) {
     // handle response

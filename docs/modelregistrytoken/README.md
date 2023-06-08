@@ -30,7 +30,7 @@ const sdk = new Deepset();
 sdk.modelRegistryToken.get({
   provider: GetTokenApiV1ModelRegistryTokensProviderGetProviderModelProvider.Huggingface,
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: GetTokenApiV1ModelRegistryTokensProviderGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -53,7 +53,7 @@ import { GetTokenDeprecatedApiV1ModelRegistryTokenGetResponse } from "ds-test/di
 const sdk = new Deepset();
 
 sdk.modelRegistryToken.getTokenDeprecated({
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: GetTokenDeprecatedApiV1ModelRegistryTokenGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -74,7 +74,7 @@ import { ListTokensApiV1ModelRegistryTokensGetResponse } from "ds-test/dist/sdk/
 const sdk = new Deepset();
 
 sdk.modelRegistryToken.list({
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: ListTokensApiV1ModelRegistryTokensGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -100,7 +100,7 @@ const sdk = new Deepset();
 sdk.modelRegistryToken.remove({
   provider: RemoveTokenApiV1ModelRegistryTokensProviderDeleteProviderModelProvider.Cohere,
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: RemoveTokenApiV1ModelRegistryTokensProviderDeleteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -123,7 +123,7 @@ import { RemoveTokenDeprecatedApiV1ModelRegistryTokenDeleteResponse } from "ds-t
 const sdk = new Deepset();
 
 sdk.modelRegistryToken.removeTokenDeprecated({
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: RemoveTokenDeprecatedApiV1ModelRegistryTokenDeleteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -152,7 +152,7 @@ sdk.modelRegistryToken.save({
   },
   provider: SaveTokenApiV1ModelRegistryTokensProviderPostProviderModelProvider.Openai,
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: SaveTokenApiV1ModelRegistryTokensProviderPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -177,7 +177,7 @@ const sdk = new Deepset();
 sdk.modelRegistryToken.saveTokenDeprecated({
   token: "inventore",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: SaveTokenDeprecatedApiV1ModelRegistryTokenPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -206,7 +206,7 @@ sdk.modelRegistryToken.update({
   },
   provider: UpdateTokenApiV1ModelRegistryTokensProviderPutProviderModelProvider.Openai,
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: UpdateTokenApiV1ModelRegistryTokensProviderPutResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -231,7 +231,7 @@ const sdk = new Deepset();
 sdk.modelRegistryToken.updateTokenDeprecated({
   token: "accusamus",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: UpdateTokenDeprecatedApiV1ModelRegistryTokenPutResponse) => {
   if (res.statusCode == 200) {
     // handle response

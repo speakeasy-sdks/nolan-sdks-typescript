@@ -35,7 +35,7 @@ sdk.sharedPrototype.create({
   },
   workspaceName: "esse",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: CreatePrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -59,7 +59,7 @@ sdk.sharedPrototype.createExternalUser({
   existingUserId: "5088e518-6206-45e9-84f3-b1194b8abf60",
   workspaceName: "amet",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: CreateExternalUserApiV1WorkspacesWorkspaceNameSharedPrototypeUsersPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -85,7 +85,7 @@ sdk.sharedPrototype.get({
   sharedPrototypeId: "a79f9dfe-0ab7-4da8-a50c-e187f86bc173",
   workspaceName: "assumenda",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: GetSharedPrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesSharedPrototypeIdGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -113,7 +113,7 @@ sdk.sharedPrototype.list({
   pageNumber: 907733,
   workspaceName: "qui",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: ListPrototypesApiV1WorkspacesWorkspaceNameSharedPrototypesGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -139,7 +139,7 @@ sdk.sharedPrototype.revoke({
   sharedPrototypeId: "b6e3ab88-45f0-4597-a60f-f2a54a31e947",
   workspaceName: "ex",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: RevokeSharedPrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesSharedPrototypeIdDeleteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -170,7 +170,7 @@ sdk.sharedPrototype.update({
   sharedPrototypeId: "a3e865e7-956f-4925-9a5a-9da660ff57bf",
   workspaceName: "officia",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: EditSharedPrototypeApiV1WorkspacesWorkspaceNameSharedPrototypesSharedPrototypeIdPatchResponse) => {
   if (res.statusCode == 200) {
     // handle response

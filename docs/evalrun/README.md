@@ -40,7 +40,7 @@ sdk.evalRun.createEvalRun({
   },
   workspaceName: "sint",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: CreateEvalRunApiV1WorkspacesWorkspaceNameEvalRunsPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -66,7 +66,7 @@ sdk.evalRun.createTag({
   },
   workspaceName: "dolor",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: CreateTagApiV1WorkspacesWorkspaceNameTagsPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -90,7 +90,7 @@ sdk.evalRun.delete({
   evalRunName: "debitis",
   workspaceName: "a",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: DeleteEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameDeleteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -114,7 +114,7 @@ sdk.evalRun.deleteTag({
   tagName: "dolorum",
   workspaceName: "in",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: DeleteTagApiV1WorkspacesWorkspaceNameTagsTagNameDeleteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -138,7 +138,7 @@ sdk.evalRun.get({
   evalRunName: "in",
   workspaceName: "illum",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: GetEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -175,7 +175,7 @@ sdk.evalRun.getNodeEvalPredictions({
   select: "architecto",
   workspaceName: "architecto",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: GetNodeEvalPredictionsApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameNodesNodeNamePredictionsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -206,7 +206,7 @@ sdk.evalRun.list({
   select: "blanditiis",
   workspaceName: "error",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: ListEvalRunsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -230,7 +230,7 @@ sdk.evalRun.listTags({
   filter: "eaque",
   workspaceName: "occaecati",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: GetTagsApiV1WorkspacesWorkspaceNameTagsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -254,7 +254,7 @@ sdk.evalRun.start({
   evalRunName: "rerum",
   workspaceName: "adipisci",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: StartEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNameStartPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -288,7 +288,7 @@ sdk.evalRun.update({
   evalRunName: "provident",
   workspaceName: "nobis",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: EditEvalRunApiV1WorkspacesWorkspaceNameEvalRunsEvalRunNamePatchResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -315,7 +315,7 @@ sdk.evalRun.updateTag({
   tagName: "dolorem",
   workspaceName: "dolorem",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: UpdateTagApiV1WorkspacesWorkspaceNameTagsTagNamePatchResponse) => {
   if (res.statusCode == 200) {
     // handle response

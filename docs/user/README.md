@@ -23,7 +23,7 @@ const sdk = new Deepset();
 sdk.user.delete({
   userId: "18d16230-9fb0-4929-921a-efb9f58c4d86",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: DeleteUserApiV1UsersUserIdDeleteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -46,7 +46,7 @@ const sdk = new Deepset();
 sdk.user.get({
   userId: "e68e4be0-5601-43f5-9da7-57a59ecfef66",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: GetUserApiV1UsersUserIdGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -73,7 +73,7 @@ sdk.user.list({
   limit: 224467,
   pageNumber: 483394,
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: ListUsersApiV1UsersGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -94,7 +94,7 @@ import { ReadUsersMeApiV1MeGetResponse } from "ds-test/dist/sdk/models/operation
 const sdk = new Deepset();
 
 sdk.user.me({
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: ReadUsersMeApiV1MeGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -121,7 +121,7 @@ sdk.user.updatePermission({
   },
   userId: "00ae6b6b-c9b8-4f75-9eac-55a9741d3113",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: UpdateUserPermissionApiV1UsersUserIdPatchResponse) => {
   if (res.statusCode == 200) {
     // handle response

@@ -25,7 +25,7 @@ const sdk = new Deepset();
 sdk.workspace.create({
   name: "Tina Moore",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: CreateWorkspaceApiV1WorkspacesPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -48,7 +48,7 @@ const sdk = new Deepset();
 sdk.workspace.delete({
   workspaceName: "soluta",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: DeleteWorkspaceApiV1WorkspacesWorkspaceNameDeleteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -71,7 +71,7 @@ const sdk = new Deepset();
 sdk.workspace.get({
   workspaceName: "libero",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: GetWorkspaceApiV1WorkspacesWorkspaceNameGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -94,7 +94,7 @@ const sdk = new Deepset();
 sdk.workspace.getStats({
   workspaceName: "rem",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: GetWorkspaceStatsApiV1WorkspacesWorkspaceNameStatsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -115,7 +115,7 @@ import { ListWorkspacesApiV1WorkspacesGetResponse } from "ds-test/dist/sdk/model
 const sdk = new Deepset();
 
 sdk.workspace.list({
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: ListWorkspacesApiV1WorkspacesGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -142,7 +142,7 @@ sdk.workspace.searchCount({
   pageNumber: 737279,
   workspaceName: "at",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: SearchCountApiV1WorkspacesWorkspaceNameSearchCountGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -169,7 +169,7 @@ sdk.workspace.searchHistory({
   pageNumber: 242099,
   workspaceName: "minus",
 }, {
-  httpBearer: "YOUR_BEARER_TOKEN_HERE",
+  httpBearer: "",
 }).then((res: SearchHistoryApiV1WorkspacesWorkspaceNameSearchHistoryGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
