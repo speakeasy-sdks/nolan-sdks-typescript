@@ -3,7 +3,12 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose } from "class-transformer";
+import { Expose, Type } from "class-transformer";
+
+/**
+ * The configuration parameters of this pipeline component
+ */
+export class PipelineNodeConfigPipelineParameters extends SpeakeasyBase {}
 
 export class PipelineNodeConfig extends SpeakeasyBase {
     /**
@@ -11,7 +16,8 @@ export class PipelineNodeConfig extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "params" })
-    params: Record<string, any>;
+    @Type(() => PipelineNodeConfigPipelineParameters)
+    params: PipelineNodeConfigPipelineParameters;
 
     /**
      * Python class name of the node.

@@ -3,7 +3,12 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose } from "class-transformer";
+import { Expose, Type } from "class-transformer";
+
+/**
+ * Filters you can use to narrow down the search. For more information, see [metadata filtering](https://docs.haystack.deepset.ai/docs/metadata-filtering).
+ */
+export class FetchDocumentsParamsHaystackFilters extends SpeakeasyBase {}
 
 export class FetchDocumentsParams extends SpeakeasyBase {
     /**
@@ -11,7 +16,8 @@ export class FetchDocumentsParams extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "filters" })
-    filters?: Record<string, any>;
+    @Type(() => FetchDocumentsParamsHaystackFilters)
+    filters?: FetchDocumentsParamsHaystackFilters;
 
     /**
      * Returns vector representations of the documents.

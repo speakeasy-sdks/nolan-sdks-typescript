@@ -7,10 +7,13 @@ import { DeepsetCloudAnswer } from "./deepsetcloudanswer";
 import { DeepsetCloudDocument } from "./deepsetclouddocument";
 import { Expose, Type } from "class-transformer";
 
+export class DeepsetCloudQueryResponseDebug extends SpeakeasyBase {}
+
 export class DeepsetCloudQueryResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "_debug" })
-    debug?: Record<string, any>;
+    @Type(() => DeepsetCloudQueryResponseDebug)
+    debug?: DeepsetCloudQueryResponseDebug;
 
     /**
      * List of deepset Cloud answers.

@@ -3,7 +3,12 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose, Transform } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
+
+/**
+ * Metadata of a file.
+ */
+export class FileMetadataOfFile extends SpeakeasyBase {}
 
 export class File extends SpeakeasyBase {
     /**
@@ -40,7 +45,8 @@ export class File extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "meta" })
-    meta: Record<string, any>;
+    @Type(() => FileMetadataOfFile)
+    meta: FileMetadataOfFile;
 
     /**
      * Name of the file

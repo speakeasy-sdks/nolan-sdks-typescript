@@ -810,7 +810,10 @@ export class Pipeline {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.responseGetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGet =
-                        utils.objectToClass(httpRes?.data);
+                        utils.objectToClass(
+                            httpRes?.data,
+                            operations.GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetResponseGetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGet
+                        );
                 }
                 break;
             case httpRes?.status == 404:

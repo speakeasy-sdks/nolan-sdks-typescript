@@ -24,6 +24,11 @@ export class GetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGetRequest ex
     workspaceName: string;
 }
 
+/**
+ * Successful Response
+ */
+export class GetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGetResponseGetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGet extends SpeakeasyBase {}
+
 export class GetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGetResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
@@ -38,7 +43,7 @@ export class GetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGetResponse e
      * Successful Response
      */
     @SpeakeasyMetadata()
-    responseGetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGet?: Record<string, any>;
+    responseGetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGet?: GetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGetResponseGetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGet;
 
     @SpeakeasyMetadata()
     statusCode: number;

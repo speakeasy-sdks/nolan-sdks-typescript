@@ -15,7 +15,7 @@ export class PostNotebookApiV1NotebookPostSecurity extends SpeakeasyBase {
 
 export class PostNotebookApiV1NotebookPostRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-    requestBody?: Record<string, any>;
+    emptyClass?: shared.EmptyClass;
 
     /**
      * A unique identifier of a pipeline. You can obtain it from the List Pipelines endpoint.

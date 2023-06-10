@@ -3,7 +3,14 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose } from "class-transformer";
+import { Expose, Type } from "class-transformer";
+
+/**
+ * Filters you can use to narrow down the search. For more information, see [metadata filtering](https://docs.haystack.deepset.ai/docs/metadata-filtering).
+ */
+export class LabelWithPredictionHaystackFilters extends SpeakeasyBase {}
+
+export class LabelWithPredictionMeta extends SpeakeasyBase {}
 
 /**
  * An enumeration.
@@ -87,7 +94,8 @@ export class LabelWithPrediction extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "filters" })
-    filters?: Record<string, any>;
+    @Type(() => LabelWithPredictionHaystackFilters)
+    filters?: LabelWithPredictionHaystackFilters;
 
     /**
      * Unique identifier of a label
@@ -98,7 +106,8 @@ export class LabelWithPrediction extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "meta" })
-    meta: Record<string, any>;
+    @Type(() => LabelWithPredictionMeta)
+    meta: LabelWithPredictionMeta;
 
     @SpeakeasyMetadata()
     @Expose({ name: "query" })

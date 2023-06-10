@@ -1,0 +1,12 @@
+# CreateExternalUserApiV1WorkspacesWorkspaceNameSharedPrototypeUsersPostResponse
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `contentType`                                                                    | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `externalUserInformation`                                                        | [shared.ExternalUserInformation](../../models/shared/externaluserinformation.md) | :heavy_minus_sign:                                                               | Created a shared link for an existing external user                              |
+| `httpValidationError`                                                            | [shared.HTTPValidationError](../../models/shared/httpvalidationerror.md)         | :heavy_minus_sign:                                                               | Validation Error                                                                 |
+| `statusCode`                                                                     | *number*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `rawResponse`                                                                    | [AxiosResponse>](https://axios-http.com/docs/res_schema)                         | :heavy_minus_sign:                                                               | N/A                                                                              |

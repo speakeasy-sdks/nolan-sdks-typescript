@@ -27,6 +27,11 @@ export class GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineN
     workspaceName: string;
 }
 
+/**
+ * Returns the pipeline as JSON.
+ */
+export class GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetResponseGetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGet extends SpeakeasyBase {}
+
 export class GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
@@ -41,10 +46,7 @@ export class GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineN
      * Returns the pipeline as JSON.
      */
     @SpeakeasyMetadata()
-    responseGetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGet?: Record<
-        string,
-        any
-    >;
+    responseGetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGet?: GetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGetResponseGetPipelineYamlAsJsonApiV1WorkspacesWorkspaceNamePipelinesPipelineNameJsonGet;
 
     @SpeakeasyMetadata()
     statusCode: number;

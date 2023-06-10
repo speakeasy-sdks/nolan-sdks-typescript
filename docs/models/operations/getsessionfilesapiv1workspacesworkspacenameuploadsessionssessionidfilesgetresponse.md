@@ -1,0 +1,12 @@
+# GetSessionFilesApiV1WorkspacesWorkspaceNameUploadSessionsSessionIdFilesGetResponse
+
+
+## Fields
+
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `contentType`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `httpValidationError`                                                      | [shared.HTTPValidationError](../../models/shared/httpvalidationerror.md)   | :heavy_minus_sign:                                                         | Validation Error                                                           |
+| `paginatedSessionFile`                                                     | [shared.PaginatedSessionFile](../../models/shared/paginatedsessionfile.md) | :heavy_minus_sign:                                                         | Returns a list of files registered to the session.                         |
+| `statusCode`                                                               | *number*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `rawResponse`                                                              | [AxiosResponse>](https://axios-http.com/docs/res_schema)                   | :heavy_minus_sign:                                                         | N/A                                                                        |

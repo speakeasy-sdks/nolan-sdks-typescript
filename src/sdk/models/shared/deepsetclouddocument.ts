@@ -3,7 +3,12 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose } from "class-transformer";
+import { Expose, Type } from "class-transformer";
+
+/**
+ * Content of the document.
+ */
+export class DeepsetCloudDocumentContentContent extends SpeakeasyBase {}
 
 /**
  * Type of the content.
@@ -14,6 +19,16 @@ export enum DeepsetCloudDocumentContentType {
     Image = "image",
     Audio = "audio",
 }
+
+/**
+ * Object containing the `file_id` and `name` of a file. This is used to associate a document with a file.
+ */
+export class DeepsetCloudDocumentFileReferenceObjectDeprecatedUseFilesInstead extends SpeakeasyBase {}
+
+/**
+ * The metadata of this document.
+ */
+export class DeepsetCloudDocumentMetadataOfFile extends SpeakeasyBase {}
 
 /**
  * Successful Response
@@ -45,7 +60,8 @@ export class DeepsetCloudDocument extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "file" })
-    file?: Record<string, any>;
+    @Type(() => DeepsetCloudDocumentFileReferenceObjectDeprecatedUseFilesInstead)
+    file?: DeepsetCloudDocumentFileReferenceObjectDeprecatedUseFilesInstead;
 
     /**
      * ID of the document.
@@ -59,7 +75,8 @@ export class DeepsetCloudDocument extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "meta" })
-    meta: Record<string, any>;
+    @Type(() => DeepsetCloudDocumentMetadataOfFile)
+    meta: DeepsetCloudDocumentMetadataOfFile;
 
     /**
      * Unique identifier of the result.

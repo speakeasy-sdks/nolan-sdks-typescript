@@ -1,0 +1,10 @@
+# LogEntry
+
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | The date and time when the log entry was created.                                             |
+| `level`                                                                                       | *string*                                                                                      | :heavy_check_mark:                                                                            | The log level. Can be one of 'error', 'warning', 'info', 'debug'.                             |
+| `msg`                                                                                         | *string*                                                                                      | :heavy_check_mark:                                                                            | The log message.                                                                              |

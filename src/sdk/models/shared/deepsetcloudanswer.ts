@@ -7,6 +7,23 @@ import { DeepsetCloudSpan } from "./deepsetcloudspan";
 import { Expose, Type } from "class-transformer";
 
 /**
+ * Context of the answer.
+ */
+export class DeepsetCloudAnswerContextContext extends SpeakeasyBase {}
+
+/**
+ * Object containing the `file_id` and `name` of a file. This is used to associate a document with a file.
+ */
+export class DeepsetCloudAnswerFileReferenceObjectDeprecatedUseFilesInstead extends SpeakeasyBase {}
+
+export class DeepsetCloudAnswerFiles extends SpeakeasyBase {}
+
+/**
+ * The metadata of this document.
+ */
+export class DeepsetCloudAnswerMetadataOfFile extends SpeakeasyBase {}
+
+/**
  * Type of the answer.
  */
 export enum DeepsetCloudAnswerAnswerType {
@@ -46,21 +63,24 @@ export class DeepsetCloudAnswer extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "file" })
-    file?: Record<string, any>;
+    @Type(() => DeepsetCloudAnswerFileReferenceObjectDeprecatedUseFilesInstead)
+    file?: DeepsetCloudAnswerFileReferenceObjectDeprecatedUseFilesInstead;
 
     /**
      * List of object containing the `file_id` and `name` of a file. This is used to associate an answer with its source files.
      */
-    @SpeakeasyMetadata()
+    @SpeakeasyMetadata({ elemType: DeepsetCloudAnswerFiles })
     @Expose({ name: "files" })
-    files?: Record<string, any>[];
+    @Type(() => DeepsetCloudAnswerFiles)
+    files?: DeepsetCloudAnswerFiles[];
 
     /**
      * The metadata of this document.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "meta" })
-    meta?: Record<string, any>;
+    @Type(() => DeepsetCloudAnswerMetadataOfFile)
+    meta?: DeepsetCloudAnswerMetadataOfFile;
 
     /**
      * Offsets of the answer in the context.

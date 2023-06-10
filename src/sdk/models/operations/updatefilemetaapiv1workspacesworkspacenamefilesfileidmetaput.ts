@@ -13,9 +13,11 @@ export class UpdateFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaPutSecurit
     httpBearer: string;
 }
 
+export class UpdateFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaPutMeta extends SpeakeasyBase {}
+
 export class UpdateFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaPutRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-    requestBody: Record<string, any>;
+    requestBody: UpdateFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaPutMeta;
 
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=file_id" })
     fileId: string;

@@ -3,15 +3,23 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose } from "class-transformer";
+import { Expose, Type } from "class-transformer";
+
+export class SearchResultHistoryEntryDocuments extends SpeakeasyBase {}
+
+/**
+ * List of search results.
+ */
+export class SearchResultHistoryEntrySearchResults extends SpeakeasyBase {}
 
 export class SearchResultHistoryEntry extends SpeakeasyBase {
     /**
      * Documents that contain the search result.
      */
-    @SpeakeasyMetadata()
+    @SpeakeasyMetadata({ elemType: SearchResultHistoryEntryDocuments })
     @Expose({ name: "documents" })
-    documents: Record<string, any>[];
+    @Type(() => SearchResultHistoryEntryDocuments)
+    documents: SearchResultHistoryEntryDocuments[];
 
     /**
      * The rank of the search result. A lower value means more relevant result.
@@ -25,7 +33,8 @@ export class SearchResultHistoryEntry extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "result" })
-    result?: Record<string, any>;
+    @Type(() => SearchResultHistoryEntrySearchResults)
+    result?: SearchResultHistoryEntrySearchResults;
 
     /**
      * List of search results.

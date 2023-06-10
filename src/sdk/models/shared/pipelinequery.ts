@@ -3,7 +3,17 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose } from "class-transformer";
+import { Expose, Type } from "class-transformer";
+
+/**
+ * Filters you can use to narrow down the search. For more information, see [metadata filtering](https://docs.haystack.deepset.ai/docs/metadata-filtering).
+ */
+export class PipelineQueryHaystackFilters extends SpeakeasyBase {}
+
+/**
+ * Parameters you can use to customize the pipeline.
+ */
+export class PipelineQueryPipelineParameters extends SpeakeasyBase {}
 
 export class PipelineQuery extends SpeakeasyBase {
     /**
@@ -18,14 +28,16 @@ export class PipelineQuery extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "filters" })
-    filters?: Record<string, any>;
+    @Type(() => PipelineQueryHaystackFilters)
+    filters?: PipelineQueryHaystackFilters;
 
     /**
      * Parameters you can use to customize the pipeline.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "params" })
-    params?: Record<string, any>;
+    @Type(() => PipelineQueryPipelineParameters)
+    params?: PipelineQueryPipelineParameters;
 
     /**
      * A list of queries you want to run through the pipeline.

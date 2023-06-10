@@ -8,6 +8,11 @@ import { SearchResultHistoryEntry } from "./searchresulthistoryentry";
 import { UserIdName } from "./useridname";
 import { Expose, Transform, Type } from "class-transformer";
 
+/**
+ * Query request
+ */
+export class SearchHistoryQueryRequest extends SpeakeasyBase {}
+
 export class SearchHistory extends SpeakeasyBase {
     /**
      * Duration in ms.
@@ -26,7 +31,8 @@ export class SearchHistory extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "request" })
-    request: Record<string, any>;
+    @Type(() => SearchHistoryQueryRequest)
+    request: SearchHistoryQueryRequest;
 
     /**
      * Response list from Haystack open source

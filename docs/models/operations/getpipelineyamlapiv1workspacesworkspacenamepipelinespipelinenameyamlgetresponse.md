@@ -1,0 +1,12 @@
+# GetPipelineYamlApiV1WorkspacesWorkspaceNamePipelinesPipelineNameYamlGetResponse
+
+
+## Fields
+
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `contentType`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `httpValidationError`                                                    | [shared.HTTPValidationError](../../models/shared/httpvalidationerror.md) | :heavy_minus_sign:                                                       | Validation Error                                                         |
+| `pipelineYaml`                                                           | [shared.PipelineYaml](../../models/shared/pipelineyaml.md)               | :heavy_minus_sign:                                                       | Returns the pipeline as YAML.                                            |
+| `statusCode`                                                             | *number*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `rawResponse`                                                            | [AxiosResponse>](https://axios-http.com/docs/res_schema)                 | :heavy_minus_sign:                                                       | N/A                                                                      |

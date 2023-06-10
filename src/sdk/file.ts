@@ -424,7 +424,10 @@ export class File {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.responseGetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGet =
-                        utils.objectToClass(httpRes?.data);
+                        utils.objectToClass(
+                            httpRes?.data,
+                            operations.GetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGetResponseGetFileMetaApiV1WorkspacesWorkspaceNameFilesFileIdMetaGet
+                        );
                 }
                 break;
             case httpRes?.status == 422:

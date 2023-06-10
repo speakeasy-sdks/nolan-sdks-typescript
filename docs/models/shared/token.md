@@ -1,0 +1,10 @@
+# Token
+
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `apiTokenId`                                                                                  | *string*                                                                                      | :heavy_check_mark:                                                                            | Unique identifier of the API token.                                                           |
+| `expiresAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | Timestamp when the token should expire, for example '2022-05-12T12:25:09+02:00'               |
+| `user`                                                                                        | [UserName](../../models/shared/username.md)                                                   | :heavy_check_mark:                                                                            | N/A                                                                                           |

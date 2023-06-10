@@ -6,6 +6,8 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { PipelineFeedbackFile } from "./pipelinefeedbackfile";
 import { Expose, Transform, Type } from "class-transformer";
 
+export class FeedbackSearchResultDocuments extends SpeakeasyBase {}
+
 /**
  * Shows information about the file which contains the search result.
  */
@@ -24,6 +26,11 @@ export class FeedbackSearchResultPipelineFeedbackFile extends SpeakeasyBase {
     @Expose({ name: "name" })
     name?: string;
 }
+
+/**
+ * Shows which metadata filters were used for the search query.
+ */
+export class FeedbackSearchResultFeedbackSearchQuerySearchFilters extends SpeakeasyBase {}
 
 /**
  * The user who gave feedback to the search result.
@@ -75,7 +82,8 @@ export class FeedbackSearchResultFeedbackSearchQuery extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "filters" })
-    filters?: Record<string, any>;
+    @Type(() => FeedbackSearchResultFeedbackSearchQuerySearchFilters)
+    filters?: FeedbackSearchResultFeedbackSearchQuerySearchFilters;
 
     /**
      * The search query
@@ -127,9 +135,10 @@ export class FeedbackSearchResult extends SpeakeasyBase {
     /**
      * Shows the documents which contain the search results.
      */
-    @SpeakeasyMetadata()
+    @SpeakeasyMetadata({ elemType: FeedbackSearchResultDocuments })
     @Expose({ name: "documents" })
-    documents: Record<string, any>[];
+    @Type(() => FeedbackSearchResultDocuments)
+    documents: FeedbackSearchResultDocuments[];
 
     /**
      * Shows information about the file which contains the search result.

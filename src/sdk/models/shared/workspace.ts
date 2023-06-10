@@ -3,7 +3,17 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose } from "class-transformer";
+import { Expose, Type } from "class-transformer";
+
+/**
+ * Supported languages within a workspace.
+ */
+export class WorkspaceWorkspaceLanguages extends SpeakeasyBase {}
+
+/**
+ * Metadata for workspaces.
+ */
+export class WorkspaceWorkspaceMeta extends SpeakeasyBase {}
 
 /**
  * Successful Response
@@ -21,14 +31,16 @@ export class Workspace extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "languages" })
-    languages?: Record<string, any>;
+    @Type(() => WorkspaceWorkspaceLanguages)
+    languages?: WorkspaceWorkspaceLanguages;
 
     /**
      * Metadata for workspaces.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "metadata_fields" })
-    metadataFields?: Record<string, any>;
+    @Type(() => WorkspaceWorkspaceMeta)
+    metadataFields?: WorkspaceWorkspaceMeta;
 
     /**
      * How do you want to name your workspace? Type a name that's longer than 3 characters.

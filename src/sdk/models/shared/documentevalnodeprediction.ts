@@ -15,6 +15,11 @@ export enum DocumentEvalNodePredictionEvaluationMode {
 }
 
 /**
+ * Filters which were used for the evaluation of the query.
+ */
+export class DocumentEvalNodePredictionQueryFilters extends SpeakeasyBase {}
+
+/**
  * This node returns document objects during the prediction.
  */
 export enum DocumentEvalNodePredictionPredictionType {
@@ -91,7 +96,8 @@ export class DocumentEvalNodePrediction extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "filters" })
-    filters?: Record<string, any>;
+    @Type(() => DocumentEvalNodePredictionQueryFilters)
+    filters?: DocumentEvalNodePredictionQueryFilters;
 
     /**
      * 'True' if the node returned the document and answer as specified in the evaluation set.

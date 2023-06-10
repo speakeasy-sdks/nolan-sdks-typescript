@@ -15,6 +15,11 @@ export enum AnswerEvalNodePredictionEvaluationMode {
 }
 
 /**
+ * Filters which were used for the evaluation of the query.
+ */
+export class AnswerEvalNodePredictionQueryFilters extends SpeakeasyBase {}
+
+/**
  * This node returns answer objects during the prediction.
  */
 export enum AnswerEvalNodePredictionPredictionType {
@@ -161,7 +166,8 @@ export class AnswerEvalNodePrediction extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "filters" })
-    filters?: Record<string, any>;
+    @Type(() => AnswerEvalNodePredictionQueryFilters)
+    filters?: AnswerEvalNodePredictionQueryFilters;
 
     /**
      * The index of this prediction for a particular query.
